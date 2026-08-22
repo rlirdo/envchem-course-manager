@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>環境化學 第四週課後學習單｜Prompt 驅動 AI 串接環境部 API</title>
+<style>
+  :root{
+    --sun:#FFB300; --mango:#FF7A29; --coral:#FF5A5F;
+    --sky:#00A8E8; --leaf:#27C093; --grape:#7C4DFF;
+    --ink:#1F2937; --ink2:#4B5563; --line:#D6DCE5;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:"Noto Sans TC","Microsoft JhengHei","PingFang TC","Segoe UI",sans-serif;
+       color:var(--ink); background:#F3F6FA; line-height:1.45; font-size:12.2px;
+       -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  .page{width:210mm; height:297mm; margin:6mm auto; padding:8mm 10mm; background:#fff;
+        box-shadow:0 4px 20px rgba(31,41,55,.12); position:relative; overflow:hidden;}
+  .page::before{content:""; position:absolute; top:-70mm; right:-60mm; width:150mm; height:150mm; border-radius:50%;
+        background:radial-gradient(circle at 40% 40%, rgba(255,213,79,.32), rgba(255,213,79,0) 65%);}
+  .page>*{position:relative;}
+
+  .hdr{border-radius:14px; padding:8px 13px; color:#fff; display:flex; align-items:center; gap:13px;
+       background:linear-gradient(110deg,#FF7A29 0%,#FFB300 42%,#27C093 100%); box-shadow:0 4px 12px rgba(255,122,41,.26);}
+  .hdr .badge{flex:0 0 auto; width:54px; height:54px; border-radius:15px; background:rgba(255,255,255,.22);
+       display:flex; flex-direction:column; align-items:center; justify-content:center; border:2px solid rgba(255,255,255,.55);}
+  .hdr .badge b{font-size:20px; line-height:1;}
+  .hdr .badge span{font-size:9.5px; letter-spacing:2px;}
+  .hdr h1{margin:0; font-size:16.5px; letter-spacing:.4px;}
+  .hdr .sub{font-size:11px; opacity:.97;}
+  .hdr .tag{margin-top:3px; font-size:10.6px; background:rgba(255,255,255,.24); display:inline-block; padding:1px 9px; border-radius:999px;}
+
+  .idbar{margin-top:6px; display:grid; grid-template-columns:1.15fr 1.15fr .8fr 1.1fr; gap:6px;}
+  .idbar div{border:1.8px solid var(--sun); border-radius:9px; padding:3px 8px; font-size:11.2px; background:#FFFCF2;}
+  .idbar b{color:var(--mango); font-size:11px;}
+  .fill{display:inline-block; min-width:46px; border-bottom:1.4px dashed #C7CDD6; height:14px;}
+
+  .steps{display:flex; gap:5px; margin-top:6px;}
+  .steps span{flex:1; text-align:center; border-radius:999px; padding:2.5px 0; font-size:10.6px; color:#fff; font-weight:700;}
+
+  h2.sec{display:flex; align-items:center; gap:7px; margin:9px 0 4px; font-size:13.6px;}
+  h2.sec .n{width:21px; height:21px; border-radius:7px; color:#fff; display:flex; align-items:center;
+       justify-content:center; font-size:11.5px; font-weight:700;}
+  .c1{background:linear-gradient(135deg,#FF7A29,#FFB300);} .c2{background:linear-gradient(135deg,#00A8E8,#7FDBFF);}
+  .c3{background:linear-gradient(135deg,#27C093,#A8E063);} .c4{background:linear-gradient(135deg,#7C4DFF,#B388FF);}
+  .c5{background:linear-gradient(135deg,#FF5A5F,#FF9A8B);}
+  h2.sec .pt{margin-left:auto; font-size:10.2px; color:#fff; background:var(--ink2); padding:1px 8px; border-radius:999px;}
+
+  .card{border:1.4px solid var(--line); border-radius:11px; padding:7px 9px; background:#fff;}
+  .tip{background:linear-gradient(90deg,#FFF7E0,#FFFDF6); border-left:4px solid var(--sun); border-radius:8px;
+       padding:5px 9px; font-size:11px; color:#6B4B00;}
+  .warn{background:#FFF1F1; border-left:4px solid var(--coral); border-radius:8px; padding:5px 9px; font-size:10.8px; color:#8A2B2E;}
+
+  table{width:100%; border-collapse:collapse; font-size:11.2px;}
+  th,td{border:1px solid var(--line); padding:3px 5px; vertical-align:top;}
+  th{background:#EFF4FA; font-weight:700; text-align:left;}
+  .wline{border-bottom:1.2px dashed #C2C9D4; display:block; height:17px;}
+  td.blank{height:23px;}
+
+  .writebox{border:1.8px dashed var(--sky); border-radius:10px; padding:4px 8px;
+       background:repeating-linear-gradient(0deg,#FBFDFF,#FBFDFF 22px,#E8F4FB 22px,#E8F4FB 23px);}
+  .pastebox{border:2px dashed var(--grape); border-radius:11px; background:#FAF7FF; color:#7C4DFF;
+       font-size:11px; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1px; text-align:center;}
+  .codebox{border:1.3px solid #2B3446; border-radius:10px; background:#111827; color:#E5E7EB;
+       font-family:Consolas,"Courier New",monospace; font-size:10.2px; padding:6px 9px; line-height:1.45; overflow-x:auto;}
+  .codebox .st{color:#FFD54F;} .codebox .kw{color:#FF9A8B;} .codebox .cm{color:#7FDBFF;}
+
+  .chk{display:flex; gap:5px; align-items:flex-start; font-size:11px; margin:1px 0;}
+  .box{flex:0 0 auto; width:12px; height:12px; border:1.8px solid var(--ink2); border-radius:3px; margin-top:2px;}
+  .mini{font-size:10.4px; color:var(--ink2);}
+  .kbd{background:#F0F2F6;border:1px solid #D3D8E0;border-bottom-width:2px;border-radius:4px;padding:0 4px;font-family:Consolas,monospace;}
+
+  .foot{margin-top:7px; display:flex; gap:8px;}
+  .foot>div{flex:1; border-radius:11px; padding:5px 9px;}
+  .foot .grade{border:1.8px solid var(--leaf); background:#F2FCF8;}
+  .foot .sign{border:1.8px solid var(--sky); background:#F3FAFF;}
+  .stars{letter-spacing:3px; font-size:15px; color:var(--sun);}
+  .pill{display:inline-block; background:#EAF7FF; color:#036; border:1px solid #B7E4FF; border-radius:999px; padding:0 7px; font-size:10.2px; margin-right:3px;}
+
+  @media print{ body{background:#fff;} .page{margin:0; box-shadow:none; width:auto;} .pagebreak{page-break-before:always;} }
+  @page{size:A4; margin:0;}
+</style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1 ===================== -->
+<section class="page">
+
+  <div class="hdr">
+    <div class="badge"><b>W4</b><span>WEEK</span></div>
+    <div>
+      <h1>國立東華大學 自然資源與環境學系</h1>
+      <div class="sub"><b>環境化學課程 ‧ 第四週課後學習單</b>　NRES20050｜115 學年度第 1 學期</div>
+      <div class="tag">☀ 模組活動一（上）：公開資料、API 與 Prompt-driven Notebook ─ 用一句話，讓 AI 幫我寫程式！</div>
+    </div>
+  </div>
+
+  <div class="idbar">
+    <div><b>學生姓名</b>　<span class="fill" style="min-width:74px"></span></div>
+    <div><b>學　　號</b>　<span class="fill" style="min-width:74px"></span></div>
+    <div><b>組　別</b>　<span class="fill"></span></div>
+    <div><b>日　期</b>　<span class="fill" style="min-width:34px"></span>年<span class="fill" style="min-width:24px"></span>月<span class="fill" style="min-width:24px"></span>日</div>
+  </div>
+
+  <svg viewBox="0 0 1200 168" style="width:100%;height:auto;margin-top:6px;border-radius:12px;">
+    <defs>
+      <linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#BFF0FF"/><stop offset="100%" stop-color="#F5FCFF"/></linearGradient>
+      <linearGradient id="sung" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFD54F"/><stop offset="100%" stop-color="#FF7A29"/></linearGradient>
+      <linearGradient id="arrg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#FF7A29"/><stop offset="55%" stop-color="#FFB300"/><stop offset="100%" stop-color="#27C093"/></linearGradient>
+      <marker id="ar" markerWidth="4.5" markerHeight="4.5" refX="3.6" refY="2.25" orient="auto"><path d="M0,0 L4.5,2.25 L0,4.5 Z" fill="#27C093"/></marker>
+    </defs>
+    <rect x="0" y="0" width="1200" height="168" rx="12" fill="url(#skyg)"/>
+    <circle cx="76" cy="44" r="25" fill="url(#sung)"/>
+    <g stroke="#FFB300" stroke-width="4" stroke-linecap="round">
+      <line x1="76" y1="6" x2="76" y2="-1"/><line x1="38" y1="44" x2="30" y2="44"/><line x1="114" y1="44" x2="122" y2="44"/>
+      <line x1="48" y1="17" x2="42" y2="11"/><line x1="104" y1="17" x2="110" y2="11"/>
+    </g>
+    <path d="M0 140 L130 66 L215 116 L320 52 L430 140 Z" fill="#9BD7A6" opacity=".8"/>
+    <path d="M360 140 L455 78 L545 140 Z" fill="#6FC08A" opacity=".8"/>
+    <rect x="0" y="138" width="1200" height="30" fill="#DFF3E4"/>
+    <g fill="#fff" opacity=".9">
+      <ellipse cx="700" cy="34" rx="30" ry="15"/><ellipse cx="726" cy="40" rx="22" ry="12"/><ellipse cx="676" cy="41" rx="20" ry="11"/>
+    </g>
+    <g transform="translate(214,66)">
+      <rect x="0" y="34" width="52" height="38" rx="6" fill="#fff" stroke="#27C093" stroke-width="3"/>
+      <rect x="8" y="44" width="15" height="11" rx="2" fill="#7FDBFF"/><rect x="29" y="44" width="15" height="11" rx="2" fill="#FFD54F"/>
+      <rect x="23" y="4" width="6" height="30" fill="#4B5563"/><circle cx="26" cy="4" r="6" fill="#FF5A5F"/>
+      <text x="26" y="90" font-size="15" fill="#14614A" text-anchor="middle" font-family="sans-serif" font-weight="bold">花蓮測站</text>
+    </g>
+    <path d="M300 92 C 430 34, 560 132, 700 84" stroke="url(#arrg)" stroke-width="5" fill="none" stroke-dasharray="13 9" stroke-linecap="round" marker-end="url(#ar)"/>
+    <g transform="translate(736,50)">
+      <rect x="0" y="0" width="150" height="82" rx="8" fill="#1F2937"/>
+      <rect x="8" y="8" width="134" height="66" rx="4" fill="#0F172A"/>
+      <g font-family="monospace" font-size="11">
+        <text x="17" y="26" fill="#7FDBFF">import requests</text>
+        <text x="17" y="43" fill="#FFD54F">url = ".../api/v2/..."</text>
+        <text x="17" y="60" fill="#A8E063">df.head()</text>
+      </g>
+      <rect x="-16" y="82" width="182" height="8" rx="4" fill="#374151"/>
+      <text x="75" y="108" font-size="15" fill="#1F2937" text-anchor="middle" font-family="sans-serif" font-weight="bold">Google Colab</text>
+    </g>
+    <g transform="translate(940,52)">
+      <circle cx="34" cy="30" r="28" fill="#7C4DFF"/>
+      <text x="34" y="37" font-size="20" fill="#fff" text-anchor="middle" font-family="sans-serif" font-weight="bold">AI</text>
+      <text x="34" y="80" font-size="15" fill="#4B2FA8" text-anchor="middle" font-family="sans-serif" font-weight="bold">Prompt 助手</text>
+    </g>
+    <text x="1090" y="70" font-size="17" fill="#0B6A8F" text-anchor="middle" font-family="sans-serif" font-weight="bold">真實數據</text>
+    <text x="1090" y="94" font-size="17" fill="#0B6A8F" text-anchor="middle" font-family="sans-serif" font-weight="bold">動手抓！</text>
+    <text x="600" y="24" font-size="19" fill="#0B6A8F" text-anchor="middle" font-family="sans-serif" font-weight="bold">真實環境數據 ➜ 我的 Prompt ➜ AI 生成程式碼 ➜ Colab 跑出表格</text>
+  </svg>
+
+  <div class="steps">
+    <span style="background:linear-gradient(135deg,#FF7A29,#FFB300)">🔎 ① 資料尋寶</span>
+    <span style="background:linear-gradient(135deg,#FFB300,#FFD54F);color:#5A3B00">🔑 ② 取得金鑰</span>
+    <span style="background:linear-gradient(135deg,#00A8E8,#7FDBFF);color:#04364A">✍ ③ 寫提示詞</span>
+    <span style="background:linear-gradient(135deg,#7C4DFF,#B388FF)">🤖 ④ AI 生成代碼</span>
+    <span style="background:linear-gradient(135deg,#27C093,#A8E063);color:#0E4B36">🐞 ⑤ 除錯修正</span>
+  </div>
+
+  <div class="tip" style="margin-top:6px;">
+    <b>📌 課後任務：</b>請在自己的電腦打開 Google Colab，<b>親手</b>完成任務一～五並於下次上課前繳交。
+    需截圖處務必附上<b>含時間戳記</b>的畫面──<b>沒有截圖 = 沒有動手做</b>，該題以 0 分計。
+  </div>
+
+  <h2 class="sec"><span class="n c1">1</span>任務一｜環境部資料開放平臺「尋寶」紀錄<span class="pt">15 分</span></h2>
+  <div class="card">
+    <div class="mini" style="margin-bottom:4px;">登入 <b>環境部環境資料開放平臺（data.moenv.gov.tw）</b>，找出下列兩個資料集並填寫。</div>
+    <table>
+      <tr><th style="width:17%">項目</th><th style="width:41.5%">資料集 A（空氣品質 ‧ 現況）</th><th style="width:41.5%">資料集 B（自選：水質／土壤／其他空品）</th></tr>
+      <tr><td>資料集中文名稱</td><td><span class="wline"></span></td><td><span class="wline"></span></td></tr>
+      <tr><td>DataID（代碼）</td><td><span class="wline"></span></td><td><span class="wline"></span></td></tr>
+      <tr><td>更新頻率／格式</td><td class="mini">頻率：________　□JSON □CSV □XML</td><td class="mini">頻率：________　□JSON □CSV □XML</td></tr>
+      <tr><td>我最感興趣的<br>3 個欄位</td><td><span class="wline"></span></td><td><span class="wline"></span></td></tr>
+      <tr><td>任選 1 個欄位，<br>寫出它的<b>化學意義</b></td><td colspan="2"><span class="wline"></span></td></tr>
+    </table>
+  </div>
+
+  <h2 class="sec"><span class="n c2">2</span>任務二｜API 網址拆解：把「一長串」拆成看得懂的積木<span class="pt">15 分</span></h2>
+  <div class="card">
+    <div class="codebox">https://data.moenv.gov.tw/api/v2/<span class="st">{DataID}</span>?api_key=<span class="kw">{你的金鑰}</span>&amp;limit=<span class="st">100</span>&amp;offset=<span class="st">0</span>&amp;format=<span class="st">JSON</span>&amp;sort=<span class="cm">datacreationdate desc</span></div>
+    <table style="margin-top:5px;">
+      <tr><th style="width:15%">參數</th><th style="width:36%">它負責什麼？（用自己的話寫）</th><th style="width:21%">我填入的值</th><th style="width:28%">改大／改小會怎樣？</th></tr>
+      <tr><td><b>DataID</b></td><td><span class="wline"></span></td><td><span class="wline"></span></td><td rowspan="2"><span class="wline"></span></td></tr>
+      <tr><td><b>api_key</b></td><td><span class="wline"></span></td><td class="mini"><b>切勿抄寫</b>，僅勾選：□ 已取得</td></tr>
+      <tr><td><b>limit</b></td><td><span class="wline"></span></td><td><span class="wline"></span></td><td><span class="wline"></span></td></tr>
+      <tr><td><b>format</b></td><td><span class="wline"></span></td><td><span class="wline"></span></td><td><span class="wline"></span></td></tr>
+    </table>
+    <div class="warn" style="margin-top:5px;">
+      <b>🔐 資料倫理：</b>API Key 等同個人帳號密碼，<b>不可</b>寫在學習單、上傳 GitHub 或分享他人；繳交截圖時請把金鑰塗黑。
+    </div>
+  </div>
+
+  <h2 class="sec"><span class="n c4">3</span>任務三｜我的第一條 Prompt（親手寫，不可直接照抄範本）<span class="pt">20 分</span></h2>
+  <div class="card">
+    <div class="mini">好的 Prompt 至少有 5 個零件，先勾選你放進去了哪些，再把完整提示詞抄寫下來：</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:4px 0;">
+      <div class="chk"><span class="box"></span>角色設定</div>
+      <div class="chk"><span class="box"></span>資料來源/網址</div>
+      <div class="chk"><span class="box"></span>要哪些欄位</div>
+      <div class="chk"><span class="box"></span>輸出形式</div>
+      <div class="chk"><span class="box"></span>中文註解</div>
+    </div>
+    <div class="writebox" style="height:92px;"></div>
+    <div class="mini" style="margin-top:4px;">✏ 我使用的 AI 工具：□ Colab 內建 Gemini　□ ChatGPT　□ Claude　□ Gemini 網頁版　□ 其他：________　｜　來回對話：______ 次</div>
+  </div>
+
+</section>
+
+<!-- ===================== PAGE 2 ===================== -->
+<section class="page pagebreak">
+
+  <h2 class="sec"><span class="n c3">4</span>任務四｜Colab 實作證據：把「跑出來的結果」貼上來<span class="pt">25 分</span></h2>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div>
+        <div class="mini" style="margin-bottom:3px;"><b>(A) 截圖一：AI 生成的程式碼</b>（需看得到中文註解）</div>
+        <div class="pastebox" style="height:76px;"><span style="font-size:20px;">📎</span><span>螢幕截圖黏貼處</span></div>
+      </div>
+      <div>
+        <div class="mini" style="margin-bottom:3px;"><b>(B) 截圖二：Colab 執行成功的表格輸出</b>（需含 df.head()）</div>
+        <div class="pastebox" style="height:76px;"><span style="font-size:20px;">📊</span><span>螢幕截圖黏貼處（含時間戳記）</span></div>
+      </div>
+    </div>
+    <div class="mini" style="margin:6px 0 3px;"><b>(C) 手抄輸出結果前 3 列</b>──照著 Colab 螢幕<b>親手謄寫</b>（用來核對你確實跑過）：</div>
+    <table>
+      <tr><th style="width:7%">#</th><th style="width:27%">監測時間 datacreationdate</th><th style="width:20%">測站 sitename</th><th style="width:23%">PM2.5</th><th style="width:23%">O₃</th></tr>
+      <tr><td>1</td><td><span class="wline"></span></td><td><span class="wline"></span></td><td><span class="wline"></span></td><td><span class="wline"></span></td></tr>
+      <tr><td>2</td><td><span class="wline"></span></td><td><span class="wline"></span></td><td><span class="wline"></span></td><td><span class="wline"></span></td></tr>
+      <tr><td>3</td><td><span class="wline"></span></td><td><span class="wline"></span></td><td><span class="wline"></span></td><td><span class="wline"></span></td></tr>
+    </table>
+    <div class="mini" style="margin-top:4px;">我的 Colab 筆記本共 ______ 個 code cell；檔名：<span class="fill" style="min-width:120px"></span>；分享連結（權限：知道連結者可檢視）：<span class="fill" style="min-width:180px"></span></div>
+  </div>
+
+  <h2 class="sec"><span class="n c5">5</span>任務五｜🐞 除錯闖關紀錄（本週最重要的一題！）<span class="pt">25 分</span></h2>
+  <div class="card">
+    <div class="tip" style="margin-bottom:5px;">
+      <b>報錯不是失敗，是學習的入口。</b>請至少記錄 <b>2 次</b>真實遇到的錯誤。完全沒遇到錯誤的同學，請故意把 <span class="kbd">limit</span> 改成負數或把網址打錯一個字，製造一次錯誤再把它修好。
+    </div>
+    <table>
+      <tr><th style="width:6%">回合</th><th style="width:26%">錯誤訊息關鍵字<br><span class="mini">(如 KeyError／401／SSLError)</span></th><th style="width:29%">我丟回給 AI 說的話</th><th style="width:26%">AI 改了什麼？</th><th style="width:13%">修好了嗎</th></tr>
+      <tr><td>1</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="mini">□ 是　□ 否</td></tr>
+      <tr><td>2</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="mini">□ 是　□ 否</td></tr>
+    </table>
+    <div class="mini" style="margin-top:4px;"><b>💡 一句話心得：</b>要讓 AI 幫我修好錯誤，最關鍵的是<span class="fill" style="min-width:330px"></span></div>
+  </div>
+
+  <h2 class="sec"><span class="n c2">6</span>任務六｜連回環境化學：資料不只是數字<span class="pt">15 分</span></h2>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:10px;align-items:start;">
+      <div>
+        <div class="mini" style="margin-bottom:3px;"><b>(A)</b> 你抓到的 PM<sub>2.5</sub> 與 O₃，在課本中分別屬於哪一類污染物？請寫出其<b>主要生成途徑</b>（一次／二次污染物）。</div>
+        <div class="writebox" style="height:66px;"></div>
+        <div class="mini" style="margin:5px 0 3px;"><b>(B)</b> 這次抓到的數據有沒有出現 <b>空白、負值或 -999</b>？你認為那代表什麼？（下週就要處理它）</div>
+        <div class="writebox" style="height:44px;"></div>
+      </div>
+      <div>
+        <svg viewBox="0 0 300 208" style="width:100%;height:auto;">
+          <defs>
+            <linearGradient id="sung2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFD54F"/><stop offset="100%" stop-color="#FF7A29"/></linearGradient>
+            <marker id="ah4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#FFB300"/></marker>
+          </defs>
+          <rect x="0" y="0" width="300" height="208" rx="12" fill="#F6FBFF" stroke="#CDE8F7"/>
+          <text x="150" y="19" font-size="12.5" font-weight="bold" fill="#0B6A8F" text-anchor="middle" font-family="sans-serif">污染物快速分類卡</text>
+          <g font-family="sans-serif">
+            <rect x="12" y="28" width="130" height="82" rx="11" fill="#FFF3D6" stroke="#FFB300" stroke-width="2"/>
+            <text x="77" y="46" font-size="11.5" font-weight="bold" fill="#8A5A00" text-anchor="middle">一次污染物</text>
+            <text x="77" y="62" font-size="10" fill="#8A5A00" text-anchor="middle">直接由污染源排放</text>
+            <text x="77" y="82" font-size="14" font-weight="bold" fill="#FF7A29" text-anchor="middle">NO₂ ‧ SO₂ ‧ CO</text>
+            <text x="77" y="99" font-size="10" fill="#8A5A00" text-anchor="middle">車輛、鍋爐、工廠</text>
+
+            <rect x="158" y="28" width="130" height="82" rx="11" fill="#E7F8F2" stroke="#27C093" stroke-width="2"/>
+            <text x="223" y="46" font-size="11.5" font-weight="bold" fill="#0E6E51" text-anchor="middle">二次污染物</text>
+            <text x="223" y="62" font-size="10" fill="#0E6E51" text-anchor="middle">在大氣中反應生成</text>
+            <text x="223" y="82" font-size="14" font-weight="bold" fill="#0E9E74" text-anchor="middle">O₃ ‧ 部分 PM₂.₅</text>
+            <text x="223" y="99" font-size="10" fill="#0E6E51" text-anchor="middle">需要陽光 ‧ 需要時間</text>
+
+            <path d="M100 122 C 140 148, 160 148, 200 122" stroke="#FFB300" stroke-width="3" fill="none" marker-end="url(#ah4)"/>
+            <circle cx="150" cy="144" r="15" fill="url(#sung2)"/>
+            <text x="150" y="149" font-size="11" fill="#fff" text-anchor="middle" font-weight="bold">hν</text>
+            <text x="150" y="174" font-size="10.5" fill="#4B5563" text-anchor="middle">陽光是關鍵推手</text>
+            <rect x="12" y="182" width="276" height="20" rx="8" fill="#fff" stroke="#CDE8F7"/>
+            <text x="150" y="196" font-size="10.2" fill="#0B6A8F" text-anchor="middle">下週預告：親手抓花蓮 24 小時數據驗證這件事！</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="sec"><span class="n c1">7</span>AI 使用誠實聲明 ＆ 自我檢核<span class="pt">5 分</span></h2>
+  <div class="card">
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:12px;">
+      <div>
+        <div class="mini" style="font-weight:700;margin-bottom:2px;">✅ 我完成了（請誠實勾選）</div>
+        <div class="chk"><span class="box"></span>我<b>親自</b>在 Colab 執行過程式碼，不是複製同學的結果</div>
+        <div class="chk"><span class="box"></span>我保留了完整的 AI 對話紀錄（可供教師查閱）</div>
+        <div class="chk"><span class="box"></span>我的 API Key 沒有出現在任何截圖或公開連結中</div>
+        <div class="chk"><span class="box"></span>我能向同學說明程式碼每一段在做什麼，且至少獨立修好 1 個錯誤</div>
+      </div>
+      <div>
+        <div class="mini" style="font-weight:700;margin-bottom:2px;">📣 我想問老師／助教的一個問題</div>
+        <div class="writebox" style="height:46px;"></div>
+        <div class="mini" style="margin-top:4px;">本週我對 AI 協作的信心度（請塗滿）：
+          <span style="color:#FF7A29">☆</span><span style="color:#FFB300">☆</span><span style="color:#FFD54F">☆</span><span style="color:#27C093">☆</span><span style="color:#00A8E8">☆</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="grade">
+      <b style="color:#0E6E51">教師／助教評分</b>
+      <div class="mini" style="margin-top:3px;">任務一 ___／15　任務二 ___／15　任務三 ___／20　任務四 ___／25　任務五 ___／25　任務六 ___／15　任務七 ___／5</div>
+      <div class="mini" style="margin-top:3px;">動手做實證：<span class="pill">截圖齊全</span><span class="pill">手抄數據相符</span><span class="pill">除錯歷程完整</span></div>
+      <div style="margin-top:3px;font-size:12px;"><b>總分：________</b>　等第：<span class="stars">☆☆☆☆☆</span></div>
+    </div>
+    <div class="sign">
+      <b style="color:#0B6A8F">回饋／簽名</b>
+      <div class="wline" style="margin-top:4px;"></div>
+      <div class="wline"></div>
+      <div class="mini" style="margin-top:3px;">教師簽名：____________　繳交日期：____／____</div>
+    </div>
+  </div>
+
+  <div class="mini" style="text-align:center;margin-top:6px;color:#8A93A0;">
+    國立東華大學 自然資源與環境學系｜環境化學（NRES20050）｜115-1「生成式AI融入專業課程」計畫 ‧ 模組活動一（上）｜第 4 週課後學習單
+  </div>
+
+</section>
+</body>
+</html>
