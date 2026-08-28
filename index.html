@@ -126,14 +126,73 @@ table.t tfoot td{font-weight:800;background:#EDF4F1;color:var(--navy);}
 .attbtn .sq{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;
         font-size:14px;font-weight:800;color:#fff;flex:0 0 auto;}
 .attbtn .seat{font-size:11.5px;color:var(--muted);flex:0 0 auto;font-variant-numeric:tabular-nums;}
+.attbtn .st{font-size:11px;font-weight:800;flex:0 0 auto;letter-spacing:.3px;}
 .attbtn[data-s=present]{border-color:var(--moss);background:#F1F9F5;}
-.attbtn[data-s=present] .sq{background:var(--green);}
+.attbtn[data-s=present] .sq{background:var(--green);} .attbtn[data-s=present] .st{color:var(--green);}
+.attbtn[data-s=late1]{border-color:#EFD27A;background:#FFFCF0;}
+.attbtn[data-s=late1] .sq{background:#E8B004;color:#3A2A00;} .attbtn[data-s=late1] .st{color:#8A6400;}
+.attbtn[data-s=late2]{border-color:#F0B183;background:#FFF6EF;}
+.attbtn[data-s=late2] .sq{background:#D97706;} .attbtn[data-s=late2] .st{color:#9A4E00;}
 .attbtn[data-s=absent]{border-color:#E9A9A2;background:#FDF2F1;}
-.attbtn[data-s=absent] .sq{background:var(--danger);}
-.attbtn[data-s=leave]{border-color:#F0CE84;background:#FFFAEF;}
-.attbtn[data-s=leave] .sq{background:var(--gold);color:#4A3200;}
+.attbtn[data-s=absent] .sq{background:var(--danger);} .attbtn[data-s=absent] .st{color:var(--danger);}
+.attbtn[data-s=leave]{border-color:#A8BCCB;background:#F3F6F9;}
+.attbtn[data-s=leave] .sq{background:#5B7C95;} .attbtn[data-s=leave] .st{color:#41637C;}
 .attbtn[data-s=none]{border-style:dashed;}
-.attbtn[data-s=none] .sq{background:#B9C4CC;}
+.attbtn[data-s=none] .sq{background:#B9C4CC;} .attbtn[data-s=none] .st{color:var(--muted);}
+.attlegend{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;font-size:12.5px;}
+.attlegend span{display:inline-flex;align-items:center;gap:5px;}
+.attlegend i{width:14px;height:14px;border-radius:5px;display:inline-block;font-style:normal;}
+.leavesel{margin-top:8px;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;}
+.leavesel .lv{display:flex;align-items:center;gap:6px;background:#F3F6F9;border:1px solid #CBD8E2;border-radius:9px;padding:5px 9px;font-size:13px;}
+.leavesel .lv b{flex:0 0 auto;} .leavesel .lv select{padding:3px 6px;font-size:13px;}
+
+/* ---------- 照片牆（教室日誌） ---------- */
+.photowall{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:12px;}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+.pcard .ph{width:100%;height:132px;object-fit:cover;display:block;background:#EEF3F5;}
+.pcard .pb{padding:8px 10px;}
+.pcard .pb input{font-size:12.5px;padding:5px 7px;}
+.pcard .pm{font-size:11.5px;color:var(--muted);margin:5px 0 6px;display:flex;justify-content:space-between;gap:6px;}
+.pdrop{border:2px dashed var(--moss);border-radius:12px;padding:16px;text-align:center;background:#F5FBF8;color:#2C6B52;font-size:13.5px;}
+
+/* ---------- 成績結算 ---------- */
+table.g{width:100%;border-collapse:collapse;font-size:13px;min-width:1180px;}
+table.g th,table.g td{border:1px solid var(--line);padding:4px 6px;text-align:center;white-space:nowrap;}
+table.g thead th{background:#EDF4F1;color:var(--navy);font-weight:800;font-size:12px;position:sticky;top:0;z-index:2;}
+table.g thead th.wgt{font-size:11px;font-weight:700;color:var(--teal);background:#E4EFF4;}
+table.g td.name{text-align:left;font-weight:700;position:sticky;left:0;background:#fff;z-index:1;}
+table.g tbody tr:nth-child(even) td.name{background:#FAFCFC;}
+table.g td.auto{background:#F1F5F7;}
+table.g td.tot{background:#EAF5EF;font-weight:800;color:var(--navy);}
+table.g input{width:62px;padding:3px 5px;font-size:12.5px;text-align:right;border-radius:6px;}
+table.g input.ov{border-color:var(--gold);background:#FFFCF0;font-weight:700;}
+table.g tfoot td{background:#EDF4F1;font-weight:800;}
+.gnote{font-size:12px;color:var(--muted);}
+.banklist{max-height:320px;overflow:auto;border:1px solid var(--line);border-radius:10px;}
+
+/* ---------- 動手做活動卡 ---------- */
+.act{border:1px solid var(--line);border-left:6px solid var(--gold);border-radius:14px;background:linear-gradient(160deg,#FFFDF5 0%,#FFFFFF 60%);
+     padding:16px 18px;margin:14px 0;box-shadow:var(--shadow);}
+.act h3{font-size:18px;color:var(--navy);margin:0 0 4px;}
+.act .amin{display:inline-block;background:var(--gold);color:#4A3200;border-radius:999px;padding:1px 10px;font-size:12px;font-weight:800;margin-left:6px;}
+.act .asub{font-size:11.5px;letter-spacing:2px;color:#9A6B00;font-weight:800;}
+.act h4{font-size:14px;color:var(--teal);margin:14px 0 6px;letter-spacing:.5px;}
+.mats{display:flex;flex-wrap:wrap;gap:7px;}
+.mat{background:#fff;border:1px solid var(--line);border-radius:9px;padding:5px 10px;font-size:13px;}
+.mat em{font-style:normal;font-size:11px;font-weight:800;color:#fff;background:var(--moss);border-radius:5px;padding:1px 6px;margin-left:6px;}
+.mat em.s2{background:var(--gold);color:#4A3200;} .mat em.s3{background:var(--teal);} .mat em.s4{background:#7E8AA0;}
+.tl{border-left:2px solid var(--moss);margin-left:8px;padding-left:14px;}
+.tl .tli{position:relative;margin:0 0 10px;font-size:13.8px;}
+.tl .tli::before{content:"";position:absolute;left:-21px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--moss);border:2px solid #fff;box-shadow:0 0 0 1px var(--moss);}
+.tl .tli b{color:var(--teal);margin-right:6px;font-variant-numeric:tabular-nums;}
+.chemli{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin:7px 0;font-size:13.8px;line-height:1.75;}
+.chemli .gtag{display:inline-block;background:#E3F1EA;color:var(--green);border-radius:6px;padding:0 7px;font-size:11.5px;font-weight:800;margin-right:7px;}
+.gp{display:inline-flex;align-items:center;gap:6px;background:#E8F5EE;border:1px solid #BFE0CD;border-radius:9px;padding:4px 10px;font-size:12.8px;margin:0 6px 6px 0;}
+.gp b{background:var(--green);color:#fff;border-radius:5px;padding:0 6px;font-size:11.5px;}
+.safe{background:#FDF2F1;border-left:4px solid var(--danger);border-radius:9px;padding:9px 13px;font-size:13.3px;}
+.safe ul,.obs ul{margin:.2em 0;padding-left:1.15em;} .safe li,.obs li{margin:.3em 0;}
+.obs{background:#EAF3F7;border-left:4px solid var(--teal);border-radius:9px;padding:9px 13px;font-size:13.5px;}
+.actnone{background:#FFF8E6;border-left:4px solid var(--gold);border-radius:9px;padding:10px 13px;font-size:13.5px;color:#7A5200;}
 
 /* ---------- 教材卡 ---------- */
 .mcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;}
@@ -238,19 +297,76 @@ table.t tfoot td{font-weight:800;background:#EDF4F1;color:var(--navy);}
 var CONFIG = {
   APP_NAME: '環境化學課程管理系統',
   STORAGE_KEY: 'ecm_data',        // localStorage 單一物件的 key（前綴 ecm_）
-  SCHEMA_VERSION: 1,              // 資料結構版本；未來改結構時 +1 並在 STORE.migrate 處理
+  SCHEMA_VERSION: 2,              // v2：五態出席、教室日誌照片、成績結算、動手做活動
   WEEK_MIN: 1, WEEK_MAX: 60,      // 總週數允許範圍
   HOURS_STEP: 0.5,                // 時數輸入的最小級距
   DEFAULT_HOURS: 2,               // 新增週次的預設時數
-  ATT_CYCLE: ['present', 'absent', 'leave'],   // 出席狀態三態循環
-  ATT_LABEL: { present: '出席', absent: '缺席', leave: '請假', none: '未點名' },
-  ATT_SYMBOL: { present: '●', absent: '✕', leave: '假', none: '—' },
+
+  /* ---------- 出席五態（v2） ----------
+   * 點按鈕依序循環：出席 → 遲到/早退≤20分 → 遲到/早退>20分 → 缺席 → 請假 → 出席
+   * 舊 v1 的三態代碼 present / absent / leave 原樣保留，遷移時零損失。 */
+  ATT_CYCLE: ['present', 'late1', 'late2', 'absent', 'leave'],
+  ATT_LABEL: {
+    present: '出席', late1: '遲到/早退≤20分', late2: '遲到/早退>20分',
+    absent: '缺席', leave: '請假', none: '未點名'
+  },
+  ATT_SHORT: { present: '出席', late1: '小遲', late2: '大遲', absent: '缺席', leave: '請假', none: '未點名' },
+  ATT_SYMBOL: { present: '●', late1: '◐', late2: '◔', absent: '✕', leave: '假', none: '—' },
+  // 出席分計算係數（規格 §1）
+  ATT_WEIGHT: { present: 1, late1: 0.75, late2: 0.5, absent: 0, leave: 0, none: 0 },
+  // 算進「上課人數」（材料費）的狀態：出席＋兩級遲到
+  ATT_INCLASS: ['present', 'late1', 'late2'],
+  // 假別選項（請假時可註記）
+  LEAVE_KINDS: ['事假', '病假', '公假', '喪假', '生理假', '其他'],
+
+  /* ---------- 教室日誌照片（v2，影像存 IndexedDB） ---------- */
+  PHOTO: {
+    DB: 'ecm_photos', STORE: 'photos', DB_VERSION: 1,
+    MAX_PER_WEEK: 5,        // 每週上限 5 張
+    MAX_EDGE: 1280,         // 壓縮後最長邊
+    QUALITY: 0.8            // JPEG 品質
+  },
+
+  /* ---------- 學期成績權重（v2，規格 §3；可於備份與設定調整） ---------- */
+  GRADE: {
+    att: 9,          // 出席
+    disc: 6,         // 課堂討論及 Zuvio 雲端回饋
+    ai: 11,          // AI 翻轉及 AI 模組
+    mid: 25,         // 期中考
+    fin: 25,         // 期末考
+    v1: 3, v2: 4, v3: 5,     // 參訪報告：書面 3＋組間互評 4＋組內互評 5 ＝ 12
+    a1: 3, a2: 4, a3: 5,     // 行動報告：書面 3＋組間互評 4＋組內互評 5 ＝ 12
+    bankCap: 200,    // 分數撲滿點數上限
+    bankDiv: 20,     // 點數 ÷ 20 ＝ 加分
+    bonusMax: 10,    // 撲滿加分上限
+    sopPenalty: 2    // 未依 SOP 請假每次總成績 −2
+  },
+  // 撲滿點數規則提示（畫面顯示用）
+  BANK_RULES: [
+    '口述簡答：1 點', '口述詳答：2 點', '上台報告：5 點（另附補充資料再 +2 點）',
+    '小組報告提問：2 點', '小組全部出席：5 點'
+  ],
+  // 成績結算欄位定義（自動欄 auto:true）
+  GRADE_COLS: [
+    { k: 'att',  name: '出席',        w: 'att',  auto: true },
+    { k: 'disc', name: '討論與 Zuvio', w: 'disc' },
+    { k: 'ai',   name: 'AI 翻轉與模組', w: 'ai',  auto: true },
+    { k: 'mid',  name: '期中考',      w: 'mid'  },
+    { k: 'fin',  name: '期末考',      w: 'fin'  },
+    { k: 'v1',   name: '參訪·書面',   w: 'v1'   },
+    { k: 'v2',   name: '參訪·組間',   w: 'v2'   },
+    { k: 'v3',   name: '參訪·組內',   w: 'v3'   },
+    { k: 'a1',   name: '行動·書面',   w: 'a1'   },
+    { k: 'a2',   name: '行動·組間',   w: 'a2'   },
+    { k: 'a3',   name: '行動·組內',   w: 'a3'   }
+  ],
   TABS: [
     { id: 'overview',  name: '總覽',        icon: '🏠' },
     { id: 'students',  name: '學生名單',    icon: '👥' },
     { id: 'plan',      name: '課程規劃表',  icon: '🗓️' },
     { id: 'content',   name: '課程內容',    icon: '📚' },
     { id: 'log',       name: '教室日誌',    icon: '📋' },
+    { id: 'grades',    name: '成績結算',    icon: '🧮' },
     { id: 'backup',    name: '備份與設定',  icon: '💾' }
   ],
   // 學習單（外部既有檔案，只連結不改動）
@@ -276,7 +392,8 @@ var DATA = {
     advisor1: '楊悠娟 教授',   // 指導老師欄位 1
     advisor2: '',              // 指導老師欄位 2（預設空白）
     ta: '游豐兆 博士生',
-    classTime: '每週一 14:10–17:00（第 9–11 節：14:10–15:00、15:10–16:00、16:10–17:00）',
+    taEmail: '811554006@gms.ndhu.edu.tw',
+    classTime: '每週一 14:10–17:00（第 9–11 節）',
     place: '環境學院 A124',
     totalWeeks: 24,            // 預設 24，可改 1–60
     materialUnitPrice: 250,    // 材料費單價（元／人／主題）
@@ -426,14 +543,19 @@ var U = {
  * STORE — 唯一的資料進出口
  * 資料形狀：
  * {
- *   schemaVersion: 1,
+ *   schemaVersion: 2,
  *   course: {...},                                  // 基本資料
  *   students: [{id, seat, cls, name, note}],
  *   plan:     [{week, date, topic, hours, teacher, note}],
- *   log:      { "1": { att:{studentId:'present'|'absent'|'leave'},
- *                      record:{ text, photo, caption } } },
+ *   log:      { "1": { att:{studentId:'present'|'late1'|'late2'|'absent'|'leave'},
+ *                      leaveKind:{studentId:'事假'},          // v2：請假假別註記
+ *                      record:{ text, photo, caption },
+ *                      photos:[{k:'w1_1', cap:'圖說'}] } },     // v2：影像存 IndexedDB
  *   scores:   [ {week, seat, name, score, ts, detail, src} ],
  *   pending:  [ {week, seat, name, score, ts} ],     // 匯入但對不到名單的成績
+ *   grades:   { studentId: {att,disc,ai,mid,fin,v1,v2,v3,a1,a2,a3,sop} },  // v2：手動欄／覆寫
+ *   bank:     [ {id, date, sid, why, pt} ],          // v2：分數撲滿帳本
+ *   gradeW:   {…CONFIG.GRADE 的可調權重副本},        // v2
  *   lastSaved: '2026/08/22 10:00:00'
  * }
  * ========================================================================= */
@@ -449,6 +571,9 @@ var STORE = {
       log: {},
       scores: [],
       pending: [],
+      grades: {},
+      bank: [],
+      gradeW: JSON.parse(JSON.stringify(CONFIG.GRADE)),
       lastSaved: ''
     };
   },
@@ -479,11 +604,13 @@ var STORE = {
     return STORE.d;
   },
 
-  // 版本遷移 + 欄位補齊（未來 schemaVersion 提升時在這裡加分支）
+  // 版本遷移 + 欄位補齊
+  //   v1 → v2：出席三態代碼原樣沿用（present/absent/leave 皆為五態的合法子集，統計不變）；
+  //            補上 leaveKind / photos / grades / bank / gradeW / course.taEmail。
   migrate: function (o) {
     var b = STORE.blank();
     if (!o || typeof o !== 'object') return b;
-    o.schemaVersion = CONFIG.SCHEMA_VERSION;
+    var from = parseInt(o.schemaVersion, 10) || 1;
     o.course = Object.assign({}, b.course, o.course || {});
     o.students = Array.isArray(o.students) ? o.students : [];
     o.students.forEach(function (s) {
@@ -497,9 +624,44 @@ var STORE = {
     o.log = (o.log && typeof o.log === 'object') ? o.log : {};
     o.scores = Array.isArray(o.scores) ? o.scores : [];
     o.pending = Array.isArray(o.pending) ? o.pending : [];
+
+    /* --- v2 新增結構（缺什麼補什麼，既有值一律不動） --- */
+    Object.keys(o.log).forEach(function (k) {
+      var L = o.log[k];
+      if (!L || typeof L !== 'object') { delete o.log[k]; return; }
+      if (!L.att || typeof L.att !== 'object') L.att = {};
+      if (!L.leaveKind || typeof L.leaveKind !== 'object') L.leaveKind = {};
+      if (!L.record || typeof L.record !== 'object') L.record = { text: '', photo: '', caption: '' };
+      if (!Array.isArray(L.photos)) L.photos = [];
+      // 未知的出席代碼（理論上不會有）保留原值，不丟資料，只在統計時以 0 計
+    });
+    o.grades = (o.grades && typeof o.grades === 'object') ? o.grades : {};
+    Object.keys(o.grades).forEach(function (sid) { o.grades[sid] = STORE.normGrade(o.grades[sid]); });
+    o.bank = Array.isArray(o.bank) ? o.bank : [];
+    o.bank.forEach(function (r) {
+      if (!r.id) r.id = U.uid();
+      r.pt = parseFloat(r.pt) || 0;
+      r.date = r.date || ''; r.sid = r.sid || ''; r.why = r.why || '';
+    });
+    o.gradeW = Object.assign({}, CONFIG.GRADE, o.gradeW || {});
+
     o.lastSaved = o.lastSaved || '';
+    o.schemaVersion = CONFIG.SCHEMA_VERSION;
+    if (from < 2) { try { console.info('ecm_data 已由 schemaVersion ' + from + ' 遷移至 2（資料無損）'); } catch (e) {} }
     STORE.syncPlanLength(o);
     return o;
+  },
+
+  // 成績列的欄位正規化：手動欄可為 null（未填）；sop 為非負整數
+  normGrade: function (g) {
+    var out = { sop: 0 };
+    if (!g || typeof g !== 'object') g = {};
+    CONFIG.GRADE_COLS.forEach(function (c) {
+      var v = g[c.k];
+      out[c.k] = (v === '' || v === null || typeof v === 'undefined' || isNaN(parseFloat(v))) ? null : parseFloat(v);
+    });
+    out.sop = Math.max(0, parseInt(g.sop, 10) || 0);
+    return out;
   },
 
   // 讓 plan 列數 == totalWeeks（增列補預填、減列直接截斷）
@@ -545,9 +707,12 @@ var STORE = {
   logOf: function (w) {
     var k = String(w);
     if (!STORE.d.log[k]) STORE.d.log[k] = { att: {}, init: false, record: { text: '', photo: '', caption: '' } };
-    if (!STORE.d.log[k].att) STORE.d.log[k].att = {};
-    if (!STORE.d.log[k].record) STORE.d.log[k].record = { text: '', photo: '', caption: '' };
-    return STORE.d.log[k];
+    var L = STORE.d.log[k];
+    if (!L.att) L.att = {};
+    if (!L.leaveKind) L.leaveKind = {};
+    if (!L.record) L.record = { text: '', photo: '', caption: '' };
+    if (!Array.isArray(L.photos)) L.photos = [];
+    return L;
   },
   // 該週是否「有點名過」＝ 至少一位學生有狀態
   weekHasLog: function (w) {
@@ -580,13 +745,18 @@ var STORE = {
     return true;
   },
   weekCount: function (w) {
-    var L = STORE.logOf(w), c = { present: 0, absent: 0, leave: 0, none: 0 };
+    var L = STORE.logOf(w);
+    var c = { present: 0, late1: 0, late2: 0, absent: 0, leave: 0, none: 0 };
     STORE.d.students.forEach(function (s) {
       var st = L.att[s.id] || 'none';
       c[st] = (c[st] || 0) + 1;
     });
+    // 上課人數＝出席＋兩級遲到（材料費核算用）
+    c.inClass = CONFIG.ATT_INCLASS.reduce(function (a, k) { return a + (c[k] || 0); }, 0);
     return c;
   },
+  // 出席狀態係數（未知代碼一律 0，不會壞掉）
+  attW: function (st) { var v = CONFIG.ATT_WEIGHT[st]; return typeof v === 'number' ? v : 0; },
   // 實際授課教師人數 T：總覽指導老師 1／2 實際填寫人數；兩欄皆空暫以 2 計
   teacherCount: function () {
     var c = STORE.d.course;
@@ -598,12 +768,23 @@ var STORE = {
   /* ----- 出席統計 ----- */
   // 個人出席率＝該生出席次數 ÷ 該生有狀態的週數
   studentAtt: function (sid) {
-    var p = 0, tot = 0;
+    var p = 0, tot = 0, wsum = 0, leaves = 0, lates = 0, abs = 0;
     STORE.loggedWeeks().forEach(function (w) {
       var st = STORE.logOf(w).att[sid];
-      if (st) { tot++; if (st === 'present') p++; }
+      if (!st) return;
+      tot++;
+      wsum += STORE.attW(st);
+      if (st === 'present') p++;
+      if (st === 'late1' || st === 'late2') lates++;
+      if (st === 'leave') leaves++;
+      if (st === 'absent') abs++;
     });
-    return { present: p, counted: tot, rate: tot ? p / tot : 0 };
+    return {
+      present: p, counted: tot, rate: tot ? p / tot : 0,
+      wsum: wsum, leaves: leaves, lates: lates, absents: abs,
+      // 出席原始分＝Σ狀態係數 ÷ 已點名週數 × 100（規格 §3）
+      raw: tot ? U.round1(wsum / tot * 100) : null
+    };
   },
   // 全班出席率＝Σ出席人數 ÷（總報名人數 × 已完成點名週數）；請假與缺席都在分母
   classAtt: function () {
@@ -656,6 +837,188 @@ var STORE = {
     for (i = 0; i < ss.length; i++) { if (name && ss[i].name === name) return ss[i]; }
     for (i = 0; i < ss.length; i++) { if (seat && ss[i].seat && String(ss[i].seat) === String(seat)) return ss[i]; }
     return null;
+  },
+
+  /* ----- v2：成績結算 ----- */
+  gradeOf: function (sid) {
+    if (!STORE.d.grades[sid]) STORE.d.grades[sid] = STORE.normGrade(null);
+    return STORE.d.grades[sid];
+  },
+  // 該生練習得分平均（AI 翻轉與模組的自動值來源）
+  practiceAvg: function (stu) {
+    var ws = [], vals = [];
+    STORE.d.scores.forEach(function (r) { if (ws.indexOf(r.week) < 0) ws.push(r.week); });
+    ws.forEach(function (w) {
+      var v = STORE.scoreOfStudent(stu, w);
+      if (v !== null) vals.push(v);
+    });
+    if (!vals.length) return null;
+    return U.round1(vals.reduce(function (a, b) { return a + b; }, 0) / vals.length);
+  },
+  // 撲滿：該生累計點數（未封頂）
+  bankPoints: function (sid) {
+    var t = 0;
+    STORE.d.bank.forEach(function (r) { if (r.sid === sid) t += (parseFloat(r.pt) || 0); });
+    return t;
+  }
+};
+
+/* =========================================================================
+ * GRADE — 學期成績結算（規格 §3）
+ * -------------------------------------------------------------------------
+ * 總成績 ＝ Σ(各項 0–100 分 × 權重%/100) ＋ 撲滿加分 − SOP 扣分，下限 0。
+ * 權重預設：出席 9、討論與 Zuvio 6、AI 11、期中 25、期末 25、
+ *           參訪 3+4+5 ＝ 12、行動 3+4+5 ＝ 12　→ 合計 100。
+ * 撲滿：個人累計點數（封頂 200）÷ 20 ＝ 加分（至多 +10）。
+ * SOP：未依 SOP 請假每次總成績 −2。
+ * ========================================================================= */
+var GRADE = {
+  W: function () { return Object.assign({}, CONFIG.GRADE, STORE.d.gradeW || {}); },
+
+  // 自動值（未覆寫時採用）
+  autoVal: function (stu, key) {
+    if (key === 'att') return STORE.studentAtt(stu.id).raw;      // 可能為 null（尚無點名）
+    if (key === 'ai') return STORE.practiceAvg(stu);              // 可能為 null（尚無練習）
+    return null;
+  },
+  // 實際採用值：有手動值（含覆寫）用手動，否則用自動
+  valOf: function (stu, key) {
+    var g = STORE.gradeOf(stu.id);
+    var m = g[key];
+    if (m !== null && typeof m !== 'undefined') return m;
+    return GRADE.autoVal(stu, key);
+  },
+  bonusOf: function (sid) {
+    var W = GRADE.W();
+    var pts = Math.min(STORE.bankPoints(sid), W.bankCap);
+    return Math.min(W.bonusMax, U.round1(pts / W.bankDiv));
+  },
+
+  // 回傳整列計算結果
+  row: function (stu) {
+    var W = GRADE.W(), g = STORE.gradeOf(stu.id), sum = 0, parts = {}, missing = [];
+    CONFIG.GRADE_COLS.forEach(function (c) {
+      var v = GRADE.valOf(stu, c.k);
+      parts[c.k] = v;
+      if (v === null || typeof v === 'undefined') { missing.push(c.k); v = 0; }
+      sum += (parseFloat(v) || 0) * (parseFloat(W[c.w]) || 0) / 100;
+    });
+    var pts = STORE.bankPoints(stu.id);
+    var bonus = GRADE.bonusOf(stu.id);
+    var sop = Math.max(0, parseInt(g.sop, 10) || 0);
+    var penalty = sop * (parseFloat(W.sopPenalty) || 0);
+    var total = sum + bonus - penalty;
+    if (total < 0) total = 0;
+    return {
+      parts: parts, missing: missing, weighted: U.round1(sum),
+      bankPts: pts, bankCapped: Math.min(pts, W.bankCap), bonus: bonus,
+      sop: sop, penalty: penalty,
+      total1: U.round1(total), totalInt: Math.round(total)
+    };
+  },
+
+  // 權重合計（應為 100；不是 100 時畫面提示）
+  weightSum: function () {
+    var W = GRADE.W(), t = 0;
+    CONFIG.GRADE_COLS.forEach(function (c) { t += parseFloat(W[c.w]) || 0; });
+    return U.round1(t);
+  },
+
+  // 完成度：各手動欄已填人數 / 總人數
+  completeness: function () {
+    var ss = STORE.d.students, out = [];
+    CONFIG.GRADE_COLS.forEach(function (c) {
+      var n = 0;
+      ss.forEach(function (s) {
+        var v = GRADE.valOf(s, c.k);
+        if (v !== null && typeof v !== 'undefined') n++;
+      });
+      out.push({ k: c.k, name: c.name, filled: n, total: ss.length, auto: !!c.auto });
+    });
+    return out;
+  }
+};
+
+/* =========================================================================
+ * PHOTO — 教室日誌照片（影像存 IndexedDB，中繼資料存 ecm_data）
+ * -------------------------------------------------------------------------
+ * db：ecm_photos ／ store：photos ／ key：w{week}_{n}
+ * 前端壓縮：最長邊 1280px、JPEG 品質 0.8。每週上限 5 張。
+ * ========================================================================= */
+var PHOTO = {
+  _db: null,
+  open: function () {
+    return new Promise(function (res, rej) {
+      if (PHOTO._db) { res(PHOTO._db); return; }
+      if (!window.indexedDB) { rej(new Error('此瀏覽器不支援 IndexedDB，無法儲存照片')); return; }
+      var rq = indexedDB.open(CONFIG.PHOTO.DB, CONFIG.PHOTO.DB_VERSION);
+      rq.onupgradeneeded = function (e) {
+        var db = e.target.result;
+        if (!db.objectStoreNames.contains(CONFIG.PHOTO.STORE)) db.createObjectStore(CONFIG.PHOTO.STORE);
+      };
+      rq.onsuccess = function () { PHOTO._db = rq.result; res(PHOTO._db); };
+      rq.onerror = function () { rej(rq.error || new Error('IndexedDB 開啟失敗')); };
+    });
+  },
+  _tx: function (mode, fn) {
+    return PHOTO.open().then(function (db) {
+      return new Promise(function (res, rej) {
+        var tx = db.transaction(CONFIG.PHOTO.STORE, mode);
+        var st = tx.objectStore(CONFIG.PHOTO.STORE);
+        var rq = fn(st);
+        tx.oncomplete = function () { res(rq ? rq.result : undefined); };
+        tx.onerror = function () { rej(tx.error); };
+        tx.onabort = function () { rej(tx.error); };
+      });
+    });
+  },
+  put: function (key, dataURL) { return PHOTO._tx('readwrite', function (st) { return st.put(dataURL, key); }); },
+  get: function (key) { return PHOTO._tx('readonly', function (st) { return st.get(key); }); },
+  del: function (key) { return PHOTO._tx('readwrite', function (st) { return st.delete(key); }); },
+  allKeys: function () { return PHOTO._tx('readonly', function (st) { return st.getAllKeys(); }); },
+  getMany: function (keys) {
+    return Promise.all(keys.map(function (k) {
+      return PHOTO.get(k).then(function (v) { return { k: k, v: v || '' }; },
+                              function () { return { k: k, v: '' }; });
+    }));
+  },
+  // 產生下一個未使用的 key（同週內遞增，刪除後不重用避免覆蓋）
+  nextKey: function (week, used) {
+    var n = 1;
+    while (used.indexOf('w' + week + '_' + n) >= 0) n++;
+    return 'w' + week + '_' + n;
+  },
+  // 讀檔 → 等比縮到最長邊 MAX_EDGE → JPEG(QUALITY) dataURL
+  compress: function (file) {
+    return new Promise(function (res, rej) {
+      if (!/^image\//.test(file.type || '')) { rej(new Error('「' + file.name + '」不是影像檔')); return; }
+      var fr = new FileReader();
+      fr.onerror = function () { rej(new Error('讀取「' + file.name + '」失敗')); };
+      fr.onload = function () {
+        var img = new Image();
+        img.onerror = function () { rej(new Error('「' + file.name + '」無法解碼為影像')); };
+        img.onload = function () {
+          var m = CONFIG.PHOTO.MAX_EDGE;
+          var sc = Math.min(1, m / Math.max(img.width, img.height));
+          var w = Math.max(1, Math.round(img.width * sc)), h = Math.max(1, Math.round(img.height * sc));
+          var cv = document.createElement('canvas');
+          cv.width = w; cv.height = h;
+          var ctx = cv.getContext('2d');
+          ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h);      // 透明 PNG 轉 JPEG 的底色
+          ctx.drawImage(img, 0, 0, w, h);
+          try { res({ url: cv.toDataURL('image/jpeg', CONFIG.PHOTO.QUALITY), w: w, h: h }); }
+          catch (e) { rej(e); }
+        };
+        img.src = fr.result;
+      };
+      fr.readAsDataURL(file);
+    });
+  },
+  // dataURL 的約略位元組數
+  bytesOf: function (url) {
+    var i = String(url || '').indexOf(',');
+    if (i < 0) return 0;
+    return Math.round((url.length - i - 1) * 3 / 4);
   }
 };
 
@@ -1844,6 +2207,668 @@ CONTENT[18] = {
 /* ==== CONTENT-INSERT-POINT ==== */
 
 /* =========================================================================
+ * ACTIVITY — 每週 20 分鐘動手做（14 個教學週，全部獨特；原創編寫）
+ * -------------------------------------------------------------------------
+ * 設計底線：
+ *   1. 材料零花費：全部取自「廢棄品／農廢／家庭常備」三類。
+ *   2. 當場步驟 20 分鐘內完成（延伸觀察可跨週）。
+ *   3. 大學生水準：含定量計算或反應機制層次的觀察。
+ *   4. chem 逐條對應該週 goals（g = goals 的第幾條，1 起算；g:0 為貫穿全週的核心機制）。
+ *   5. green 標明綠色化學十二原則編號（1–12）。
+ *   6. 每個活動皆附安全注意與 3 題觀察／思考題。
+ *
+ * 資料形狀：
+ *   ACTIVITY[週次] = {
+ *     name, minutes, materials:[{item, source}], steps:[{t, s}],
+ *     chem:[{g, t}], green:[{p, why}], safety:[], observe:[]
+ *   }
+ * 無活動週：ACTIVITY_NONE[週次] = '原因說明'
+ * ========================================================================= */
+var ACTIVITY = {};
+var ACTIVITY_NONE = {
+  4:  '教師節放假，本週不上課，因此沒有課堂動手做。建議把第 3 週的廢材伏打電池留著，放假期間換一種電解液再測一次電壓，下週帶數據來比較。',
+  8:  '臺灣光復紀念日補假，本週不上課，因此沒有課堂動手做。第 7 週的鐵釘鏽蝕六瓶對照正好進入第二個觀察點，請在假期間補拍第 7 天的照片。',
+  11: 'Exam 1 期中考週，整節課用於考試，不安排動手做。考試範圍內的第 1、2、3、5、6、7、9、10 週活動觀察紀錄，是很好的複習素材。',
+  17: 'Exam 2 期末考週，整節課用於考試，不安排動手做。第 15 週啟動的日曬黃變觀察此時約進入第 3 週，請於考後補記錄一次。'
+};
+
+/* ---------------------------------------------------------------- W1 */
+ACTIVITY[1] = {
+  name: '寶特瓶五圈層生態瓶',
+  minutes: 20,
+  materials: [
+    { item: '1.5–2 L 回收寶特瓶（連瓶蓋）', source: '廢棄品' },
+    { item: '校園土壤與細砂各一小杯', source: '家庭常備' },
+    { item: '落葉、枯枝碎屑一小把', source: '農廢' },
+    { item: '自來水或雨水 500 mL', source: '家庭常備' },
+    { item: '食鹽 0.5 g（做濃度換算用）', source: '家庭常備' },
+    { item: '剪刀、標籤紙、麥克筆', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '把寶特瓶洗淨、瓶身中段剪開一道開口，剪口用膠帶包邊。標籤寫上組別、日期、地點。' },
+    { t: '3–8 分', s: '由下而上依序鋪入細砂約 2 cm、土壤約 3 cm，輕壓平整，這是地圈。' },
+    { t: '8–12 分', s: '沿瓶壁緩緩注入 500 mL 水（其中先溶入 0.5 g 食鹽），淹過土面約 3 cm，這是水圈；剩下的頂空是大氣圈。' },
+    { t: '12–16 分', s: '放入落葉與枯枝碎屑，代表生物圈的有機碳輸入；瓶蓋鬆旋不鎖死（或蓋上前先在蓋上鑽一小孔）。' },
+    { t: '16–20 分', s: '在瓶身貼三張便利貼，各畫一條跨界面的物質流箭頭，並寫上 AI 協作聲明（工具、日期、用途）。' }
+  ],
+  chem: [
+    { g: 1, t: '這一個瓶子就是一個縮小的環境系統：細砂與土壤是地圈、水層是水圈、頂空是大氣圈、落葉與土中微生物是生物圈，而瓶身的 PET 與你貼的標籤本身就是人類圈。請在瓶壁上標出至少三條跨界面通量：落葉的有機碳溶進水中成為 DOC、微生物呼吸把碳送進頂空成為 CO₂、CO₂ 再溶回水裡形成碳酸。環境化學研究的正是這些界面上的通量，而不是任何單一圈層內部。' },
+    { g: 2, t: '碳循環：落葉的主成分纖維素 (C₆H₁₀O₅)ₙ 裡碳的平均氧化態是 0，好氧分解 C₆H₁₀O₅ + 6O₂ → 6CO₂ + 5H₂O 把碳氧化到 +4。氮循環：土中有機氮先氨化成 NH₄⁺（N 為 −3），好氧層硝化 NH₄⁺ + 2O₂ → NO₃⁻ + 2H⁺ + H₂O（N 由 −3 升到 +5），封瓶後底部缺氧時再反硝化，NO₃⁻ 以有機碳為電子供體還原成 N₂（N 由 +5 降回 0）。三個轉換、三段氧化態變化，全部在這一個瓶子裡同時進行。' },
+    { g: 3, t: '用綠色化學十二原則檢視「製作生態瓶」這個程序：原料全部是廢棄物（原則 7）、沒有新增任何溶劑（原則 5）、常溫常壓不供能（原則 6）、結束後土水回歸校園零廢棄（原則 1）。原子經濟性實作：以上面的好氧分解為例，若把 CO₂ 視為目標產物，AE ＝ 6×44.01 ÷ (162.14 + 6×32.00) ＝ 264.06 ÷ 354.14 ＝ 74.6%；若目標產物改成水，AE 就只剩 25.4%。同一條反應式因為「誰是目標產物」不同而有完全不同的 AE，這正是這個指標最容易被誤用的地方。' },
+    { g: 4, t: '現場完成一次四種單位的互換：0.5 g 食鹽（NaCl，M ＝ 58.44 g/mol）溶於 0.500 L 水，物質量濃度 ＝ (0.5 ÷ 58.44) ÷ 0.500 ＝ 0.0171 mol/L ＝ 17.1 mmol/L；質量濃度 ＝ 1.0 g/L ＝ 1000 mg/L；稀水溶液密度近似 1 kg/L，故約等於 1000 ppm ＝ 1×10⁶ ppb。請學生反過來練習：若要配成 5 ppm 的鹽水，需要幾毫克鹽？（答：0.500 L × 5 mg/L ＝ 2.5 mg，用一般廚房秤根本秤不出來——這就是環境濃度為什麼需要儀器。）' },
+    { g: 5, t: '請 AI 產生「這個生態瓶內可能發生的三個化學反應」，然後逐條分成三類標註：能用課本查證為正確的、查不到或說法可疑的、以及明顯錯誤的（常見錯誤是把光合作用寫進不透光的土層裡）。三類各舉一例寫在便利貼上，並在瓶身標籤寫上 AI 使用聲明：工具名稱、使用日期、用途，以及「哪一段是我自己判斷的」。' }
+  ],
+  green: [
+    { p: 7, why: '瓶身、落葉、土砂全部是廢棄物與校園既有材料，屬再生原料。' },
+    { p: 1, why: '零廢棄物產生，實驗結束後土壤與水直接回歸校園原處。' },
+    { p: 6, why: '全程常溫常壓，不需要任何外部能量輸入。' }
+  ],
+  safety: [
+    '剪瓶身時剪刀朝外、切口一律以膠帶包覆，避免割傷。',
+    '瓶蓋務必鬆旋或預先鑽孔，微生物分解會產氣，密封會脹瓶。',
+    '不得放入任何活體動物；土壤操作後立即洗手。',
+    '生態瓶放置於陰涼處，避免陽光直射造成瓶內高溫。'
+  ],
+  observe: [
+    '封瓶後第 3 天與第 7 天，瓶壁水霧的量有什麼差異？這代表哪一個圈層界面的通量最大？',
+    '如果把落葉量加倍，你預期頂空 CO₂ 濃度、水的顏色與氣味會怎麼變？請寫出你的化學理由。',
+    '這個瓶子裡的「人類圈」在哪裡？如果把瓶身 PET 也算進物質流，它在環境中的滯留時間是幾年的量級？'
+  ]
+};
+
+/* ---------------------------------------------------------------- W2 */
+ACTIVITY[2] = {
+  name: '果皮環保酵素起手瓶（糖：果皮：水 ＝ 1：3：10）',
+  minutes: 20,
+  materials: [
+    { item: '鳳梨皮／柑橘皮／蘋果核等果皮 90 g', source: '農廢' },
+    { item: '黑糖或二砂 30 g', source: '家庭常備' },
+    { item: '水 300 mL', source: '家庭常備' },
+    { item: '1 L 回收寶特瓶或洗淨塑膠桶', source: '廢棄品' },
+    { item: '量杯、電子秤或免洗湯匙（1 匙約 15 g）', source: '家庭常備' },
+    { item: '標籤紙、麥克筆', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '秤黑糖 30 g、果皮 90 g、量水 300 mL，質量比 1：3：10。果皮剪成 2 cm 以下小塊，增加表面積。' },
+    { t: '3–8 分', s: '先把糖完全溶進水裡再倒入瓶中——先溶再加果皮，避免局部高滲透壓抑制微生物。' },
+    { t: '8–13 分', s: '果皮壓入糖水，液面保持在瓶身 4/5 以下，留出產氣空間。' },
+    { t: '13–17 分', s: '貼標籤：組別、日期、配方比例、瓶內初始 pH（用試紙或下週的紫甘藍汁）。瓶蓋只鬆旋一圈。' },
+    { t: '17–20 分', s: '在紙上畫一條柑橘的物質流鏈：果園 → 集貨 → 果汁廠 → 消費 → 果皮廢棄，並把你這一瓶接回去成為迴路。' }
+  ],
+  chem: [
+    { g: 1, t: '物質流分析要看的是「物質從哪裡來、經過哪些節點、到哪裡去」。柑橘鏈上果皮通常在果汁廠與家庭兩處大量產生，多半進入焚化爐（含水率高、助燃還要耗能）。你這一瓶把最後一個節點接回去，形成「廚餘 → 發酵液 → 清潔用途／堆肥 → 土壤」的閉環。請再標出這條鏈上另外兩個可以閉環的節點：果渣可萃取果膠、果皮油胞可回收檸檬烯精油。' },
+    { g: 2, t: '發酵走的是生物觸媒路徑：微生物的轉化酶先把蔗糖水解成單糖，C₁₂H₂₂O₁₁ + H₂O → C₆H₁₂O₆ + C₆H₁₂O₆，這一步的原子經濟性 AE ＝ 2×180.16 ÷ (342.30 + 18.02) ＝ 100%，因為沒有任何原子被丟掉。對照「化學路徑」：加計量的硫酸加熱水解、再加氫氧化鈉中和，水解本身 AE 仍是 100%，但中和步驟會計量地生成 Na₂SO₄ 廢鹽，這些鹽不在目標產物裡，於是 E-factor（廢棄物質量 ÷ 產物質量）明顯上升。能耗上，發酵在室溫進行，酸水解要維持 60–80 °C 數小時。觸媒路徑贏在廢鹽與能耗，不在 AE。' },
+    { g: 3, t: '果皮上至少有三種官能基取向完全不同的分子：檸檬烯 C₁₀H₁₆ 只有 C＝C 與烷基，非極性、揮發性高，會浮成油滴並散發香氣；果膠是多醣，帶大量 –OH，極性、親水、增稠；檸檬酸有三個 –COOH，極性且會解離，是讓 pH 往下掉的主角。請學生搖勻後靜置一分鐘，指認「浮在上面的是誰、溶在水裡的是誰」，並預測哪一種在環境中最快被微生物氧化降解（答：檸檬烯與糖類快，果膠中等，木質化的果柄最慢）。' },
+    { g: 4, t: '檸檬烯的 log Kow 約 4.6，屬於親脂性強的分子，照「經驗法則 log Kow > 3 要注意生物累積」應該要警戒；但它同時極易被微生物與 ·OH 氧化，環境半衰期短，實測的生物濃縮係數並不高。蔗糖的 log Kow 約 −3.7，幾乎不進入脂質。請學生用這兩個數字寫下一句結論：log Kow 只告訴你「分配傾向」，要推論生物累積潛勢，還必須同時看代謝速率與環境半衰期。' },
+    { g: 5, t: '每組一瓶、瓶身寫上組名與分工（誰負責每週開蓋放氣、誰負責拍照記錄、誰負責測 pH）。這一瓶會一路養到第 14 週的手抄紙與第 18 週的堆肥瓶，作為期末行動的共同素材，題目範圍就從「這一瓶能做什麼、能取代什麼」開始收斂。' }
+  ],
+  green: [
+    { p: 7, why: '果皮屬農業與家庭廢棄物，是典型的再生原料。' },
+    { p: 9, why: '以微生物酵素作為觸媒，取代計量的強酸強鹼路徑。' },
+    { p: 1, why: '源頭減廢：果皮不進焚化爐，直接在源頭轉為可用產物。' },
+    { p: 6, why: '室溫常壓發酵，能量由微生物代謝自行提供。' }
+  ],
+  safety: [
+    '前兩週產氣旺盛，瓶蓋務必鬆旋或每日開蓋放氣一次；絕不可用玻璃瓶密封。',
+    '發酵液呈酸性（pH 約 3–4），避免接觸眼睛與傷口；濺到立即以清水沖洗。',
+    '若液面長出黑色或粉紅色黴斑，整瓶送堆肥，不得繼續使用或聞嗅。',
+    '成品為清潔用途，不可飲用；置於陰涼通風處，避免陽光直射。'
+  ],
+  observe: [
+    '第 3 天與第 7 天輕壓瓶身的硬度差異，反映產氣速率的什麼變化？請畫出你預期的產氣速率–時間曲線並標出峰值位置。',
+    '用試紙或紫甘藍汁測第 0、7、14 天的 pH。pH 下降代表哪一類產物在累積？請寫出至少兩個候選分子。',
+    '若把糖量減半，你預期 pH 曲線與總產氣量各會怎麼變？這是「限制反應物」的問題還是「反應速率」的問題？'
+  ]
+};
+
+/* ---------------------------------------------------------------- W3 */
+ACTIVITY[3] = {
+  name: '廢材伏打電池（鋁罐片＋銅線＋鹽水／檸檬）',
+  minutes: 20,
+  materials: [
+    { item: '洗淨鋁罐剪成 5×2 cm 極片 4 片', source: '廢棄品' },
+    { item: '廢電線剝出的銅芯或銅片 4 段', source: '廢棄品' },
+    { item: '廚房紙巾（做隔離層）', source: '家庭常備' },
+    { item: '食鹽水（1 茶匙鹽 / 200 mL）、檸檬汁、純水各一杯', source: '家庭常備' },
+    { item: '萬用電表、鱷魚夾線、LED 或小蜂鳴器', source: '教室既有' },
+    { item: '砂紙或菜瓜布一小塊', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '鋁罐剪片、邊緣包膠帶；用砂紙磨掉其中兩片的表面氧化層，另兩片保持原狀作對照。' },
+    { t: '3–7 分', s: '紙巾浸鹽水夾在鋁片與銅片之間，組成單顆電池，用電表量開路電壓並記錄。' },
+    { t: '7–12 分', s: '把 3–4 顆同樣的電池串聯，接上 LED，記錄「亮／不亮」與接上後的電壓。' },
+    { t: '12–16 分', s: '換電解液：鹽水、檸檬汁、純水各測一次開路電壓，其他條件保持不變。' },
+    { t: '16–20 分', s: '記錄數據並計算：串聯電壓是否等於單顆的倍數？接上 LED 後掉了多少？' }
+  ],
+  chem: [
+    { g: 1, t: '這顆電池的能量密度可以現場估算：以鋁為負極活性物質，Al → Al³⁺ + 3e⁻，1 g 鋁理論上可放出 3 × 96485 ÷ 26.98 ≈ 10,700 庫侖的電量；在約 1 V 的工作電壓下就是約 10.7 kJ/g ≈ 3.0 Wh/g，這是理論上界，實際只有零頭。拿來對照汽油約 12 Wh/g、鋰離子電池組約 0.2 Wh/g，就能感受「能量密度」這個指標的量級差異。EROI 的重點在於：電解煉鋁本身每公斤要耗掉十幾度電，所以「用廢鋁做電池」的 EROI 遠高於「為做電池而煉鋁」——回收才是這個活動真正的能源論證。碳強度則用當年度電力排放係數（0.4–0.5 kg CO₂e/kWh 量級）換算，請學生自己查最新值並註明來源年份。' },
+    { g: 2, t: '把「取得電能」的兩條路徑並排寫出來。火力路徑：C + O₂ → CO₂（放熱）→ 蒸汽 → 渦輪 → 發電機，中間隔著卡諾循環，效率被熱力學上界壓住；副產物則有燃料中硫氧化的 S + O₂ → SO₂，以及高溫（>1300 °C）下的熱 NOx，N₂ + O₂ → 2NO。電化學路徑：化學能在室溫直接轉成電能，不經熱機，也因為沒有高溫火焰而不產生熱 NOx。請學生各寫一條完整的能量轉換鏈，並指出各自的損失發生在哪一段。' },
+    { g: 3, t: '用有害廢棄物四特性逐一檢視本活動的材料：食鹽水（皆不符合）、檸檬汁（弱酸，pH 約 2.3，未達腐蝕性判定的 pH ≤ 2 門檻）、片狀鋁（不易燃；但鋁「粉」有易燃性與反應性，這是粒徑造成的差異）、銅線（不符合）。再對照真實的廢鉛蓄電池：同時具毒性（Pb）與腐蝕性（H₂SO₄），屬有害事業廢棄物，必須回收處理。同樣是電池，特性判定天差地遠。' },
+    { g: 4, t: '把電解液的鹽濃度做成 4 個梯度（0、0.5、1、2 茶匙／200 mL），量出電壓對濃度的曲線：一開始隨濃度上升（離子導電度增加），之後趨於平坦（受限於電極反應本身）。這條「先線性後飽和」的形狀，正是劑量–反應曲線的典型樣貌。再連到毒理：銅離子對水生生物相當敏感，對水蚤的急性 LC₅₀ 落在 μg/L 到 mg/L 的量級，而銅同時是生物必需的微量元素——同一個離子既是營養素也是毒物，差別只在劑量。LD₅₀／LC₅₀ 給的是急性半數致死量，NOAEL 給的是長期無可見不良效應的劑量，兩者不能互換使用。' },
+    { g: 5, t: '把「一顆廢材電池能點亮什麼」改寫成可量測的指標：需要幾顆串聯才讓 LED 達到可見亮度？維持發光幾分鐘後電壓掉到多少？這正是期末行動題目需要的東西——不是「我想做環保電池」，而是「用 N 個廢鋁罐可以驅動 X 毫安培的負載 Y 分鐘」。請各組照這個格式寫出自己的問題敘述與一個可量測指標。' }
+  ],
+  green: [
+    { p: 7, why: '電極與導線全部來自廢鋁罐與廢電線，零新購材料。' },
+    { p: 12, why: '以食鹽水與檸檬汁取代強酸電解液，本質上避免了意外的化學風險。' },
+    { p: 6, why: '化學能直接轉為電能，不經熱機，避開卡諾效率的能量損失。' },
+    { p: 1, why: '實驗後鋁片與銅線可直接投入回收，不產生廢液。' }
+  ],
+  safety: [
+    '剪開的鋁罐邊緣極為鋒利，必須戴手套或以膠帶包邊後才能傳遞。',
+    '不可長時間短路電池：鋁片會發熱並在表面產生氫氣。',
+    '檸檬汁與鹽水勿接觸眼睛與傷口，濺到立即以大量清水沖洗。',
+    '任何電池組件都不可放入口中；實驗後洗手。'
+  ],
+  observe: [
+    '同一組電極在鹽水、檸檬汁、純水中的開路電壓各是多少？為什麼純水幾乎量不到電壓？',
+    '接上 LED 之後電壓掉了多少伏特？這個壓降告訴你關於內電阻與能量轉換效率的什麼事？',
+    '用砂紙磨過的鋁片電壓比未磨的高多少？這說明表面的 Al₂O₃ 鈍化膜扮演了什麼角色？'
+  ]
+};
+
+/* ---------------------------------------------------------------- W5 */
+ACTIVITY[5] = {
+  name: '紫甘藍指示劑＋吸管呼氣變色',
+  minutes: 20,
+  materials: [
+    { item: '紫甘藍外葉 2–3 片（或乾燥蝶豆花一小撮）', source: '農廢' },
+    { item: '熱水 300 mL、冰水一杯', source: '家庭常備' },
+    { item: '透明塑膠杯 6 個', source: '廢棄品' },
+    { item: '吸管（每人一支，不共用）', source: '家庭常備' },
+    { item: '小蘇打、白醋各一小匙', source: '家庭常備' },
+    { item: '計時器（手機）', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–4 分', s: '紫甘藍撕小片浸入熱水 3 分鐘，取出深紫色汁液（花青素萃取液）。' },
+    { t: '4–7 分', s: '汁液平均分裝 6 杯，每杯約 40 mL。' },
+    { t: '7–11 分', s: '前 3 杯分別加白醋、清水、小蘇打，做成「酸–中–鹼」色階對照卡並拍照存檔。' },
+    { t: '11–16 分', s: '對第 4 杯（清水杯）用吸管持續吹氣，計時到顏色明顯改變為止，記錄秒數。' },
+    { t: '16–20 分', s: '第 5 杯先加一小匙小蘇打再吹氣，記錄秒數；第 6 杯放冰水浴後同樣吹 30 秒，比較三杯。' }
+  ],
+  chem: [
+    { g: 1, t: '花青素能被熱水萃取出來，靠的是分子上多個酚 –OH 與水形成氫鍵；同一片葉子在冰水裡幾乎萃不出顏色，在熱水裡三分鐘就滿杯，差異來自氫鍵網絡與黏度隨溫度的變化。順手把水的異常性質串起來：正是這套氫鍵網撐出了水的高比熱（4.18 J/g·K，讓水體成為氣候的緩衝器）、高汽化熱、以及固態密度反而比液態小（冰浮在水面，湖泊才會由上往下結冰）。' },
+    { g: 2, t: '呼氣的 CO₂ 體積分率約 4–5%，即 P(CO₂) ≈ 0.04–0.05 atm，比大氣的 4×10⁻⁴ atm 高約一百倍。以 25 °C 的亨利常數 K_H(CO₂) ≈ 3.4×10⁻² mol/(L·atm) 計算：與大氣平衡時 [CO₂(aq)] ＝ 3.4×10⁻² × 4×10⁻⁴ ＝ 1.4×10⁻⁵ M，吹氣時提高到 3.4×10⁻² × 0.04 ≈ 1.4×10⁻³ M——濃度差了一百倍，所以吹兩分鐘就看得到變色。同一條定律算溶氧：K_H(O₂) ≈ 1.3×10⁻³ mol/(L·atm)，空氣中 P(O₂) ＝ 0.21 atm，故 [O₂] ≈ 2.7×10⁻⁴ M ＝ 約 8.7 mg/L，與課本 25 °C 飽和溶氧 8.3 mg/L 同量級。' },
+    { g: 3, t: '這杯水正在跑完整的碳酸系統：CO₂(g) ⇌ CO₂(aq)，CO₂(aq) + H₂O ⇌ H₂CO₃*，H₂CO₃* ⇌ H⁺ + HCO₃⁻（pKa₁ ＝ 6.35），HCO₃⁻ ⇌ H⁺ + CO₃²⁻（pKa₂ ＝ 10.33）。顏色由藍紫（pH 約 7）轉向粉紫、再轉粉紅（pH < 6），對應的正是系統從 HCO₃⁻ 優勢被推向 H₂CO₃* 優勢。請學生把三杯的顏色各標一個點到 pH–物種分布圖上，並指出 pKa₁ 那條交叉線落在哪一個顏色附近。' },
+    { g: 4, t: '加了小蘇打的那一杯就是「有鹼度的水」。一平匙小蘇打約 4.6 g NaHCO₃（M ＝ 84.01），溶於 200 mL 水 ＝ 0.27 mol/L；換算成慣用單位是 0.27 eq/L × 50,000 mg/eq ≈ 13,700 mg/L as CaCO₃，遠高於一般溪水的 20–200 mg/L as CaCO₃。鹼度的定義就是「水中可中和強酸的能力」，主要由 HCO₃⁻ 貢獻；它不會讓 pH 變高，而是讓 pH 難以被推動——這一杯要吹很久才變色，就是緩衝的具體體驗。' },
+    { g: 5, t: '冰水杯與熱水杯同樣吹 30 秒，通常熱杯先變色（傳質與反應動力學較快），但最終能達到的最低 pH 反而較高，因為 K_H 隨溫度上升而下降、平衡溶解量較少。這正是「動力學快 ≠ 平衡量大」的實例。連到優養化的溶氧耗竭：夏季水溫上升先把飽和溶氧壓低（同一條亨利定律），藻華在夜間呼吸、死亡藻體沉降後又被微生物好氧分解，兩件事同時抽走溶氧，缺氧才會發生。單看溫度或單看營養鹽都解釋不了，必須兩者疊加。' }
+  ],
+  green: [
+    { p: 5, why: '以水為唯一溶劑，指示劑來自蔬菜，不使用市售指示劑常帶的有機溶劑。' },
+    { p: 11, why: '自製色階對照卡即為即時分析工具，可在反應現場直接監測 pH。' },
+    { p: 7, why: '紫甘藍外葉屬廚餘，是被丟棄的再生原料。' },
+    { p: 4, why: '全部藥品皆為食品級，設計上即無毒害。' }
+  ],
+  safety: [
+    '熱水萃取由教師代為沖注，學生只負責浸泡與取出，避免燙傷。',
+    '吸管只出不進：吹氣時記得先深吸氣離開吸管再吹，絕不可吸入液體；吸管一人一支不共用。',
+    '白醋與小蘇打不可在同一杯大量混合，會劇烈產氣噴濺，請分杯操作。',
+    '所有樣品皆不可飲用；實驗後洗手，紫甘藍汁會染色，小心衣物。'
+  ],
+  observe: [
+    '清水杯吹到明顯變色需要幾秒？加了小蘇打的杯子需要幾秒？兩者的比值代表什麼物理意義？',
+    '停止吹氣後靜置 10 分鐘，顏色會不會回去？請用 CO₂ 逸散的方向解釋。',
+    '冰水杯與熱水杯的變色順序如何？請分別用亨利常數（平衡）與反應速率（動力學）各解釋一次。'
+  ]
+};
+
+/* ---------------------------------------------------------------- W6 */
+ACTIVITY[6] = {
+  name: '蛋殼水 vs 雨水肥皂泡高度賽＋檸檬酸除水垢',
+  minutes: 20,
+  materials: [
+    { item: '蛋殼 3–4 顆份（洗淨壓碎）', source: '廚餘' },
+    { item: '白醋或檸檬酸粉', source: '家庭常備' },
+    { item: '雨水（或蒸餾水）、自來水各 100 mL', source: '家庭常備' },
+    { item: '透明有蓋瓶 3 個（等大）', source: '廢棄品' },
+    { item: '肥皂水或洗手液', source: '家庭常備' },
+    { item: '結了水垢的舊湯匙或水壺、直尺、濾紙或衛生紙', source: '廢棄品' }
+  ],
+  steps: [
+    { t: '0–4 分', s: '蛋殼壓碎（包在布中避免飛濺）加白醋浸泡，觀察冒泡，做出「高鈣水」。' },
+    { t: '4–7 分', s: '用衛生紙過濾取上清液，稀釋到與另兩杯同體積。' },
+    { t: '7–12 分', s: '三瓶（雨水、自來水、蛋殼水）各 50 mL＋2 滴肥皂液，同時上下搖 15 秒，立刻用直尺量泡沫高度。' },
+    { t: '12–16 分', s: '靜置後觀察蛋殼水瓶壁的白色皂垢懸浮物，與雨水瓶對比並拍照。' },
+    { t: '16–20 分', s: '把有水垢的湯匙泡進檸檬酸水，記錄前 30 秒與後 30 秒的氣泡速率差異。' }
+  ],
+  chem: [
+    { g: 1, t: '蛋殼主成分是 CaCO₃（約 95%）：CaCO₃ + 2CH₃COOH → Ca(CH₃COO)₂ + H₂O + CO₂↑，你做出來的是一杯高鈣硬水。把三瓶依泡沫高度倒序排列，就完成了一次半定量的硬度測定（泡沫愈矮 ＝ 硬度愈高）。暫時硬度是以 Ca(HCO₃)₂ 形式存在、加熱即析出 CaCO₃ 者，水壺裡的水垢就是它；永久硬度是 CaSO₄、CaCl₂ 等，煮沸不走。石灰軟化反應式：Ca(HCO₃)₂ + Ca(OH)₂ → 2CaCO₃↓ + 2H₂O；鎂則要加到過量石灰、把 pH 推到 11 以上才會以 Mg(OH)₂↓ 沉澱。' },
+    { g: 2, t: '肥皂的硬脂酸根 C₁₇H₃₅COO⁻ 是單牙配位基，一個 Ca²⁺ 要兩個才綁得住，而且生成的硬脂酸鈣不溶：2C₁₇H₃₅COO⁻ + Ca²⁺ → Ca(C₁₇H₃₅COO)₂↓——你看到的白色懸浮物就是它，這也是為什麼硬水洗不出泡沫。EDTA⁴⁻ 則是六牙螯合劑，一個分子用兩個氮與四個羧基氧把 Ca²⁺ 包成五個五員環，log K 高達 10.7。同樣是羧酸根配位，差別在「牙數」：多牙配位在形成錯合物時釋放出更多原本被配位的水分子，熵增大，這就是螯合效應。' },
+    { g: 3, t: '檸檬酸是多牙配位基（三個 –COOH 加一個 –OH），但在低 pH 下大部分以未解離的 H₃Cit 存在，真正能參與錯合的 Cit³⁻ 只佔一小部分，副反應係數 α 使條件穩定常數 K′ ＝ K × α_Cit 大幅下降。矛盾來了：既然錯合能力在酸性下變差，為什麼檸檬酸在酸性下反而更會除水垢？因為除垢主要靠的是 H⁺ 溶解 CaCO₃ 的酸鹼反應（CaCO₃ + 2H⁺ → Ca²⁺ + H₂O + CO₂↑），錯合只是把溶出的 Ca²⁺ 拉住、防止再沉澱。兩個機制要分開算，這是條件穩定常數最容易被誤用的地方。' },
+    { g: 4, t: '把同一份檸檬酸水倒在生鏽的舊鐵片上，會看到黃色溶出——螯合劑把原本被固定在固相的金屬拉進水相，移動性與生物可利用性同時上升。這正是植物根圈分泌有機酸取得鐵的機制，也是污染場址「螯合劑淋洗整治」的雙面性：能把重金屬從土壤洗出來集中處理，但若控制不當，也會把原本不動的金屬變成會隨地下水跑的形態。' },
+    { g: 5, t: '腐植質可以想成「自然界的巨型檸檬酸」：不規則的芳香與脂肪骨架上掛滿羧基與酚羥基，同樣多牙配位、同樣隨 pH 改變解離度，分子量從數百到數萬。把泡過落葉的褐色水（腐植酸粗萃液）加進蛋殼水再搖，若泡沫變高、皂垢變少，就代表腐植質也把 Ca²⁺ 錯合走了。它在環境中還兼三個角色：金屬的天然螯合劑、有機污染物的分配相、以及光化學上的發色團（吸光後產生活性氧物種）。' }
+  ],
+  green: [
+    { p: 7, why: '蛋殼、雨水、落葉全部是廢棄物與天然水，零購置成本。' },
+    { p: 5, why: '以食用醋與檸檬酸取代鹽酸作為除垢劑。' },
+    { p: 11, why: '泡沫高度即為現場半定量分析，不需要滴定管與指示劑。' },
+    { p: 4, why: '全部試劑皆為食品級，本質上即安全。' }
+  ],
+  safety: [
+    '蛋殼須先洗淨並以熱水燙過，避免沙門氏菌；壓碎時包在布中防止碎片飛濺。',
+    '醋酸蒸氣刺鼻，請在通風處操作，不可俯身直接聞瓶口。',
+    '產生的 CO₂ 不可在密閉瓶中蓄壓，浸泡時瓶蓋須鬆開。',
+    '所有樣品不可飲用；操作後洗手，蛋殼碎片以廚餘處理。'
+  ],
+  observe: [
+    '三瓶的泡沫高度（cm）與皂垢量排序如何？把它換算成「相對硬度」由高到低排序。',
+    '水垢在檸檬酸中溶解的氣泡速率，前 30 秒與後 30 秒有什麼不同？這是動力學的限制還是平衡的限制？',
+    '若把蛋殼水煮沸 5 分鐘再測泡沫，高度會不會回升？回升的那一部分屬於哪一種硬度？'
+  ]
+};
+
+/* ---------------------------------------------------------------- W7 */
+ACTIVITY[7] = {
+  name: '鐵釘鏽蝕六條件競賽＋蘋果褐變抗氧化',
+  minutes: 20,
+  materials: [
+    { item: '同規格鐵釘 6 支', source: '廢棄品' },
+    { item: '透明小瓶或塑膠杯 6 個', source: '廢棄品' },
+    { item: '食鹽、食用油、煮沸放冷的開水、自來水', source: '家庭常備' },
+    { item: '銅線一小段、鋁箔一小片', source: '廢棄品' },
+    { item: '蘋果或馬鈴薯一顆、檸檬汁', source: '家庭常備' },
+    { item: '鑷子、標籤紙、手機（定時拍照）', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–5 分', s: '設定六個條件並貼標籤：①乾燥空氣 ②純水（煮沸放冷、低溶氧） ③自來水 ④鹽水 ⑤鹽水＋纏銅線 ⑥鹽水＋包鋁箔。' },
+    { t: '5–8 分', s: '同時放入鐵釘，記錄起始時間並拍第一張照片。④之外再做一瓶「鹽水＋覆一層食用油」隔絕空氣作為低 pE 對照。' },
+    { t: '8–12 分', s: '蘋果切四片，分別塗清水、檸檬汁、鹽水、不塗，平放在盤上。' },
+    { t: '12–17 分', s: '每 3 分鐘拍一次蘋果片，記錄褐變順序與程度。' },
+    { t: '17–20 分', s: '寫下你對六瓶鏽蝕速率的預測排序與理由，封存等待第 1、3、7 天回收觀察。' }
+  ],
+  chem: [
+    { g: 1, t: '用半反應法從頭配一次。陽極（氧化）：Fe → Fe²⁺ + 2e⁻。陰極（還原，中性含氧水）：O₂ + 2H₂O + 4e⁻ → 4OH⁻。電子數取最小公倍數 4，得 2Fe + O₂ + 2H₂O → 2Fe(OH)₂；再進一步氧化 4Fe(OH)₂ + O₂ + 2H₂O → 4Fe(OH)₃，部分脫水成 Fe₂O₃·nH₂O，就是你看到的紅褐色鐵鏽。請注意整條路徑需要「水 ＋ 氧」同時存在，這正是①號乾燥瓶的對照意義。' },
+    { g: 2, t: 'Fe²⁺/Fe 的標準電位 E° ＝ −0.44 V，O₂/H₂O 在 pH 0 時 E° ＝ +1.23 V，兩者的差就是腐蝕的驅動力。用能斯特方程式把 O₂/H₂O 修正到 pH 7：每降一個 pH 單位電位變化 0.0592 V，故 E ≈ 1.23 − 0.0592×7 ≈ 0.82 V。換算成 pE：pE ＝ E(V) ÷ 0.0592 ＝ 0.8156 ÷ 0.0592 ≈ 13.8，這是典型好氧水的 pE。覆了油的那一瓶阻斷 O₂ 補充，等於把 pE 硬生生壓低，鏽蝕速率隨之下降——這是「pE 不只是紙上的數字，而是一個可以操作的變數」最直接的證據。' },
+    { g: 3, t: '在 pE–pH 圖上，水的穩定範圍由兩條線夾出：上界（O₂/H₂O，P(O₂) ＝ 1 atm）pE ＝ 20.75 − pH，下界（H⁺/H₂，P(H₂) ＝ 1 atm）pE ＝ −pH。請把六個瓶子各標一個點：④鹽水在右上方高 pE 區（Fe(OH)₃ 優勢區，所以鏽得快）、油封瓶被壓到中段（Fe²⁺ 優勢區，溶解態鐵可以穩定存在，看不到明顯紅鏽）、①乾燥瓶根本沒有水相，落不到這張圖上。Fe²⁺ 與 Fe(OH)₃ 的分界線就是「鐵溶得掉還是沉澱下來」的分水嶺。' },
+    { g: 4, t: '油封那一瓶就是一個 1 公分厚的沉積物剖面模型：油水界面附近仍有殘餘 O₂（好氧帶），往下 O₂ 用盡後，微生物依熱力學上的能量產率高低依序改用 NO₃⁻、Mn(IV)、Fe(III)、SO₄²⁻、最後 CO₂ 當電子受體，pE 一級一級往下掉，這就是沉積物的氧化還原分帶。順序不是任意的，而是由各個半反應的 ΔG 決定：微生物永遠先用最划算的那一個。請把六瓶依 pE 由高到低排成一條垂直剖面。' },
+    { g: 5, t: '⑤纏銅線的釘子鏽最快：Cu 的 E° 較正，Fe 與 Cu 形成原電池，鐵被迫當陽極持續溶解（異金屬接觸腐蝕）。⑥包鋁箔的釘子最不鏽：Al 的 E° ＝ −1.66 V 比鐵更負，改由鋁當犧牲陽極，這正是鍍鋅與船體犧牲陽極的原理，也就是陰極保護。蘋果褐變是另一條氧化路徑：多酚氧化酶（PPO）把酚類氧化成醌，醌再聚合成褐色聚合物。三種處理各對應一種防蝕思路——檸檬汁靠降低 pH 使酵素失活（改變環境）、抗壞血酸靠把醌還原回酚（加還原劑／緩蝕劑）、鹽水與保鮮膜靠隔絕 O₂（加阻隔層／塗裝）。' }
+  ],
+  green: [
+    { p: 1, why: '全部材料可回收或堆肥，不產生任何有害廢液。' },
+    { p: 12, why: '以食鹽水與食用油取代強酸加速腐蝕試驗，本質安全。' },
+    { p: 11, why: '以定時拍照取代化學分析，零耗材完成過程監測。' },
+    { p: 4, why: '抗氧化劑選用食品級檸檬酸與食鹽，設計上即無毒。' }
+  ],
+  safety: [
+    '鐵釘尖銳，一律用鑷子取放；生鏽鐵釘刺傷有破傷風風險，若受傷立即告知教師就醫。',
+    '蘋果切片使用安全刀具並在砧板上進行，切完立即收刀。',
+    '所有實驗後的蘋果片一律丟棄，不可食用。',
+    '油封瓶不可搖晃，避免油水濺出；六個瓶子集中放在托盤上避免打翻。'
+  ],
+  observe: [
+    '24 小時與 72 小時後，六個瓶子的鏽蝕程度排序是什麼？與你一開始的預測差在哪裡？差異的原因是什麼？',
+    '銅線瓶與鋁箔瓶的差異能用一句話的電化學序解釋嗎？請把你的那一句寫下來。',
+    '蘋果四片中哪一片褐變最慢？如果多做一片「泡在煮沸放冷的開水中」，你預期它排第幾？為什麼？'
+  ]
+};
+
+/* ---------------------------------------------------------------- W9 */
+ACTIVITY[9] = {
+  name: '寶特瓶淨水濾柱（碎石／砂／餘炭／棉花）',
+  minutes: 20,
+  materials: [
+    { item: '2 L 寶特瓶（剪底倒置）', source: '廢棄品' },
+    { item: '碎石、洗淨河砂各一杯', source: '家庭常備' },
+    { item: '烤肉剩下的木炭（敲碎）', source: '廢棄品' },
+    { item: '舊棉 T 恤剪成的棉片或棉花', source: '廢棄品' },
+    { item: '自製原水：泥水＋幾滴醬油＋一滴洗碗精', source: '家庭常備' },
+    { item: '透明杯、手電筒、計時器', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '寶特瓶剪去底部、倒置成漏斗，瓶口塞入棉片，剪口包膠帶。' },
+    { t: '3–8 分', s: '由下而上填入棉片 → 碎木炭 → 細砂 → 粗砂 → 碎石，每層約 3 cm，輕拍壓實。' },
+    { t: '8–11 分', s: '先用清水潤洗濾柱兩次，直到流出的水不再帶炭粉，這一步等於「開機前的反洗」。' },
+    { t: '11–16 分', s: '倒入 200 mL 原水，計時記錄流速，收集全部濾液。' },
+    { t: '16–20 分', s: '用手電筒側照，比較原水與濾液的濁度、顏色、氣味與起泡性，逐項記錄。' }
+  ],
+  chem: [
+    { g: 1, t: '自製原水刻意混入三類性質完全不同的污染物：泥砂屬懸浮固體（指標 SS 與濁度 NTU，靠光散射原理量測）、醬油屬溶解性有機物與色度（指標 COD 與色度，靠氧化劑消耗量與吸光度量測）、洗碗精屬陰離子界面活性劑（指標 MBAS 亞甲藍活性物質，靠與染料形成離子對後萃取比色）。請學生先預測濾柱對哪一類最有效，再看結果——答案是 SS 幾乎全去除、溶解性有機物只被木炭吸附掉一部分、界面活性劑幾乎不動。' },
+    { g: 2, t: '濾液看起來清了，卻仍偏黃、仍會起泡，這就是「看起來乾淨 ≠ 有機物被移除」。三個指標各測不同的東西：BOD 測微生物在 5 天內能氧化掉的部分（生物可分解性）、COD 測強氧化劑能氧化掉的部分（含難生物分解者）、TOC 直接測碳的總量。以 mg/L 表示時通常 COD ≥ BOD；TOC 量的是碳而不是耗氧量，經驗上 COD/TOC 約在 2.5–3.5 之間。醬油屬易生物分解，BOD/COD 比高；洗碗精中部分成分較難分解，會把整杯水的 BOD/COD 比拉低——這個比值正是判斷「這股廢水適不適合生物處理」的關鍵。' },
+    { g: 3, t: '這根濾柱正好對應污水廠的物理化學單元：碎石層 ＝ 粗篩與沉砂、砂層 ＝ 快濾池、木炭層 ＝ 活性碳吸附（高級處理）。缺的是整個二級生物處理——沒有活性污泥，就沒有微生物把溶解性 BOD 氧化成 CO₂ 與新的細胞（分解代謝 C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O，加上同化代謝把一部分碳變成污泥），所以你的濾液才會「清而不淨」。請學生在濾柱示意圖旁邊補畫出缺掉的曝氣池與二沉池。' },
+    { g: 4, t: '濾柱完全去不掉 NH₄⁺ 與 PO₄³⁻，因為兩者都是溶解性離子。生物除氮要兩段條件相反的槽：好氧硝化 NH₄⁺ + 2O₂ → NO₃⁻ + 2H⁺ + H₂O（會消耗鹼度，每氧化 1 mg NH₄⁺-N 約消耗 7.1 mg as CaCO₃ 的鹼度，這是實務上要加鹼的原因），缺氧脫硝再以有機碳為電子供體把 NO₃⁻ 還原成 N₂ 逸散。生物除磷則靠聚磷菌在厭氧–好氧交替下超量攝磷，磷最後隨剩餘污泥排出系統——磷沒有氣態出口，只能靠排泥帶走。請在圖上標出這兩段各需要的曝氣條件與迴流路線。' },
+    { g: 5, t: '把這根濾柱帶到第 10 週的 NDHU 污水廠，現場逐層對照：我的碎石層對應到你們的哪一個池？我的木炭層在你們廠裡有沒有？並記錄六項觀察重點——各單元的實際停留時間、水的顏色、氣味、泡沫多寡、界面清晰度、以及有沒有異常。安全準備：長褲包鞋、不倚欄杆、全程跟隨導覽員、不觸摸任何池水。' }
+  ],
+  green: [
+    { p: 1, why: '濾材全部取自廢棄物與校園既有材料，實驗後可原地回歸。' },
+    { p: 5, why: '以水為唯一介質，不使用任何化學藥劑。' },
+    { p: 11, why: '以濁度目視與流速計時做即時分析，不需儀器耗材。' },
+    { p: 6, why: '重力驅動，全程零能耗。' }
+  ],
+  safety: [
+    '剪開的瓶身邊緣須以膠帶包覆後才可傳遞。',
+    '原水含洗碗精與泥砂，不可入口、不可濺入眼睛；操作後務必洗手。',
+    '敲碎木炭時裝入袋中操作，避免粉塵吸入。',
+    '濾液一律視為廢水，倒入水槽並以清水沖洗管路；用過的濾材不可倒入水槽。'
+  ],
+  observe: [
+    '濾液的濁度改善了幾成（用「隔著杯子能不能看清後方文字」做半定量）？顏色改善了幾成？兩者為什麼差這麼多？',
+    '連續倒入第二次、第三次原水，流速如何變化？這對應到污水廠的哪一個定期操作動作？',
+    '若把木炭層厚度加倍，你預期哪一個指標改善最多、哪一個幾乎不動？請用吸附的原理說明。'
+  ]
+};
+
+/* ---------------------------------------------------------------- W10 */
+ACTIVITY[10] = {
+  name: '混凝沉澱 vs 過濾對決（洗米水）',
+  minutes: 20,
+  materials: [
+    { item: '洗米水約 600 mL（第一道最濃）', source: '廚餘' },
+    { item: '透明直筒杯 4 個（等大等高）', source: '廢棄品' },
+    { item: '食鹽 1 茶匙', source: '家庭常備' },
+    { item: '第 6 週剩下的蛋殼高鈣水 20 mL（或小蘇打水）', source: '廢棄品' },
+    { item: '濾紙或衛生紙、漏斗', source: '家庭常備' },
+    { item: '直尺、計時器、手電筒', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '洗米取三杯等量、同濁度的洗米水（A、B、C），另留一杯 D 作過濾組。' },
+    { t: '3–6 分', s: 'A 杯不加、B 杯加 1 茶匙食鹽、C 杯加 20 mL 蛋殼高鈣水（提供 Ca²⁺）。' },
+    { t: '6–9 分', s: '三杯同時快攪 30 秒（混凝）再慢攪 60 秒（膠凝），攪拌幅度務必一致。' },
+    { t: '9–15 分', s: '靜置，每 2 分鐘用直尺量「上清液高度」並側照記錄濁度，做出沉降曲線。' },
+    { t: '15–18 分', s: 'D 杯直接用濾紙過濾，記錄耗時與濾液清澈度、濾紙上留下什麼。' },
+    { t: '18–20 分', s: '把四杯並排拍照，寫下「哪一種方法在什麼情況下比較划算」的結論。' }
+  ],
+  chem: [
+    { g: 1, t: '你剛做的四個動作，正好是污水廠四個實體單元的縮小版：快攪 ＝ 混凝池（coagulation，靠電解質壓縮電雙層與電性中和讓膠體去穩定）、慢攪 ＝ 膠凝池（flocculation，靠碰撞讓微膠羽長成大膠羽，攪太猛反而會打碎）、靜置 ＝ 沉澱池（重力沉降）、濾紙 ＝ 快濾池（篩除與截留）。請學生標出哪一個是純物理、哪一個是純化學、哪一個兩者兼有（答：混凝是化學為主，膠凝是物理為主但依賴前一步的化學條件）。' },
+    { g: 2, t: '洗米水中的澱粉粒與蛋白質在中性 pH 下帶負電，靠靜電斥力互相排開而穩定懸浮。Schulze–Hardy 經驗規則指出，臨界凝聚濃度與反離子價數的六次方成反比，因此二價的 Ca²⁺ 效力理論上約為一價 Na⁺ 的 2⁶ ＝ 64 倍——這就是為什麼 C 杯只加 20 mL 高鈣水就贏過 B 杯一整匙鹽。現場診斷規則：上清液仍混濁 ＝ 混凝劑不足或攪拌過猛把膠羽打碎；水面浮渣 ＝ 密度過小或有氣泡挾帶（對應實廠的浮渣與絲狀菌膨化）；沉澱層鬆散、界面模糊 ＝ 膠羽強度不足。請為三杯各寫一則「操作診斷」。' },
+    { g: 3, t: '量出你的杯子從開始靜置到「界面下降到一半」所需的時間 t，這就是這個小沉澱池的有效停留時間量級（通常是幾分鐘）。放大到實廠：初沉池 HRT 約 1.5–2.5 小時、曝氣池約 6–8 小時。能耗量級：都市污水廠每處理一噸水約需 0.3–0.6 kWh，其中曝氣占五到七成——因為要把難溶的 O₂ 打進水裡對抗亨利定律，這件事本質上就很耗能。請學生反推：若要處理每天 1,000 噸，以 HRT ＝ 2 小時計，沉澱池的有效容積需要多少立方公尺？（答：1000 ÷ 24 × 2 ≈ 83 m³。）' },
+    { g: 4, t: '這一杯米水同時用到了前面每一週：第 5 週的碳酸系統與 pH、第 6 週的 Ca²⁺ 與硬度、第 7 週的電解質與界面電荷、第 9 週的過濾與吸附、第 2 週的官能基與極性（澱粉的 –OH）。請學生逐一標出「這次操作用到哪一週的哪個觀念」，凡是標不出來、或標了但說不清楚的那一週，就是 Exam 1 要優先補的弱項。這份清單直接當成你的期中考複習計畫。' }
+  ],
+  green: [
+    { p: 1, why: '洗米水原本就是要倒掉的廚餘廢水，反過來當作實驗原水。' },
+    { p: 7, why: '蛋殼高鈣水沿用第 6 週的產物，材料在課程內二次利用。' },
+    { p: 5, why: '全程水系操作，不使用任何有機溶劑。' },
+    { p: 6, why: '重力沉降不需供能，只有攪拌那 90 秒用到人力。' }
+  ],
+  safety: [
+    '若改用市售熟石灰配製石灰水，屬強鹼（pH 12 以上），必須戴手套並嚴防入眼；建議直接用蛋殼醋酸鈣水或小蘇打水替代。',
+    '洗米水易腐敗且會招蟲，務必當堂用完並倒入水槽沖洗。',
+    '一律使用塑膠杯，避免玻璃打破。',
+    '任何樣品不可飲用；操作後洗手。'
+  ],
+  observe: [
+    '三杯在第 2、4、6、8、10 分鐘的上清液高度各是多少？畫成沉降曲線後，哪一杯的斜率最陡？',
+    '過濾杯耗時多久、濾紙上留下什麼？「快但要換耗材」與「慢但不用耗材」這兩種方法在污水廠裡怎麼分工？',
+    '如果先在洗米水裡加幾滴醋把 pH 降下來，你預期沉降會變快還是變慢？請從膠體表面電荷的角度說明。'
+  ]
+};
+
+/* ---------------------------------------------------------------- W12 */
+ACTIVITY[12] = {
+  name: '膠帶落塵採樣格＋手機微距計數',
+  minutes: 20,
+  materials: [
+    { item: '透明膠帶一捲', source: '家庭常備' },
+    { item: '回收白紙與深色紙卡各數張', source: '廢棄品' },
+    { item: '直尺、簽字筆、便利貼', source: '家庭常備' },
+    { item: '手機（加一滴水當微距鏡）', source: '家庭常備' },
+    { item: '棉花棒與清水（擦鏡頭用）', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '在紙卡上畫 1 cm × 1 cm 方格三組，各標上採樣點、日期與時間。' },
+    { t: '3–6 分', s: '剪 3 cm 膠帶，黏面朝外固定在方格上，做成三張採樣貼。' },
+    { t: '6–10 分', s: '分三個採樣點（教室窗台、走廊地面、戶外欄杆）各在同一位置按壓 10 次。' },
+    { t: '10–15 分', s: '蓋上第二層透明膠帶封存，貼在對比色紙上（淺色落塵貼深紙、深色落塵貼白紙）。' },
+    { t: '15–20 分', s: '手機鏡頭上點一滴水做簡易微距鏡，逐格拍照、計數並分級（可數顆粒／灰霧薄膜）。' }
+  ],
+  chem: [
+    { g: 1, t: '三個採樣點的高度差只有幾公尺，但清晨與午後的落塵量常常明顯不同。原因在大氣分層：對流層溫度隨高度遞減（乾絕熱遞減率約 9.8 °C/km），但清晨地表輻射冷卻後，近地面出現溫度隨高度上升的逆溫層，把污染物壓在薄薄一層裡；午後地面受熱、混合層抬升到一兩公里，同樣的排放量被稀釋到十倍以上的體積裡。請學生記錄採樣的時間與天氣，並用「混合層高度」解釋自己數據的差異。' },
+    { g: 2, t: '落塵上的有機膜為什麼會隨時間變淡？因為白天臭氧光解 O₃ + hν(λ < 320 nm) → O(¹D) + O₂，激發態氧原子再與水氣反應 O(¹D) + H₂O → 2·OH。氫氧自由基是對流層的主要氧化劑、被稱為大氣清潔劑，日間濃度約 10⁶ 個/cm³，它會奪取有機物的氫原子啟動氧化鏈，一路把有機物氧化到 CO₂。請學生預測：連續採樣三天，晴天與陰天哪一天的有機膜殘留較多？（答：陰天，因為紫外光弱、·OH 生成少。）' },
+    { g: 3, t: '上面那條路徑需要 λ < 320 nm 的紫外光，而這些短波紫外光本來大多被平流層臭氧擋掉了。平流層臭氧靠 Chapman 機制生成：O₂ + hν(λ < 242 nm) → 2O，O + O₂ + M → O₃ + M，它是「好臭氧」，是地表生命的紫外線屏障。對流層臭氧則是 NOx 與 VOC 在光照下經光化學反應生成的二次污染物，是「壞臭氧」，會傷害呼吸道與植物。兩者是同一個分子，好壞只看它在哪一層。請學生解釋：為什麼室內採樣點的有機膜比戶外持久？（答：室內紫外光與臭氧都少，·OH 生成不足。）' },
+    { g: 4, t: '用格線與手機微距估算顆粒尺度：肉眼或簡易微距數得出來的通常大於 50 μm，屬於粗粒，沉降速度快（Stokes 定律中沉降速度與粒徑平方成正比，所以粗粒幾分鐘就落地）。真正能長期懸浮的 PM10 與 PM2.5，在膠帶上多半只形成一層數不出顆粒的灰霧——重點正在這裡：你數得到的，多半不是危害最大的。粗粒多來自機械破碎與揚塵，細粒多來自燃燒與氣體轉粒（gas-to-particle conversion）。健康效應上，粗粒多被鼻腔與上呼吸道攔截，PM2.5 可到達肺泡並穿透進入血液循環。' },
+    { g: 5, t: '把三個採樣點想像成三種控制設備的入口，並標出「我的膠帶等於哪一級」：重力沉降室只抓得到大於約 50 μm 的粗粒（原理與你的膠帶最接近）、旋風分離器靠離心力有效捕集約 10 μm 以上、袋式濾集器可處理到 1 μm 以下（原理是攔截、慣性衝擊與擴散三者並用）、靜電集塵器整體效率高但對 0.1–1 μm 存在效率最低的「穿透窗」，因為這個粒徑範圍既不夠大到靠慣性、也不夠小到靠布朗擴散帶電。' }
+  ],
+  green: [
+    { p: 11, why: '落塵採樣是成本最低的即時分析法，在現場就能得到空間分布資訊。' },
+    { p: 1, why: '使用回收紙卡與教室既有膠帶，無耗材購置與廢棄物產生。' },
+    { p: 6, why: '全程不需要任何儀器供電。' }
+  ],
+  safety: [
+    '戶外採樣不得攀爬窗台或伸出欄杆外側，一律兩人一組互相看顧。',
+    '撕取膠帶時注意邊緣可能割傷手指。',
+    '水滴微距鏡拍完立即以棉花棒吸乾、擦淨鏡頭，避免水氣滲入手機。',
+    '不可對著太陽方向拍攝或直視強光。'
+  ],
+  observe: [
+    '三個採樣點每平方公分的可數顆粒數各是多少？排序與你的預期一致嗎？不一致的原因可能是什麼？',
+    '同一地點清晨與午後採樣的差異有多大？你能用逆溫與混合層高度定量地解釋嗎？',
+    '你在膠帶上看不到、但確實存在的是哪一個粒徑範圍？如果要測到它們，需要換成什麼原理的方法？'
+  ]
+};
+
+/* ---------------------------------------------------------------- W13 */
+ACTIVITY[13] = {
+  name: '燃燒產物觀察：白瓷匙積碳與杯壁水霧',
+  minutes: 20,
+  materials: [
+    { item: '蠟燭一支（用剩的殘料即可）', source: '家庭常備' },
+    { item: '線香或蚊香一支', source: '家庭常備' },
+    { item: '白瓷湯匙或白色磁磚一片', source: '家庭常備' },
+    { item: '玻璃杯或不鏽鋼杯 2 個（不同容積）', source: '家庭常備' },
+    { item: '廢鋁盤當防火盤、濕布一條', source: '廢棄品' },
+    { item: '夾子、計時器、手機', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '在防火盤上點燃蠟燭，備妥濕布。用夾子夾白瓷匙快速掠過外焰上方 2 秒，觀察背面。' },
+    { t: '3–6 分', s: '換一處乾淨的匙面，掠過內焰（焰心正上方）2 秒，與外焰的結果並排比較積碳量。' },
+    { t: '6–10 分', s: '把冷杯倒扣在火焰上方 5 秒，取下觀察杯壁水霧，用手指抹過確認是液態水。' },
+    { t: '10–14 分', s: '點燃線香放入杯中，觀察煙的流向與沉降，並記錄杯壁是否留下黃褐色油膜。' },
+    { t: '14–17 分', s: '用兩種容積的杯子分別倒扣罩住蠟燭，各測三次熄滅秒數取平均。' },
+    { t: '17–20 分', s: '把觀察結果與 AI 的回答並排，逐條標註查證狀態。' }
+  ],
+  chem: [
+    { g: 1, t: '掠過內焰的白瓷匙有明顯積碳，掠過外焰的幾乎沒有——這就是氧氣供應不足造成的不完全燃燒，碳沒被氧化到底就以碳煙析出。同一條路徑也生成 CO，但 CO 無色無味，用觀察絕對判斷不出來，只能靠儀器，這是本活動最重要的科學誠實一課。石蠟本身幾乎不含硫與氮，所以這根蠟燭幾乎不產生 SO₂；SO₂ 來自燃料中的硫：S + O₂ → SO₂，燃煤與重油才是主要來源。NOx 在此屬熱 NOx，需要火焰溫度高於約 1300 °C 才顯著（N₂ + O₂ → 2NO），家用蠟燭的量微乎其微。NH₃ 則主要來自農業施肥與畜牧，根本不是燃燒源。請學生據此列出「這支蠟燭示範得出來的」與「示範不出來的」兩張清單。' },
+    { g: 2, t: '倒扣杯的水霧證明燃燒產物確實有水：CₙH₂ₙ₊₂ + O₂ → CO₂ + H₂O。接著算純水與大氣 CO₂ 平衡時的理論 pH：[H₂CO₃*] ＝ K_H × P(CO₂) ＝ 3.4×10⁻² × 4×10⁻⁴ ＝ 1.36×10⁻⁵ M；弱酸稀溶液 [H⁺] ≈ √(Ka₁ × C) ＝ √(4.45×10⁻⁷ × 1.36×10⁻⁵) ＝ 2.46×10⁻⁶ M，故 pH ＝ 5.61。這就是「雨水本來就微酸、pH 5.6 才是酸雨分界」的由來。若再加入 SO₂ → H₂SO₃ → H₂SO₄（每莫耳釋出 2 個 H⁺）與 NOx → HNO₃（每莫耳 1 個 H⁺），pH 就會掉到 4 以下——硫酸是雙質子酸，這是它在酸雨中份量特別重的原因之一。' },
+    { g: 3, t: '線香煙裡同時有一次粒狀物（未燃盡的碳粒，直接排放）與大量揮發性有機物。後者進入大氣後被 ·OH 氧化，官能基上多了 –OH、–COOH，極性上升、蒸氣壓下降，於是從氣相凝結到粒相，形成二次有機氣膠（SOA）。杯壁上那層黃褐色油膜，就是半揮發性有機物（SVOC）冷凝的直接證據。請學生比較蠟燭煙與線香煙留下的油膜量，並用揮發性分級（VOC → IVOC → SVOC，蒸氣壓依序下降）說明為什麼線香的比較多。' },
+    { g: 4, t: '請 AI 回答「蠟燭燃燒會產生哪些空氣污染物」，把答案逐條分成三類：可由本活動直接驗證的（積碳、水霧、氧氣消耗）、需要儀器才能驗證的（CO、PM2.5、甲醛）、以及明顯錯誤或誇大的（例如宣稱產生大量 SO₂ 或臭氧）。每一條都要註明：查證來源是什麼、我為什麼這樣判定。最後附上 AI 使用聲明——工具名稱、日期、提問內容、以及哪些結論是我自己判斷的。' },
+    { g: 5, t: '把尺度拉大做對照：用 Prompt 驅動的 notebook 串接環境部空氣品質開放資料 API，取花蓮測站當天的 PM2.5 與 O₃ 時序，與你在教室裡點一根蠟燭造成的局部污染做量級比較。動手前先寫好資料檢查清單：欄位名稱與單位（μg/m³ 還是 ppb）、時區（是否為當地時間）、缺值如何表示（空字串、−99 還是 NA）、以及測站代碼對不對。這份清單就是防止「AI 幫你畫了一張很漂亮但單位錯了的圖」的唯一辦法。' }
+  ],
+  green: [
+    { p: 12, why: '以倒扣杯測熄滅秒數示範氧氣消耗，取代任何可燃氣體實驗，本質安全。' },
+    { p: 11, why: '白瓷匙積碳與杯壁水霧就是現場即時分析，不需採樣送驗。' },
+    { p: 1, why: '使用家中既有的蠟燭殘料與廢鋁盤，無新購耗材。' },
+    { p: 6, why: '燃燒規模極小，能耗與排放降到示範所需的最低限度。' }
+  ],
+  safety: [
+    '必須在防火盤上操作並備妥濕布；長髮束起、袖口收好、桌面淨空。',
+    '倒扣後的杯子會發燙，須以夾子取放或待冷卻後再碰。',
+    '線香煙霧刺激呼吸道，室內務必開窗通風；氣喘或呼吸道敏感者不參與或配戴口罩。',
+    '離開前確認火焰完全熄滅，香灰以水浸濕後才丟棄。'
+  ],
+  observe: [
+    '內焰與外焰掠過的白瓷匙，積碳面積差多少倍？這對應完全燃燒與不完全燃燒的哪一個化學條件？',
+    '倒扣杯熄滅的三次時間各差多少？若換成兩倍容積的杯子，你預期時間變成幾倍？（提示：氧氣是限制反應物。）',
+    '杯壁的水霧與黃褐色油膜，哪一個是一次污染物、哪一個比較接近二次氣膠的前驅物？'
+  ]
+};
+
+/* ---------------------------------------------------------------- W14 */
+ACTIVITY[14] = {
+  name: '廢紙打漿手抄紙（絲襪紗網框）',
+  minutes: 20,
+  materials: [
+    { item: '廢影印紙、廣告單約 10 g', source: '廢棄品' },
+    { item: '舊絲襪或紗窗網一片', source: '廢棄品' },
+    { item: '木框或彎成方形的衣架', source: '廢棄品' },
+    { item: '臉盆、溫水約 2 L', source: '家庭常備' },
+    { item: '舊毛巾或海綿（吸水用）', source: '廢棄品' },
+    { item: '電子秤、直尺', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–4 分', s: '秤 10 g 廢紙撕成指甲大小，浸入溫水 3 分鐘讓纖維吸水膨潤。' },
+    { t: '4–8 分', s: '用手反覆搓揉（或果汁機短打三次，每次 5 秒）打成均勻紙漿。' },
+    { t: '8–11 分', s: '把紙漿倒入臉盆稀釋到約 2 L，攪成均勻懸浮液。' },
+    { t: '11–15 分', s: '絲襪繃在框上，斜插入水中後平舉撈起，左右輕晃使纖維均勻鋪平，靜置瀝水。' },
+    { t: '15–18 分', s: '蓋上舊毛巾用海綿吸水，翻扣脫模到平面上。' },
+    { t: '18–20 分', s: '秤濕重、量面積並記錄乾燥條件（室溫、通風、有無壓平）。' }
+  ],
+  chem: [
+    { g: 1, t: '全班每人一張紙，記錄三個數字：投料量 (g)、成紙面積 (cm²)、濕重 (g)。這批小資料一定會出現缺值（忘了秤）與極端值（有人撈得特別厚、有人紙破了）。請學生實作一次完整的資料清理：先畫箱形圖找出超過 1.5 倍四分位距的極端值，再逐一判斷該剔除還是保留——紙破掉屬於操作失誤，應標記為無效樣本；撈太厚是真實的操作變異，必須保留否則會低估變異度。缺值則要先問「為什麼缺」：隨機忘記可以刪除或用組平均補值，但若是「太薄以致秤不到」那就是系統性缺失，補平均反而會造成偏誤。' },
+    { g: 2, t: '三個變數都是連續量，圖表選擇因此有明確的對應：想看單一變數的分布用直方圖或箱形圖；想看「投料量與成紙厚度」的關係用散布圖加趨勢線（並標出 R²）；想比較各組差異用分組箱形圖，而不是「長條圖加誤差線」——後者只畫了平均與一個離散指標，把整個分布的形狀藏起來了。請學生針對自己的問題各選一種圖，並寫出「為什麼不選另外兩種」。' },
+    { g: 3, t: '把全班的單位面積克重 (g/m²) 畫成長條圖，然後刻意做出三個誤導版本：①y 軸不從零開始，讓 5% 的差異看起來像三倍；②只挑最漂亮的五組畫，其餘不畫（選擇性報告）；③把乾燥 1 小時與乾燥一整天的資料混在同一張圖比較（未控制變因）。請學生指出每一版是哪一種手法，並各畫出對應的正確版本。這三種手法在環境報告與新聞圖表裡出現的頻率極高。' },
+    { g: 4, t: '你剛才做的是「再生纖維的機械離解」：只靠水與剪力把纖維打散，乾燥時纖維表面大量的 –OH 彼此靠近形成氫鍵，紙就結合起來了，全程沒有任何化學鍵的生成或斷裂。工業牛皮製漿（kraft）走的是化學路線：以 NaOH 與 Na₂S 組成的白液在 160–170 °C 蒸煮，HS⁻ 與 OH⁻ 攻擊木質素的 β-O-4 醚鍵使其斷裂並溶出，纖維素得以保留下來；副產物黑液濃縮後送鹼回收爐燃燒，同時回收能量與再生 Na₂CO₃，再經苛化 Na₂CO₃ + Ca(OH)₂ → 2NaOH + CaCO₃↓ 變回白液。環境議題集中在兩處：含硫還原性氣體（TRS，硫醇與 H₂S 的特殊臭味）與漂白段的廢水。請比較兩條路徑的能耗與廢水量級——機械路徑幾乎零廢水但纖維短、強度差，化學路徑纖維長、強度好但要一整套化學品回收系統。' },
+    { g: 5, t: '帶著你這張手抄紙去第 15 週的中華紙漿花蓮廠，現場找出三件事：工廠的打漿機（refiner）在哪裡、白液與黑液分別長什麼樣、他們的成紙克重與你的差幾倍。並事先列出五個要問工程師的問題，例如「黑液回收爐供應了全廠幾成的蒸汽」。安全準備：長褲包鞋、戴安全帽與護目鏡、不觸摸任何管線、全程跟隨導覽路線。' }
+  ],
+  green: [
+    { p: 7, why: '100% 以廢紙為原料，完全不使用新纖維。' },
+    { p: 1, why: '不使用漂白劑與膠料，零有害廢液產生。' },
+    { p: 5, why: '以水為唯一介質，無有機溶劑。' },
+    { p: 6, why: '常溫常壓的機械離解，能耗遠低於高溫化學製漿。' }
+  ],
+  safety: [
+    '使用果汁機時務必先關閉電源、拔插頭，才可伸手進去。',
+    '框具邊緣與衣架斷口須以膠帶包覆，避免刺傷。',
+    '操作區地面易濕滑，請鋪報紙並隨手擦乾。',
+    '廢紙上的印刷油墨不可揉眼睛，操作後務必洗手。',
+    '紙漿絕不可倒入水槽（會堵塞管路），須以濾網撈出當廚餘或堆肥。'
+  ],
+  observe: [
+    '你的紙的單位面積克重是多少 g/m²？一般影印紙是 70–80 g/m²，你差了幾成？',
+    '乾燥後把紙撕開，撕裂邊緣看得到纖維嗎？纖維長度與紙的強度之間是什麼關係？',
+    '若把紙漿再打第二次（纖維更短），你預期紙變得更緊實還是更脆弱？請分別從「氫鍵接觸面積」與「纖維長度」兩個因素各論證一次。'
+  ]
+};
+
+/* ---------------------------------------------------------------- W15 */
+ACTIVITY[15] = {
+  name: '報紙 vs 影印紙日曬黃變觀察啟動',
+  minutes: 20,
+  materials: [
+    { item: '舊報紙一張', source: '廢棄品' },
+    { item: '白影印紙一張', source: '教室既有' },
+    { item: '第 14 週自製的手抄紙一張', source: '廢棄品' },
+    { item: '不透明卡紙或鋁箔（做遮罩）', source: '廢棄品' },
+    { item: '迴紋針、膠帶、透明夾鏈袋', source: '家庭常備' },
+    { item: '麥克筆、手機（定點拍照）', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '三種紙各剪出兩片相同大小（約 5×10 cm），共六片，逐片編號並寫上日期。' },
+    { t: '3–6 分', s: '每片用卡紙遮住一半並以迴紋針固定，做出同一張紙上的「曬到／沒曬到」內部對照。' },
+    { t: '6–9 分', s: '一組（三片）放窗台日曬、一組（三片）放抽屜暗處，兩組條件其餘完全相同。' },
+    { t: '9–13 分', s: '建立顏色記錄方法：固定位置、固定光線、畫面中放一張新白紙當白平衡參考，拍下第 0 天基準照。' },
+    { t: '13–17 分', s: '各組寫下預測：哪一種紙黃得最快、為什麼；暗處組會不會變。' },
+    { t: '17–20 分', s: '排定第 1、3、7、14 天的回收觀察時程，登記到課程系統本週的動手做紀錄欄。' }
+  ],
+  chem: [
+    { g: 0, t: '核心機制：木質素是由苯環–丙烷單元組成的三維聚合物，上面帶有大量酚羥基與 α-羰基。日光中的近紫外光（300–400 nm）把 α-羰基激發到三重態，經 Norrish 型斷裂或分子間奪氫，生成酚氧自由基；自由基再與 O₂ 反應，最終形成鄰醌與對醌類的發色團。醌類在可見光的藍區有吸收，反射出來的補色就是黃色。關鍵是：光、氧、木質素三者必須同時到齊——這正是遮罩區與暗處對照組存在的理由，缺一項就不該變黃。' },
+    { g: 1, t: '報紙用的是機械漿（磨木漿），得率高但木質素幾乎全部留在紙裡（可達 20–30%）；影印紙用的是化學漿並經漂白，木質素被脫除到 1% 以下。你手上這兩張紙的差異，就是參訪要看的「蒸煮 → 洗滌 → 篩選 → 漂白」四段單元的具體成果。請帶著兩張紙到現場，指認各自對應到哪一條產線，並問清楚兩條線的得率差多少。' },
+    { g: 2, t: '一根木片進廠後分成三個出口：纖維素進入產品（紙）、木質素與半纖維素溶進黑液成為副產品（燃燒回收能量與化學品）、其餘成為廢水與固體廢棄物。報紙之所以黃變嚴重，正因為木質素這一路沒有被分出去，而是留在了產品裡——這是得率與壽命之間的直接交換。請學生在現場把這三條路的實體位置畫成一張物質流圖，並標出每一條的大致質量佔比。' },
+    { g: 3, t: '化學漿廠的黑液燃燒通常可供應全廠相當高比例的製程蒸汽，是紙廠能源自給的關鍵；機械漿則耗電高、又沒有黑液可燒，能源結構完全不同。請學生現場詢問並記錄三個數字：全廠自發電比例、每噸紙耗水量、水回收率，並問清楚「分母是什麼、包不包含冷卻水」。回來後與自己做手抄紙的耗水量做量級對比：你用了幾公升水做出幾克紙？換算成每噸紙是多少立方公尺？（通常會發現實驗室手作的單位耗水量遠高於工廠，因為工廠有回收系統。）' },
+    { g: 4, t: '黃變實驗給的答案是一個取捨：保留木質素可以少一段化學處理、少一批廢水、得率又高，但產品壽命短。這正是工業生態學要處理的問題——不是「哪個比較環保」，而是「用途與壽命是否匹配」。請據此提出至少一個可改善的循環節點，例如：短壽命用途（傳單、包裝）用高得率機械漿、長期保存文件用低木質素且去酸化的化學漿；或把回收報紙脫墨後降級使用（cascading use），讓纖維在報廢前多走一輪。' }
+  ],
+  green: [
+    { p: 11, why: '同一張紙上的內部遮罩對照，是零耗材、可即時判讀的分析設計。' },
+    { p: 1, why: '全部使用廢紙，實驗結束後仍可投入回收。' },
+    { p: 10, why: '直接檢視產品的降解特性，把「可降解 vs 耐久」的設計取捨變成可觀察的現象。' },
+    { p: 6, why: '以日光為唯一能量輸入。' }
+  ],
+  safety: [
+    '窗台放置務必以迴紋針或膠帶固定，避免掉落砸到樓下的人。',
+    '戶外組遇雨會泡爛，建議放入透明夾鏈袋（袋子透光不影響光氧化）。',
+    '拍照時避免逆光直視太陽，長時間注視強光下的白紙會造成眩光不適。',
+    '紙片邊緣鋒利，剪裁時使用安全剪刀。'
+  ],
+  observe: [
+    '第 7 天時，報紙曬到與沒曬到的交界線清楚嗎？影印紙呢？手抄紙呢？請把三者的交界清晰度排序並解釋。',
+    '暗處對照組有沒有變化？如果有，代表除了光氧化還有什麼機制在作用？（提示：紙張的酸性水解。）',
+    '如果把其中一張先泡過小蘇打水去酸化再曬，你預期黃變會變快還是變慢？這對圖書館的紙質文獻保存有什麼意義？'
+  ]
+};
+
+/* ---------------------------------------------------------------- W16 */
+ACTIVITY[16] = {
+  name: '廚房謠言對照實驗設計（自選一則傳言）',
+  minutes: 20,
+  materials: [
+    { item: '依所選傳言而定：小蘇打、白醋、鹽、檸檬、鋁箔、保鮮膜', source: '家庭常備' },
+    { item: '第 5 週的紫甘藍指示劑（或試紙）', source: '農廢' },
+    { item: '透明杯數個、計時器', source: '廢棄品' },
+    { item: '便利貼、簽字筆（做變因卡）', source: '家庭常備' },
+    { item: '手機（查證與拍照）', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '各組從清單選一則傳言（隔夜菜亞硝酸鹽、小蘇打加醋通水管、鋁箔溶出、檸檬水鹼化體質、鹽水去農藥、熱水結冰較快），改寫成一句可否證的敘述。' },
+    { t: '3–7 分', s: '問 AI 兩次——正向問「這是真的嗎」與反向問「有什麼證據反對」——把答案拆進「可驗證／需儀器／無法驗證」三格。' },
+    { t: '7–12 分', s: '設計對照實驗：寫出自變項、應變項、控制變因、對照組、重複次數，每一項寫一張便利貼貼成一排。' },
+    { t: '12–16 分', s: '現場做可做的那一段（例：用紫甘藍汁測檸檬水本身的 pH，而不是測「體質」）。' },
+    { t: '16–20 分', s: '寫出結論的三種措辭：支持、不支持、資料不足，選出最誠實的一種並說明理由。' }
+  ],
+  chem: [
+    { g: 1, t: '建立一套四步查證流程，並在你的傳言上實跑一次：①把傳言拆成可否證的最小主張（「隔夜菜有毒」不可否證，「隔夜菜的亞硝酸鹽濃度超過 X mg/kg」可以）；②檢查單位與量級——最常見的三個陷阱是把 mg/kg 當成 mg/L、把 μg 當成 mg、把「檢出」當成「超標」；③檢查相關與因果的混淆；④溯源到一手資料，而不是引用轉述。對 AI 的兩次回答逐條標記錯誤類型：事實錯誤、幻覺引用（引了不存在的文獻）、單位錯誤、過度概括，各舉一例。' },
+    { g: 2, t: '以「檸檬水能鹼化體質」做一次完整的化學合理性檢查。檸檬酸是弱酸（pKa₁ ＝ 3.13），喝下去先進胃（pH 1–2），根本不可能讓胃變鹼；血液則由碳酸–碳酸氫鹽緩衝系統嚴格控制在 pH 7.35–7.45，任何飲食都無法把它推出這個範圍，真的推出去了那叫酸血症或鹼血症，是病理狀態而不是養生。唯一真實的部分是：檸檬酸鹽被代謝後會產生碳酸氫鹽，經腎排出使尿液 pH 上升——「尿液變鹼」被偷換成「體質變鹼」，這是典型的偷換概念。現場用紫甘藍汁驗證檸檬水本身呈酸性，一秒拆穿。' },
+    { g: 3, t: '你選的傳言至少會踩到第 12 到第 15 週的一個觀念——大氣化學、燃燒產物、製漿造紙、或資料判讀。請把查證過程中每一個「需要回去翻課本才能確定」的點列成清單，那份清單就是你的 Exam 2 弱項表。特別注意期末考範圍裡最容易被謠言誤導的三個主題：燃燒產物的種類、粒狀物的粒徑與健康效應、以及濃度單位的換算。' },
+    { g: 4, t: '把同一套查證流程原封不動套用到參訪比較報告。你在污水廠與紙廠聽到的每一句「我們的水回收率是 X%」「能源自給率 Y%」，都要追問三件事：分母是什麼（包不包含冷卻水、製程水、生活用水）、是設計值還是實際運轉值、資料年份為何。請在比較報告的每一個數字後面加三欄註記：來源、分母定義、是否經查證。這才是工業生態學的比較，否則只是把兩份簡報的數字抄在一起。' }
+  ],
+  green: [
+    { p: 12, why: '全部使用食品級與家庭常備品，設計上排除意外風險。' },
+    { p: 1, why: '每組用量以毫升計，實驗結束幾乎不產生廢棄物。' },
+    { p: 11, why: '以現場即時測量取代事後推論，讓查證停在證據而不是意見。' }
+  ],
+  safety: [
+    '不得品嚐或吞食任何實驗樣品，即使材料本身是食品。',
+    '小蘇打與醋只能在開口容器中混合，絕不可加蓋。',
+    '若所選傳言涉及加熱、油炸、漂白水或密閉容器，一律改為「只做實驗設計、不做實作」。',
+    '隔夜菜相關測試只做外觀與氣味的非接觸觀察，不可食用；所有樣品當堂丟棄。'
+  ],
+  observe: [
+    'AI 在正向問與反向問之間，差異最大的是哪一句？這代表模型的什麼行為傾向？',
+    '你的對照實驗中最難控制的變因是什麼？如果控制不了，結論的措辭要怎麼降級才誠實？',
+    '若證據顯示「資料不足」，你會怎麼向家人說明這則傳言？請寫出兩句既不誇大也不武斷的話。'
+  ]
+};
+
+/* ---------------------------------------------------------------- W18 */
+ACTIVITY[18] = {
+  name: '廚餘堆肥瓶啟動（居家操作・線上同步示範）',
+  minutes: 20,
+  materials: [
+    { item: '有蓋塑膠罐或大寶特瓶', source: '廢棄品' },
+    { item: '廚餘：果皮、菜葉（切碎）', source: '廚餘' },
+    { item: '乾葉、碎報紙或咖啡渣', source: '農廢' },
+    { item: '園土或盆栽土一把（提供菌種）', source: '家庭常備' },
+    { item: '噴水瓶、錐子或釘子（打氣孔）', source: '家庭常備' },
+    { item: '標籤紙、手機（拍照上傳）', source: '家庭常備' }
+  ],
+  steps: [
+    { t: '0–3 分', s: '在罐身與罐蓋打 8–10 個透氣孔，貼標籤寫上姓名與啟動日期。' },
+    { t: '3–7 分', s: '底層鋪 2 cm 乾葉或碎報紙（褐色料），作為透氣層與碳源。' },
+    { t: '7–12 分', s: '加入切碎廚餘（綠色料），與褐色料以體積約 1：2 交錯堆疊，不要壓實。' },
+    { t: '12–16 分', s: '撒一把園土接入菌種，噴水到「握起來成團但不滴水」的濕度（約含水率 55%）。' },
+    { t: '16–20 分', s: '蓋上但不密封，拍第一張照片上傳課程系統，排定每 3 天翻堆一次的時程。' }
+  ],
+  chem: [
+    { g: 1, t: '這一瓶就是一個微型行動方案的完整示範，四段結構請照抄到你的期末報告：問題（廚餘含水率高、進焚化爐還要額外助燃能量）、化學論證（好氧分解 CₐH_bO_c + O₂ → CO₂ + H₂O + 熱 + 腐植質，反應放熱使堆體升溫到 50–60 °C，這也是殺滅病原的機制）、可量測指標（堆體溫度、體積減量率、氣味、翻堆次數）、預期成效（每公斤廚餘能轉出多少公克堆肥）。請用這四段檢查自己的報告，缺哪一段就補哪一段。' },
+    { g: 2, t: '用這一瓶當共同標的來校準評分尺規：全班先對「同一件事」評分，確認大家對每一級分的理解一致，再去互評各組報告，分數才有可比性。四個評分向度：化學論證是否正確（而不是「聽起來厲害」）、指標是否真的可量測、數量級是否合理（一瓶 500 g 廚餘不可能產出 5 公斤堆肥）、不確定性是否誠實揭露。請每人先獨立評一次、再組內對答案，找出分歧最大的那一項討論到共識。' },
+    { g: 3, t: '這瓶堆肥最大的不確定性是 C/N 比。好氧堆肥的最適 C/N 約 25–30：1；廚餘（綠色料）的 C/N 約 15–20：1 偏低，乾葉與碎報紙（褐色料）可達 100–500：1 偏高，所以要靠褐色料把整體比值拉上來。C/N 太低時多餘的氮以 NH₃ 逸失（聞到刺鼻氨味就是氮跑掉了，同時也是鄰居抗議的來源）；太高則微生物缺氮、分解極慢。請寫下「我怎麼知道我猜錯了」的三個檢驗指標：溫度不上升、開始發臭（轉厭氧）、兩週後體積幾乎沒減少。這就是誠實揭露不確定性的具體做法。' },
+    { g: 4, t: '對這一瓶問一次開學第一週的四個問題，整個學期就收攏了。會變成什麼：有機碳 → CO₂ 與腐植質，有機氮 → NH₄⁺ → NO₃⁻（第 1 週的氧化態變化）。去到哪裡：氣相的 CO₂ 與 NH₃、液相的滲出液、固相的腐植質（第 1 週的五圈層通量）。留多久：易分解糖類幾天、纖維素數週、木質素數月到數年（第 14、15 週的木質素化學）。對誰有害：滲出液 BOD 極高不可直接入水體（第 9 週）、厭氧時產生 CH₄ 與 H₂S（第 7 週的 pE 分帶）。一瓶廚餘，四個提問，一整個學期。' }
+  ],
+  green: [
+    { p: 1, why: '源頭減廢：廚餘不進焚化爐，直接在產生點轉化。' },
+    { p: 7, why: '產物腐植質回到土壤，養分完成閉環，本身即是再生原料的來源。' },
+    { p: 10, why: '設計上就是完全可生物降解的物質循環，沒有任何殘留物。' },
+    { p: 6, why: '常溫好氧分解，能量全部由微生物代謝自行提供。' }
+  ],
+  safety: [
+    '務必打透氣孔，絕不可密封：厭氧產氣會使容器膨脹甚至爆裂。',
+    '不加入肉類、油脂、乳製品與寵物排泄物，以免孳生病媒與強烈惡臭。',
+    '置於陽台或通風處，避免陽光直射造成過熱；每次操作後洗手。',
+    '出現白色菌絲屬正常現象；若出現惡臭與大量滲液，應補充褐色料並立即翻堆。'
+  ],
+  observe: [
+    '第 3 天把手貼在瓶身，溫度有沒有比環境高？升溫代表微生物代謝進行到哪一個階段？',
+    '兩週後體積減少了幾成？減少的那些質量主要以什麼形式離開了瓶子？',
+    '如果聞到刺鼻氨味，你應該加褐色料還是綠色料？請用 C/N 比寫出你的理由。'
+  ]
+};
+
+/* 把活動掛回 CONTENT，讓 VIEWS 一律經由 CONTENT[n].activity 取用 */
+Object.keys(ACTIVITY).forEach(function (k) {
+  if (CONTENT[k]) CONTENT[k].activity = ACTIVITY[k];
+});
+Object.keys(ACTIVITY_NONE).forEach(function (k) {
+  if (CONTENT[k]) CONTENT[k].activityNone = ACTIVITY_NONE[k];
+});
+
+
+/* =========================================================================
  * 【區塊 5／6】VIEWS — 畫面渲染（每個分頁一個 render 函式，回傳 HTML 字串）
  * -------------------------------------------------------------------------
  * 慣例：
@@ -1923,7 +2948,8 @@ VIEWS.overview = function () {
     '<div class="grid g3">' +
     VIEWS.ro('學校', c.school) + VIEWS.ro('系所', c.dept) + VIEWS.ro('學年期', c.term) +
     VIEWS.ro('課程名稱', c.courseName) + VIEWS.ro('課程代碼', c.courseCode) + VIEWS.ro('任課教師', c.teacher) +
-    VIEWS.ro('上課時間', c.classTime) + VIEWS.ro('上課地點', c.place) + VIEWS.ro('助教', c.ta) +
+    VIEWS.ro('上課時間', c.classTime) + VIEWS.ro('上課地點', c.place) +
+    VIEWS.ro('助教', c.ta + '（' + (c.taEmail || '') + '）') +
     '<div class="field"><label class="f">指導老師 1（可編輯，影響材料費 T 值）</label>' +
     '<input type="text" value="' + U.attr(c.advisor1) + '" oninput="ACT.setCourse(\'advisor1\',this.value)"></div>' +
     '<div class="field"><label class="f">指導老師 2（可編輯，預設空白）</label>' +
@@ -2006,8 +3032,36 @@ VIEWS.overview = function () {
     '<button class="btn ghost" onclick="document.getElementById(\'scoreBox\').value=\'\'">清空</button></div>' +
     '<div id="scoreMsg"></div></div>';
 
-  /* 5. 快速連結 */
-  h += '<div class="card"><h2><span class="eyebrow">05 / LINKS</span>快速連結（可複製給學生）</h2>' +
+  /* 5. 成績完成度 */
+  h += '<div class="card"><h2><span class="eyebrow">05 / GRADING</span>成績完成度' +
+    '<a class="pill teal" href="#/admin/grades" style="text-decoration:none">前往成績結算 →</a></h2>';
+  if (!ss.length) {
+    h += '<div class="alert info">尚未匯入學生名單，成績結算尚無法開始。</div>';
+  } else {
+    var comp = GRADE.completeness();
+    var done = comp.filter(function (c) { return c.filled >= c.total; }).length;
+    h += '<div class="stats" style="margin-bottom:10px">' +
+      '<div class="stat"><div class="k">已完成的評分項目</div><div class="v">' + done + ' / ' + comp.length + '</div><div class="u">全班都有分數的欄位數</div></div>' +
+      '<div class="stat t2"><div class="k">撲滿帳本筆數</div><div class="v">' + STORE.d.bank.length + '<span class="u"> 筆</span></div></div>' +
+      '<div class="stat t3"><div class="k">權重合計</div><div class="v">' + GRADE.weightSum() + '<span class="u"> %</span></div></div>' +
+      '<div class="stat t4"><div class="k">學期總成績平均</div><div class="v">' +
+      U.round1(ss.reduce(function (a, s) { return a + GRADE.row(s).total1; }, 0) / ss.length) + '</div></div>' +
+      '</div>' +
+      '<div class="tblwrap"><table class="t"><thead><tr><th>評分項目</th><th style="width:110px">型式</th>' +
+      '<th style="width:120px">已填人數</th><th style="width:90px">完成率</th></tr></thead><tbody>' +
+      comp.map(function (c) {
+        var full = c.filled >= c.total;
+        return '<tr><td>' + U.esc(c.name) + '</td>' +
+          '<td>' + (c.auto ? '<span class="pill gray">自動</span>' : '<span class="pill teal">手動</span>') + '</td>' +
+          '<td class="num">' + c.filled + ' / ' + c.total + '</td>' +
+          '<td class="num">' + (full ? '<span class="pill green">100%</span>' : U.pct(c.filled, c.total)) + '</td></tr>';
+      }).join('') + '</tbody></table></div>' +
+      '<p class="hint">自動欄若顯示未滿，代表該生還沒有點名紀錄或練習成績；手動欄未滿代表還沒登記分數。</p>';
+  }
+  h += '</div>';
+
+  /* 6. 快速連結 */
+  h += '<div class="card"><h2><span class="eyebrow">06 / LINKS</span>快速連結（可複製給學生）</h2>' +
     VIEWS.copyRow('學生入口', U.urlFor('#/student')) +
     '<hr class="divider"><p class="hint">各週練習網址一覽：</p>' +
     STORE.d.plan.filter(function (r) { return CONTENT[r.week] && CONTENT[r.week].quiz && CONTENT[r.week].quiz.length; })
@@ -2108,6 +3162,32 @@ VIEWS.contentTab = function () {
     h += VIEWS.weekCard(r);
   });
   h += '</div></div>';
+
+  /* 20 分鐘動手做活動一覽（教授版） */
+  var acts = [];
+  STORE.d.plan.forEach(function (r) { if (CONTENT[r.week] && CONTENT[r.week].activity) acts.push(r.week); });
+  h += '<div class="card"><h2><span class="eyebrow">02 / HANDS-ON</span>每週 20 分鐘動手做' +
+    '<span class="pill gold">' + acts.length + ' 個活動</span></h2>' +
+    '<p class="hint">全部材料取自廢棄品／農廢／廚餘／家庭常備，零花費；每個活動的化學連結逐條對應該週學習目標。點週次展開完整內容（學生在 <code>#/week/N</code> 也看得到同一份）。</p>' +
+    '<div class="tblwrap"><table class="t"><thead><tr><th style="width:70px">週次</th><th>活動名稱</th>' +
+    '<th style="width:110px">綠色化學原則</th><th style="width:90px">化學連結</th></tr></thead><tbody>' +
+    acts.map(function (w) {
+      var A = CONTENT[w].activity;
+      return '<tr><td style="text-align:center"><b>W' + w + '</b></td>' +
+        '<td>🧪 ' + U.esc(A.name) + '</td>' +
+        '<td style="text-align:center">' + (A.green || []).map(function (g) { return g.p; }).join('、') + '</td>' +
+        '<td style="text-align:center">' + (A.chem || []).length + ' 條</td></tr>';
+    }).join('') + '</tbody></table></div>';
+  if (Object.keys(ACTIVITY_NONE).length) {
+    h += '<p class="hint" style="margin-top:10px">無活動週：' +
+      Object.keys(ACTIVITY_NONE).map(function (k) { return 'W' + k; }).join('、') +
+      '（考試週與假日週，各週頁面已註明原因）。</p>';
+  }
+  h += '</div>';
+  acts.forEach(function (w) {
+    h += '<details style="margin:10px 0"><summary style="cursor:pointer;font-weight:800;color:var(--navy);padding:8px 4px">' +
+      '第 ' + w + ' 週　🧪 ' + U.esc(CONTENT[w].activity.name) + '</summary>' + VIEWS.activity(w) + '</details>';
+  });
   return h;
 };
 
@@ -2120,7 +3200,63 @@ VIEWS.weekCard = function (r) {
   return '<a class="wk' + cls + '" href="#/week/' + r.week + '">' +
     '<div class="n">WEEK ' + r.week + '　' + tag + '</div>' +
     '<div class="tt">' + U.esc((C && C.title) ? C.title.slice(0, 34) : (r.topic || '（未填主題）').slice(0, 34)) + '</div>' +
-    '<div class="dt">' + U.esc(r.date || '未填日期') + '　·　' + (parseFloat(r.hours) || 0) + ' 小時</div></a>';
+    '<div class="dt">' + U.esc(r.date || '未填日期') + '　·　' + (parseFloat(r.hours) || 0) + ' 小時</div>' +
+    (C && C.activity ? '<div class="dt" style="margin-top:4px;color:#9A6B00">🧪 ' + U.esc(C.activity.name) + '</div>' : '') +
+    '</a>';
+};
+
+/* =========================================================================
+ * 動手做活動區塊（教授版「課程內容」與學生 #/week/N 共用）
+ * ========================================================================= */
+VIEWS.srcCls = function (src) {
+  return src === '農廢' ? ' class="s2"' : (src === '廚餘' ? ' class="s3"' : (src === '廢棄品' ? '' : ' class="s4"'));
+};
+VIEWS.activity = function (n) {
+  var C = CONTENT[n];
+  if (!C) return '';
+  if (!C.activity) {
+    return C.activityNone
+      ? '<div class="card"><h2><span class="eyebrow">HANDS-ON</span>🧪 20 分鐘動手做</h2>' +
+        '<div class="actnone">本週不安排動手做。' + U.esc(C.activityNone) + '</div></div>'
+      : '';
+  }
+  var A = C.activity, goals = C.goals || [];
+  var h = '<div class="card"><h2><span class="eyebrow">HANDS-ON</span>🧪 20 分鐘動手做' +
+    '<span class="pill gold">零花費材料</span></h2><div class="act">' +
+    '<div class="asub">WEEK ' + n + ' · HANDS-ON ACTIVITY</div>' +
+    '<h3>' + U.esc(A.name) + '<span class="amin">' + (A.minutes || 20) + ' 分鐘</span></h3>';
+
+  h += '<h4>① 材料（全部取自廢棄品／農廢／廚餘／家庭常備，零花費）</h4><div class="mats">' +
+    (A.materials || []).map(function (m) {
+      return '<span class="mat">' + U.esc(m.item) + '<em' + VIEWS.srcCls(m.source) + '>' + U.esc(m.source) + '</em></span>';
+    }).join('') + '</div>';
+
+  h += '<h4>② 步驟時間軸</h4><div class="tl">' +
+    (A.steps || []).map(function (s) {
+      return '<div class="tli"><b>' + U.esc(s.t) + '</b>' + U.esc(s.s) + '</div>';
+    }).join('') + '</div>';
+
+  h += '<h4>③ 化學連結（逐條對應本週學習目標）</h4>' +
+    (A.chem || []).map(function (c) {
+      var lab = c.g > 0 ? ('目標 ' + c.g) : '核心機制';
+      var tip = (c.g > 0 && goals[c.g - 1]) ? String(goals[c.g - 1]).replace(/<[^>]+>/g, '') : '';
+      return '<div class="chemli"><span class="gtag" title="' + U.attr(tip) + '">' + lab + '</span>' +
+        U.esc(c.t) + '</div>';
+    }).join('');
+
+  h += '<h4>④ 綠色化學原則對照</h4><div>' +
+    (A.green || []).map(function (g) {
+      return '<span class="gp"><b>原則 ' + g.p + '</b>' + U.esc(g.why) + '</span>';
+    }).join('') + '</div>';
+
+  h += '<h4>⑤ 安全注意</h4><div class="safe"><ul>' +
+    (A.safety || []).map(function (s) { return '<li>' + U.esc(s) + '</li>'; }).join('') + '</ul></div>';
+
+  h += '<h4>⑥ 觀察紀錄與思考題</h4><div class="obs"><ol>' +
+    (A.observe || []).map(function (s) { return '<li>' + U.esc(s) + '</li>'; }).join('') + '</ol></div>';
+
+  h += '</div></div>';
+  return h;
 };
 
 /* =========================================================================
@@ -2133,7 +3269,7 @@ VIEWS.log = function () {
   STORE.ensureWeekDefault(w);           // 進入某週：尚未建立者一律預設出席
   var row = STORE.planRow(w), L = STORE.logOf(w), ss = STORE.d.students;
   var cnt = STORE.weekCount(w), tc = STORE.teacherCount(), T = tc.T;
-  var M = ss.length, N = cnt.present;
+  var M = ss.length, N = cnt.present, IN = cnt.inClass;
   var cls = STORE.classAtt();
 
   var h = '<div class="card"><h2><span class="eyebrow">01 / CLASS LOG</span>教室日誌</h2>' +
@@ -2154,28 +3290,55 @@ VIEWS.log = function () {
   } else {
     h += '<div class="attgrid">' + ss.map(function (s) {
       var st = L.att[s.id] || 'none';
-      return '<button class="attbtn" data-s="' + st + '" onclick="ACT.cycle(\'' + s.id + '\')">' +
-        '<span class="sq">' + CONFIG.ATT_SYMBOL[st] + '</span>' +
+      return '<button class="attbtn" data-s="' + st + '" onclick="ACT.cycle(\'' + s.id + '\')" ' +
+        'title="' + U.attr(CONFIG.ATT_LABEL[st] || st) + '（點一下換下一個狀態）">' +
+        '<span class="sq">' + (CONFIG.ATT_SYMBOL[st] || '?') + '</span>' +
         '<span class="nm">' + U.esc(s.name || '（未命名）') + '</span>' +
+        '<span class="st">' + U.esc(CONFIG.ATT_SHORT[st] || st) + '</span>' +
         '<span class="seat">' + U.esc(s.seat) + '</span></button>';
     }).join('') + '</div>' +
-      '<p class="hint">點一下循環：出席 → 缺席 → 請假 → 出席。進入某週時系統預設全員出席（＝視為已點名）；' +
-      '按「清除本週」後全部回到未點名。</p>';
+      '<div class="attlegend">' +
+      ['present', 'late1', 'late2', 'absent', 'leave', 'none'].map(function (k) {
+        var col = { present: 'var(--green)', late1: '#E8B004', late2: '#D97706', absent: 'var(--danger)', leave: '#5B7C95', none: '#B9C4CC' }[k];
+        return '<span><i style="background:' + col + '"></i>' + CONFIG.ATT_SYMBOL[k] + '　' + U.esc(CONFIG.ATT_LABEL[k]) +
+          (typeof CONFIG.ATT_WEIGHT[k] === 'number' && k !== 'none' ? '（係數 ' + CONFIG.ATT_WEIGHT[k] + '）' : '') + '</span>';
+      }).join('') + '</div>' +
+      '<p class="hint">點一下依序循環：出席 → 遲到/早退≤20分 → 遲到/早退>20分（或早退未告知） → 缺席 → 請假 → 出席。' +
+      '進入某週時系統預設全員出席（＝視為已點名）；按「清除本週」後全部回到未點名。' +
+      '括號內的係數用於「成績結算」分頁的出席原始分計算。</p>';
+
+    /* 請假者的假別註記 */
+    var lv = ss.filter(function (s) { return L.att[s.id] === 'leave'; });
+    if (lv.length) {
+      h += '<hr class="divider"><label class="f">請假假別註記（' + lv.length + ' 位）</label><div class="leavesel">' +
+        lv.map(function (s) {
+          return '<div class="lv"><b>' + U.esc(s.name || '（未命名）') + '</b>' +
+            '<select onchange="ACT.setLeaveKind(\'' + s.id + '\',this.value)">' +
+            ['<option value="">（未註記）</option>'].concat(CONFIG.LEAVE_KINDS.map(function (k) {
+              return '<option value="' + U.attr(k) + '"' + (L.leaveKind[s.id] === k ? ' selected' : '') + '>' + U.esc(k) + '</option>';
+            })).join('') + '</select></div>';
+        }).join('') + '</div>' +
+        '<p class="hint">未依 SOP 請假的次數，請到「成績結算」分頁的「未依 SOP 請假」欄登記（每次總成績 −' +
+        (GRADE.W().sopPenalty) + ' 分）。</p>';
+    }
   }
   h += '</div>';
 
   /* 摘要列 */
   h += '<div class="card"><h2><span class="eyebrow">02 / SUMMARY</span>本週摘要與材料費</h2>' +
-    '<div class="banner">本週出席 <b>' + N + '</b> 人／共 ' + M + ' 人（缺席 ' + cnt.absent + '、請假 ' + cnt.leave + '）' +
-    '　→　加上授課教師 ' + T + ' 位＝材料費 <b>' + (N + T) + '</b> 份</div>';
+    '<div class="banner">本週上課人數 <b>' + IN + '</b> 人／共 ' + M + ' 人' +
+    '（出席 ' + cnt.present + '、遲到/早退≤20分 ' + cnt.late1 + '、遲到/早退>20分 ' + cnt.late2 +
+    '、缺席 ' + cnt.absent + '、請假 ' + cnt.leave + '）' +
+    '　→　加上授課教師 ' + T + ' 位＝材料費 <b>' + (IN + T) + '</b> 份</div>';
   if (!tc.filled) h += '<div class="alert red">請先到總覽基本資料填指導老師姓名（目前兩欄皆空，T 暫以 2 計）</div>';
   if (cnt.none > 0) h += '<div class="alert red">還有 ' + cnt.none + ' 位未點名，這週的數字先不算數</div>';
   h += '<div class="stats" style="margin-top:12px">' +
     '<div class="stat"><div class="k">本週出席率</div><div class="v">' + U.pct(N, M) + '</div><div class="u">出席 ÷ 總報名人數</div></div>' +
     '<div class="stat t2"><div class="k">全班累計出席率</div><div class="v">' + U.pct(cls.present, cls.denom) + '</div><div class="u">請假與缺席都算分母</div></div>' +
     '<div class="stat t3"><div class="k">已完成點名週數</div><div class="v">' + cls.weeks + '<span class="u"> 週</span></div></div>' +
-    '<div class="stat t4"><div class="k">材料費份數</div><div class="v">' + (N + T) + '<span class="u"> 份</span></div></div>' +
+    '<div class="stat t4"><div class="k">材料費份數</div><div class="v">' + (IN + T) + '<span class="u"> 份</span></div></div>' +
     '</div>' +
+    '<p class="hint">上課人數＝出席＋兩級遲到/早退（人有到就有領材料）；出席率的定義維持不變（分母含請假與缺席）。</p>' +
     '<div class="alert warn" style="margin-top:12px"><b>' + U.esc(CONFIG.MATERIAL_FORMULA) + '</b>' +
     '　（本課程單價：' + (STORE.d.course.materialUnitPrice || 250) + ' 元，可於「備份與設定」調整）</div>' +
     '</div>';
@@ -2192,11 +3355,178 @@ VIEWS.log = function () {
     'oninput="ACT.setRecord(\'caption\',this.value)" placeholder="例：圖 1　水質檢測實作（2026/10/05，環境學院 A124）"></div>' +
     '</div>' +
     '<div class="btnrow"><button class="btn teal" onclick="ACT.printRecords()">🖨 列印課程紀錄（參）</button></div></div>';
+
+  /* 照片牆（影像存 IndexedDB，每週最多 5 張） */
+  var pn = L.photos.length, PM = CONFIG.PHOTO.MAX_PER_WEEK;
+  h += '<div class="card"><h2><span class="eyebrow">04 / PHOTOS</span>本週照片牆' +
+    '<span class="pill ' + (pn >= PM ? 'red' : 'teal') + '">' + pn + ' / ' + PM + ' 張</span></h2>' +
+    '<p class="hint">選檔後自動壓縮（最長邊 ' + CONFIG.PHOTO.MAX_EDGE + 'px、JPEG 品質 ' + CONFIG.PHOTO.QUALITY +
+    '）並存入瀏覽器的 IndexedDB（<code>' + CONFIG.PHOTO.DB + '</code>）；' +
+    '每週上限 ' + PM + ' 張，超出會被擋下。圖說請依 APA 原則寫「說明（日期，地點）」。</p>' +
+    '<div class="pdrop">📷 每週 0–' + PM + ' 張　·　可一次多選　·　影像不會寫進 localStorage，容量不會爆掉</div>' +
+    '<input type="file" id="photoFile" accept="image/*" multiple style="display:none" onchange="ACT.addPhotos(this)">' +
+    '<div class="btnrow">' +
+    '<button class="btn"' + (pn >= PM ? ' disabled style="opacity:.5;cursor:not-allowed"' : '') +
+    ' onclick="document.getElementById(\'photoFile\').click()">＋ 選擇照片（還可加 ' + Math.max(0, PM - pn) + ' 張）</button>' +
+    '<button class="btn ghost" onclick="ACT.reloadPhotos()">🔄 重新載入縮圖</button>' +
+    '</div>' +
+    '<div class="photowall" id="photowall">' +
+    (pn ? '<div class="hint">載入中…</div>' : '<div class="hint">本週尚未上傳照片。</div>') +
+    '</div></div>';
+  return h;
+};
+
+/* 照片牆縮圖：非同步從 IndexedDB 取回後填入 #photowall */
+VIEWS.renderPhotos = function () {
+  var box = document.getElementById('photowall');
+  if (!box) return;
+  var w = VIEWS.logWeek || 1, L = STORE.logOf(w);
+  if (!L.photos.length) { box.innerHTML = '<div class="hint">本週尚未上傳照片。</div>'; return; }
+  PHOTO.getMany(L.photos.map(function (p) { return p.k; })).then(function (arr) {
+    var map = {};
+    arr.forEach(function (o) { map[o.k] = o.v; });
+    box.innerHTML = L.photos.map(function (p, i) {
+      var url = map[p.k] || '';
+      var kb = url ? (PHOTO.bytesOf(url) / 1024).toFixed(0) + ' KB' : '影像遺失';
+      return '<div class="pcard">' +
+        (url ? '<img class="ph" src="' + url + '" alt="' + U.attr(p.cap || ('第 ' + w + ' 週照片 ' + (i + 1))) + '">'
+             : '<div class="ph" style="display:flex;align-items:center;justify-content:center;color:#94A3B8;font-size:12.5px">影像遺失</div>') +
+        '<div class="pb">' +
+        '<div class="pm"><span>圖 ' + (i + 1) + '　<code>' + U.esc(p.k) + '</code></span><span>' + kb + '</span></div>' +
+        '<input type="text" value="' + U.attr(p.cap || '') + '" placeholder="圖 ' + (i + 1) + '　說明（日期，地點）" ' +
+        'oninput="ACT.setPhotoCap(' + i + ',this.value)">' +
+        '<div class="btnrow" style="margin-top:7px">' +
+        '<button class="btn sm danger" onclick="ACT.delPhoto(' + i + ')">🗑 刪除</button></div>' +
+        '</div></div>';
+    }).join('');
+  }, function (e) {
+    box.innerHTML = '<div class="alert red">照片讀取失敗：' + U.esc(e && e.message ? e.message : String(e)) + '</div>';
+  });
+};
+
+/* =========================================================================
+ * 分頁六：成績結算（僅教授版）
+ * ========================================================================= */
+VIEWS.grades = function () {
+  var ss = STORE.d.students, W = GRADE.W();
+  var h = '<div class="card"><h2><span class="eyebrow">01 / GRADES</span>學期成績結算' +
+    '<span class="pill teal">' + ss.length + ' 位</span>' +
+    (GRADE.weightSum() === 100 ? '<span class="pill green">權重合計 100%</span>'
+                               : '<span class="pill red">權重合計 ' + GRADE.weightSum() + '%（不是 100，請到備份與設定調整）</span>') +
+    '</h2>' +
+    '<div class="alert info"><b>計算式</b>：學期總成績 ＝ Σ（各項 0–100 分 × 權重） ＋ 分數撲滿加分 − 未依 SOP 請假扣分，下限 0。<br>' +
+    '平時 ' + (W.att + W.disc + W.ai) + '%（出席 ' + W.att + '、討論及 Zuvio 雲端回饋 ' + W.disc + '、AI 翻轉及 AI 模組 ' + W.ai + '）' +
+    '＋期中考 ' + W.mid + '%＋期末考 ' + W.fin + '%' +
+    '＋參訪報告 ' + (W.v1 + W.v2 + W.v3) + '%（書面 ' + W.v1 + '＋組間互評 ' + W.v2 + '＋組內互評 ' + W.v3 + '）' +
+    '＋行動報告 ' + (W.a1 + W.a2 + W.a3) + '%（' + W.a1 + '＋' + W.a2 + '＋' + W.a3 + '）。<br>' +
+    '<b>分數撲滿</b>為額外加分：累計點數封頂 ' + W.bankCap + ' 點，÷ ' + W.bankDiv + ' ＝ 加分，至多 +' + W.bonusMax + ' 分。' +
+    '<b>未依 SOP 請假</b>每次總成績 −' + W.sopPenalty + ' 分。</div>' +
+    '<p class="hint">灰底欄位為<b>自動計算</b>（出席由教室日誌、AI 由練習得分表），可直接輸入數字<b>覆寫</b>（覆寫後底色轉金黃）；' +
+    '清空該欄即回到自動值。所有輸入即時存檔。</p>';
+
+  if (!ss.length) {
+    h += '<div class="alert info">尚未匯入學生名單。請先到「學生名單」分頁貼上匯入。</div></div>';
+    return h;
+  }
+
+  /* --- 主表 --- */
+  h += '<div class="tblwrap"><table class="g"><thead>' +
+    '<tr><th rowspan="2" style="min-width:150px">學生</th>' +
+    CONFIG.GRADE_COLS.map(function (c) { return '<th>' + U.esc(c.name) + '</th>'; }).join('') +
+    '<th>撲滿<br>點數</th><th>撲滿<br>加分</th><th>SOP<br>違規</th>' +
+    '<th rowspan="2">總成績<br>(一位小數)</th><th rowspan="2">總成績<br>(四捨五入)</th></tr>' +
+    '<tr>' + CONFIG.GRADE_COLS.map(function (c) {
+      return '<th class="wgt">' + W[c.w] + '%' + (c.auto ? ' 自動' : '') + '</th>';
+    }).join('') +
+    '<th class="wgt">上限 ' + W.bankCap + '</th><th class="wgt">最多 +' + W.bonusMax + '</th><th class="wgt">每次 −' + W.sopPenalty + '</th></tr>' +
+    '</thead><tbody>';
+
+  var totals = {}, tcount = {}, sumTot = 0;
+  h += ss.map(function (s, i) {
+    var g = STORE.gradeOf(s.id), R = GRADE.row(s), att = STORE.studentAtt(s.id);
+    sumTot += R.total1;
+    var tds = CONFIG.GRADE_COLS.map(function (c) {
+      var manual = g[c.k], auto = c.auto ? GRADE.autoVal(s, c.k) : null;
+      var shown = (manual === null || typeof manual === 'undefined') ? '' : manual;
+      var v = R.parts[c.k];
+      if (v !== null && typeof v !== 'undefined') { totals[c.k] = (totals[c.k] || 0) + v; tcount[c.k] = (tcount[c.k] || 0) + 1; }
+      var ph = c.auto ? (auto === null ? '無資料 0' : String(auto)) : '—';
+      var tip = c.auto
+        ? (c.k === 'att'
+            ? '自動值＝Σ狀態係數 ÷ 已點名 ' + att.counted + ' 週 × 100；請假 ' + att.leaves + ' 次、遲到 ' + att.lates + ' 次、缺席 ' + att.absents + ' 次'
+            : '自動值＝練習得分表個人平均')
+        : '手動輸入 0–100';
+      return '<td' + (c.auto ? ' class="auto"' : '') + ' title="' + U.attr(tip) + '">' +
+        '<input type="number" min="0" max="100" step="0.1" value="' + U.attr(shown) + '" placeholder="' + U.attr(ph) + '"' +
+        (shown !== '' && c.auto ? ' class="ov"' : '') +
+        ' onchange="ACT.setGrade(\'' + s.id + '\',\'' + c.k + '\',this.value)"></td>';
+    }).join('');
+    return '<tr><td class="name">' + U.esc(s.seat ? s.seat + '　' : '') + U.esc(s.name || '（未命名）') +
+      (att.leaves ? '<br><span class="gnote">請假 ' + att.leaves + ' 次</span>' : '') + '</td>' +
+      tds +
+      '<td class="auto" title="撲滿帳本累計，封頂 ' + W.bankCap + ' 點">' + R.bankPts +
+      (R.bankPts > W.bankCap ? '<br><span class="gnote">計 ' + R.bankCapped + '</span>' : '') + '</td>' +
+      '<td class="auto"><b>+' + R.bonus + '</b></td>' +
+      '<td><input type="number" min="0" step="1" value="' + (g.sop || 0) + '" style="width:52px"' +
+      ' onchange="ACT.setGrade(\'' + s.id + '\',\'sop\',this.value)"></td>' +
+      '<td class="tot">' + R.total1.toFixed(1) + '</td>' +
+      '<td class="tot">' + R.totalInt + '</td></tr>';
+  }).join('');
+
+  h += '</tbody><tfoot><tr><td class="name">全班平均</td>' +
+    CONFIG.GRADE_COLS.map(function (c) {
+      return '<td>' + (tcount[c.k] ? U.round1(totals[c.k] / tcount[c.k]) : '—') + '</td>';
+    }).join('') +
+    '<td>—</td><td>—</td><td>—</td>' +
+    '<td>' + (ss.length ? U.round1(sumTot / ss.length).toFixed(1) : '—') + '</td><td>—</td></tr></tfoot></table></div>' +
+    '<div class="btnrow">' +
+    '<button class="btn navy" onclick="ACT.exportGradeCSV()">⬇ 匯出成績總表 CSV</button>' +
+    '<button class="btn teal" onclick="ACT.printGrades()">🖨 列印成績總表（A4 橫式）</button>' +
+    '<button class="btn ghost" onclick="ACT.clearOverrides()">↩ 清除全部自動欄覆寫</button>' +
+    '</div></div>';
+
+  /* --- 分數撲滿帳本 --- */
+  h += '<div class="card"><h2><span class="eyebrow">02 / POINT BANK</span>分數撲滿帳本' +
+    '<span class="pill gold">共 ' + STORE.d.bank.length + ' 筆</span></h2>' +
+    '<div class="alert warn"><b>點數規則</b>：' + CONFIG.BANK_RULES.map(function (r) { return U.esc(r); }).join('　·　') +
+    '。累計封頂 ' + W.bankCap + ' 點，÷ ' + W.bankDiv + ' 換算為加分，至多 +' + W.bonusMax + ' 分。</div>' +
+    '<div class="grid g4">' +
+    '<div class="field"><label class="f">日期</label><input type="text" id="bkDate" value="' + U.attr(U.today()) + '" placeholder="YYYY/MM/DD"></div>' +
+    '<div class="field"><label class="f">學生</label><select id="bkStu">' +
+    ss.map(function (s) { return '<option value="' + U.attr(s.id) + '">' + U.esc((s.seat ? s.seat + ' ' : '') + (s.name || '（未命名）')) + '</option>'; }).join('') +
+    '</select></div>' +
+    '<div class="field"><label class="f">事由</label><input type="text" id="bkWhy" placeholder="例：口述詳答（碳酸系統）"></div>' +
+    '<div class="field"><label class="f">點數</label><input type="number" id="bkPt" step="1" value="1"></div>' +
+    '</div><div class="btnrow"><button class="btn" onclick="ACT.addBank()">＋ 新增一筆</button></div>';
+
+  if (!STORE.d.bank.length) {
+    h += '<div class="alert info">帳本目前是空的。上課時當場登記，成績結算的撲滿加分就會自動更新。</div>';
+  } else {
+    var byStu = {};
+    STORE.d.bank.forEach(function (r) { byStu[r.sid] = (byStu[r.sid] || 0) + (parseFloat(r.pt) || 0); });
+    h += '<div class="banklist"><table class="t"><thead><tr><th style="width:120px">日期</th><th style="width:160px">學生</th>' +
+      '<th>事由</th><th style="width:70px">點數</th><th style="width:60px">刪除</th></tr></thead><tbody>' +
+      STORE.d.bank.slice().reverse().map(function (r) {
+        var s = ss.filter(function (x) { return x.id === r.sid; })[0];
+        var idx = STORE.d.bank.indexOf(r);
+        return '<tr><td>' + U.esc(r.date) + '</td>' +
+          '<td>' + U.esc(s ? ((s.seat ? s.seat + ' ' : '') + s.name) : '（已刪除的學生）') + '</td>' +
+          '<td>' + U.esc(r.why) + '</td><td class="num">' + r.pt + '</td>' +
+          '<td style="text-align:center"><button class="btn sm danger" onclick="ACT.delBank(' + idx + ')">✕</button></td></tr>';
+      }).join('') + '</tbody></table></div>' +
+      '<p class="hint" style="margin-top:10px">各生累計：' +
+      ss.map(function (s) {
+        var p = byStu[s.id] || 0;
+        return U.esc(s.name || '（未命名）') + ' ' + p + ' 點（+' + GRADE.bonusOf(s.id) + '）';
+      }).join('　·　') + '</p>' +
+      '<div class="btnrow"><button class="btn ghost sm" onclick="ACT.exportBankCSV()">⬇ 匯出撲滿帳本 CSV</button></div>';
+  }
+  h += '</div>';
   return h;
 };
 
 /* =========================================================================
- * 分頁六：備份與設定
+ * 分頁七：備份與設定
  * ========================================================================= */
 VIEWS.backup = function () {
   var c = STORE.d.course;
@@ -2206,7 +3536,8 @@ VIEWS.backup = function () {
     VIEWS.inp('課程名稱', 'courseName', c.courseName) + VIEWS.inp('課程代碼', 'courseCode', c.courseCode) +
     VIEWS.inp('學年期字串', 'term', c.term) + VIEWS.inp('任課教師', 'teacher', c.teacher) +
     VIEWS.inp('指導老師 1', 'advisor1', c.advisor1) + VIEWS.inp('指導老師 2', 'advisor2', c.advisor2) +
-    VIEWS.inp('助教', 'ta', c.ta) + VIEWS.inp('上課地點', 'place', c.place) +
+    VIEWS.inp('助教', 'ta', c.ta) + VIEWS.inp('助教信箱', 'taEmail', c.taEmail) +
+    VIEWS.inp('上課地點', 'place', c.place) +
     VIEWS.inp('上課時間', 'classTime', c.classTime) + VIEWS.inp('教科書', 'textbook', c.textbook) +
     '<div class="field"><label class="f">總週數（' + CONFIG.WEEK_MIN + '–' + CONFIG.WEEK_MAX + '）</label>' +
     '<input type="number" min="' + CONFIG.WEEK_MIN + '" max="' + CONFIG.WEEK_MAX + '" value="' + c.totalWeeks + '" onchange="ACT.setWeeks(this)"></div>' +
@@ -2214,7 +3545,35 @@ VIEWS.backup = function () {
     '<input type="number" min="0" step="1" value="' + (c.materialUnitPrice || 250) + '" onchange="ACT.setCourse(\'materialUnitPrice\', parseFloat(this.value)||0, true)"></div>' +
     '</div><p class="hint">修改總週數會同步調整課程規劃表列數與教室日誌的週次選單；縮短週數會截斷後面的規劃列，請先備份。</p></div>';
 
-  h += '<div class="card"><h2><span class="eyebrow">02 / BACKUP</span>備份與還原</h2>' +
+  /* 成績權重 */
+  var W = GRADE.W();
+  var wlist = [
+    { k: 'att', n: '出席' }, { k: 'disc', n: '討論與 Zuvio' }, { k: 'ai', n: 'AI 翻轉與模組' },
+    { k: 'mid', n: '期中考' }, { k: 'fin', n: '期末考' },
+    { k: 'v1', n: '參訪·書面' }, { k: 'v2', n: '參訪·組間' }, { k: 'v3', n: '參訪·組內' },
+    { k: 'a1', n: '行動·書面' }, { k: 'a2', n: '行動·組間' }, { k: 'a3', n: '行動·組內' }
+  ];
+  h += '<div class="card"><h2><span class="eyebrow">02 / WEIGHTS</span>學期成績權重' +
+    (GRADE.weightSum() === 100 ? '<span class="pill green">合計 100%</span>'
+                               : '<span class="pill red">合計 ' + GRADE.weightSum() + '%</span>') + '</h2>' +
+    '<p class="hint">預設依教學計畫表：平時 26（9＋6＋11）＋期中 25＋期末 25＋參訪 12（3＋4＋5）＋行動 12（3＋4＋5）＝ 100。' +
+    '改動後「成績結算」分頁與課程範本會立即套用新權重。</p>' +
+    '<div class="grid g4">' +
+    wlist.map(function (x) {
+      return '<div class="field"><label class="f">' + U.esc(x.n) + '（%）</label>' +
+        '<input type="number" min="0" step="0.5" value="' + W[x.k] + '" onchange="ACT.setWeight(\'' + x.k + '\',this.value)"></div>';
+    }).join('') +
+    '<div class="field"><label class="f">撲滿點數上限</label><input type="number" min="0" step="1" value="' + W.bankCap +
+    '" onchange="ACT.setWeight(\'bankCap\',this.value)"></div>' +
+    '<div class="field"><label class="f">點數換算除數</label><input type="number" min="1" step="1" value="' + W.bankDiv +
+    '" onchange="ACT.setWeight(\'bankDiv\',this.value)"></div>' +
+    '<div class="field"><label class="f">撲滿加分上限</label><input type="number" min="0" step="1" value="' + W.bonusMax +
+    '" onchange="ACT.setWeight(\'bonusMax\',this.value)"></div>' +
+    '<div class="field"><label class="f">SOP 違規每次扣分</label><input type="number" min="0" step="0.5" value="' + W.sopPenalty +
+    '" onchange="ACT.setWeight(\'sopPenalty\',this.value)"></div>' +
+    '</div><div class="btnrow"><button class="btn ghost" onclick="ACT.resetWeights()">↩ 回復預設權重</button></div></div>';
+
+  h += '<div class="card"><h2><span class="eyebrow">03 / BACKUP</span>備份與還原</h2>' +
     '<div class="btnrow">' +
     '<button class="btn" onclick="ACT.exportBackup()">⬇ 匯出完整備份（JSON）</button>' +
     '<button class="btn teal" onclick="document.getElementById(\'impFile\').click()">📂 匯入備份（選檔）</button>' +
@@ -2225,17 +3584,44 @@ VIEWS.backup = function () {
     '<hr class="divider"><label class="f">或直接貼上備份／範本 JSON</label>' +
     '<textarea id="impBox" placeholder="貼上先前匯出的 JSON 內容…"></textarea>' +
     '<div class="btnrow"><button class="btn" onclick="ACT.importPaste()">📥 匯入貼上的 JSON</button></div>' +
-    '<div class="alert info" style="margin-top:12px"><b>課程範本</b>只含課程基本資料與課程規劃表，' +
+    '<div class="alert info" style="margin-top:12px"><b>課程範本</b>只含課程基本資料、課程規劃表與成績權重，' +
     '<u>不含學生名單、點名與成績</u>。要開另一門課時，把範本匯入新的空白系統即可沿用版面與流程。</div>' +
+    '<div class="alert warn"><b>完整備份 JSON 不含照片影像</b>（避免檔案爆量）：備份裡只有照片的張數與圖說。' +
+    '照片影像請用下方「匯出照片備份」另存一份。</div>' +
     '</div>';
 
-  h += '<div class="card"><h2><span class="eyebrow">03 / STATUS</span>儲存狀態</h2><div class="stats">' +
+  /* 照片備份 */
+  var pw = 0, pc = 0;
+  Object.keys(STORE.d.log).forEach(function (k) {
+    var n = (STORE.d.log[k].photos || []).length;
+    if (n) { pw++; pc += n; }
+  });
+  h += '<div class="card"><h2><span class="eyebrow">04 / PHOTOS</span>照片備份' +
+    '<span class="pill teal">' + pc + ' 張／' + pw + ' 週</span></h2>' +
+    '<p class="hint">影像存在 IndexedDB（<code>' + CONFIG.PHOTO.DB + ' / ' + CONFIG.PHOTO.STORE + '</code>），' +
+    '不會佔用 localStorage。換電腦或重灌前，請先匯出照片備份 JSON。</p>' +
+    '<div class="stats" style="margin-bottom:10px">' +
+    '<div class="stat"><div class="k">照片總張數</div><div class="v">' + pc + '<span class="u"> 張</span></div></div>' +
+    '<div class="stat t2"><div class="k">有照片的週數</div><div class="v">' + pw + '<span class="u"> 週</span></div></div>' +
+    '<div class="stat t3"><div class="k">IndexedDB 用量</div><div class="v" id="photoUsage" style="font-size:19px">計算中…</div>' +
+    '<div class="u">壓縮後約略值</div></div>' +
+    '<div class="stat t4"><div class="k">每週上限</div><div class="v">' + CONFIG.PHOTO.MAX_PER_WEEK + '<span class="u"> 張</span></div></div>' +
+    '</div>' +
+    '<div class="btnrow">' +
+    '<button class="btn" onclick="ACT.exportPhotos()">⬇ 匯出照片備份（JSON）</button>' +
+    '<button class="btn teal" onclick="document.getElementById(\'impPhoto\').click()">📂 匯入照片備份</button>' +
+    '<button class="btn danger" onclick="ACT.clearPhotos()">🗑 清除全部照片</button>' +
+    '</div>' +
+    '<input type="file" id="impPhoto" accept="application/json,.json" style="display:none" onchange="ACT.importPhotoFile(this)">' +
+    '</div>';
+
+  h += '<div class="card"><h2><span class="eyebrow">05 / STATUS</span>儲存狀態</h2><div class="stats">' +
     '<div class="stat"><div class="k">localStorage 用量</div><div class="v">' + kb + '<span class="u"> KB</span></div>' +
     '<div class="u">key：' + CONFIG.STORAGE_KEY + '</div></div>' +
     '<div class="stat t2"><div class="k">最後儲存時間</div><div class="v" style="font-size:17px">' + U.esc(STORE.d.lastSaved || '—') + '</div></div>' +
     '<div class="stat t3"><div class="k">schemaVersion</div><div class="v">' + STORE.d.schemaVersion + '</div></div>' +
     '<div class="stat t4"><div class="k">資料筆數</div><div class="v" style="font-size:17px">學生 ' + STORE.d.students.length +
-    '／成績 ' + STORE.d.scores.length + '</div></div>' +
+    '／成績 ' + STORE.d.scores.length + '／撲滿 ' + STORE.d.bank.length + '</div></div>' +
     '</div></div>';
   return h;
 };
@@ -2263,7 +3649,7 @@ VIEWS.week = function (n) {
   if (C.type === 'holiday') {
     h += '</div><div class="card" style="border-left:6px solid var(--gold)">' +
       '<h2>🎌 ' + U.esc(C.title) + '</h2><p>' + C.note + '</p></div>' +
-      VIEWS.weekNav(n) + '</div>';
+      VIEWS.activity(n) + VIEWS.weekNav(n) + '</div>';
     return h;
   }
 
@@ -2281,9 +3667,12 @@ VIEWS.week = function (n) {
       '<p>本週練習為 <b>模擬題</b>（' + (C.quiz || []).length + ' 題），格式與正式考試相近，建議在無參考資料的情況下限時完成。</p>' +
       '<div class="btnrow"><a class="btn" href="#/practice/' + n + '">✏ 前往模擬題練習</a></div>' +
       VIEWS.copyRow('練習網址', U.urlFor('#/practice/' + n)) + '</div>';
-    h += VIEWS.weekNav(n) + '</div>';
+    h += VIEWS.activity(n) + VIEWS.weekNav(n) + '</div>';
     return h;
   }
+
+  /* 20 分鐘動手做（放在教材重點之前，讓學生先看到當週要動手的東西） */
+  h += VIEWS.activity(n);
 
   /* 教材重點卡 */
   h += '<div class="card"><h2><span class="eyebrow">01 / KEY POINTS</span>教材重點（原創編寫）' +
@@ -2589,14 +3978,22 @@ var ACT = {
 
   /* ---------- 教室日誌 ---------- */
   gotoLogWeek: function (v) { VIEWS.logWeek = parseInt(v, 10) || 1; ROUTER.render(); },
+  // 五態循環：出席 → 遲到≤20 → 遲到>20 → 缺席 → 請假 → 出席
   cycle: function (sid) {
     var L = STORE.logOf(VIEWS.logWeek);
     var cur = L.att[sid];
     var idx = CONFIG.ATT_CYCLE.indexOf(cur);
-    L.att[sid] = (idx < 0) ? CONFIG.ATT_CYCLE[0] : CONFIG.ATT_CYCLE[(idx + 1) % CONFIG.ATT_CYCLE.length];
+    var next = (idx < 0) ? CONFIG.ATT_CYCLE[0] : CONFIG.ATT_CYCLE[(idx + 1) % CONFIG.ATT_CYCLE.length];
+    L.att[sid] = next;
+    if (next !== 'leave') delete L.leaveKind[sid];    // 離開請假狀態時一併清掉假別註記
     L.init = true;
     STORE.save(true);
     ROUTER.render();
+  },
+  setLeaveKind: function (sid, v) {
+    var L = STORE.logOf(VIEWS.logWeek);
+    if (v) L.leaveKind[sid] = v; else delete L.leaveKind[sid];
+    STORE.save(true);
   },
   allPresent: function () {
     var L = STORE.logOf(VIEWS.logWeek);
@@ -2614,26 +4011,332 @@ var ACT = {
     STORE.logOf(VIEWS.logWeek).record[key] = val;
     STORE.save(true);
   },
+  // 列印課程紀錄（參）：有照片的週把縮圖與圖說一併印出（需先自 IndexedDB 取回）
   printRecords: function () {
-    var rows = [];
+    var rows = [], keys = [];
     STORE.d.plan.forEach(function (r) {
       var L = STORE.d.log[String(r.week)];
       if (!L || !L.record) return;
-      var rec = L.record;
-      if (!(rec.text || rec.photo || rec.caption)) return;
-      rows.push({ week: r.week, date: r.date, topic: r.topic, rec: rec });
+      var rec = L.record, ph = L.photos || [];
+      if (!(rec.text || rec.photo || rec.caption || ph.length)) return;
+      ph.forEach(function (p) { keys.push(p.k); });
+      rows.push({ week: r.week, date: r.date, topic: r.topic, rec: rec, photos: ph });
     });
     if (!rows.length) { alert('目前沒有任何已填寫的課程紀錄。'); return; }
-    var body = '<h1>參　課程紀錄</h1><div class="meta">' +
-      U.esc(STORE.d.course.courseName + '（' + STORE.d.course.courseCode + '）　' + STORE.d.course.term) + '</div>' +
-      '<table><thead><tr><th style="width:7%">週次</th><th style="width:13%">日期</th><th style="width:22%">主題</th>' +
-      '<th>課程紀錄</th><th style="width:22%">照片檔名／圖說</th></tr></thead><tbody>' +
-      rows.map(function (x) {
-        return '<tr><td class="c">' + x.week + '</td><td class="c">' + U.esc(x.date) + '</td><td>' + U.esc(x.topic) +
-          '</td><td>' + U.esc(x.rec.text).replace(/\n/g, '<br>') + '</td><td>' +
-          U.esc(x.rec.photo) + (x.rec.caption ? '<br>' + U.esc(x.rec.caption) : '') + '</td></tr>';
-      }).join('') + '</tbody></table>';
-    U.print('參　課程紀錄', body);
+    var draw = function (map) {
+      var body = '<h1>參　課程紀錄</h1><div class="meta">' +
+        U.esc(STORE.d.course.courseName + '（' + STORE.d.course.courseCode + '）　' + STORE.d.course.term) + '</div>' +
+        '<table><thead><tr><th style="width:7%">週次</th><th style="width:13%">日期</th><th style="width:22%">主題</th>' +
+        '<th>課程紀錄</th><th style="width:22%">照片檔名／圖說</th></tr></thead><tbody>' +
+        rows.map(function (x) {
+          return '<tr><td class="c">' + x.week + '</td><td class="c">' + U.esc(x.date) + '</td><td>' + U.esc(x.topic) +
+            '</td><td>' + U.esc(x.rec.text).replace(/\n/g, '<br>') + '</td><td>' +
+            U.esc(x.rec.photo) + (x.rec.caption ? '<br>' + U.esc(x.rec.caption) : '') +
+            (x.photos.length ? '<br>照片 ' + x.photos.length + ' 張（見後）' : '') + '</td></tr>';
+        }).join('') + '</tbody></table>';
+      var withPh = rows.filter(function (x) { return x.photos.length; });
+      if (withPh.length) {
+        body += '<h2>課程紀錄照片</h2>' + withPh.map(function (x) {
+          return '<div class="nb" style="margin-bottom:6mm">' +
+            '<div style="font-size:11pt;font-weight:700">第 ' + x.week + ' 週　' + U.esc(x.date) + '　' + U.esc(x.topic) + '</div>' +
+            '<div style="display:flex;flex-wrap:wrap;gap:3mm;margin-top:2mm">' +
+            x.photos.map(function (p, i) {
+              var url = map[p.k] || '';
+              return '<div style="width:47%;break-inside:avoid">' +
+                (url ? '<img src="' + url + '" style="width:100%;border:1px solid #666">'
+                     : '<div style="border:1px solid #666;padding:8mm;text-align:center;font-size:9pt">（影像遺失）</div>') +
+                '<div style="font-size:9.5pt;margin-top:1mm">圖 ' + x.week + '-' + (i + 1) + '　' +
+                U.esc(p.cap || '（未填圖說）') + '</div></div>';
+            }).join('') + '</div></div>';
+        }).join('');
+      }
+      U.print('參　課程紀錄', body);
+    };
+    if (!keys.length) { draw({}); return; }
+    U.toast('照片載入中…');
+    PHOTO.getMany(keys).then(function (arr) {
+      var map = {};
+      arr.forEach(function (o) { map[o.k] = o.v; });
+      draw(map);
+    }, function () { draw({}); });
+  },
+
+  /* ---------- 教室日誌照片（IndexedDB） ---------- */
+  reloadPhotos: function () { VIEWS.renderPhotos(); },
+  addPhotos: function (el) {
+    var files = Array.prototype.slice.call(el.files || []);
+    el.value = '';
+    if (!files.length) return;
+    var w = VIEWS.logWeek || 1, L = STORE.logOf(w);
+    var room = CONFIG.PHOTO.MAX_PER_WEEK - L.photos.length;
+    if (room <= 0) { alert('第 ' + w + ' 週的照片已達上限 ' + CONFIG.PHOTO.MAX_PER_WEEK + ' 張，請先刪除再新增。'); return; }
+    var over = 0;
+    if (files.length > room) { over = files.length - room; files = files.slice(0, room); }
+    U.toast('壓縮中…共 ' + files.length + ' 張');
+    var used = L.photos.map(function (p) { return p.k; });
+    var chain = Promise.resolve(), ok = 0, fail = [];
+    files.forEach(function (f) {
+      chain = chain.then(function () {
+        return PHOTO.compress(f).then(function (r) {
+          var key = PHOTO.nextKey(w, used);
+          used.push(key);
+          return PHOTO.put(key, r.url).then(function () {
+            L.photos.push({ k: key, cap: '', name: f.name || '', px: r.w + '×' + r.h, kb: Math.round(PHOTO.bytesOf(r.url) / 1024) });
+            ok++;
+          });
+        }).catch(function (e) { fail.push((f.name || '檔案') + '：' + (e && e.message ? e.message : e)); });
+      });
+    });
+    chain.then(function () {
+      STORE.save(true);
+      ROUTER.render();
+      var msg = '已加入 ' + ok + ' 張照片';
+      if (over) msg += '；超出每週上限，' + over + ' 張未加入';
+      U.toast(msg);
+      if (fail.length) alert('以下檔案未能加入：\n' + fail.join('\n'));
+      if (over) alert('第 ' + w + ' 週每週最多 ' + CONFIG.PHOTO.MAX_PER_WEEK + ' 張，超出的 ' + over + ' 張已被擋下。');
+    });
+  },
+  setPhotoCap: function (i, v) {
+    var L = STORE.logOf(VIEWS.logWeek || 1);
+    if (!L.photos[i]) return;
+    L.photos[i].cap = v;
+    STORE.save(true);
+  },
+  delPhoto: function (i) {
+    var w = VIEWS.logWeek || 1, L = STORE.logOf(w), p = L.photos[i];
+    if (!p) return;
+    if (!confirm('確定刪除這張照片（' + p.k + '）？影像會從 IndexedDB 移除，無法復原。')) return;
+    PHOTO.del(p.k).then(function () {}, function () {}).then(function () {
+      L.photos.splice(i, 1);
+      STORE.save(true);
+      ROUTER.render();
+      U.toast('已刪除照片');
+    });
+  },
+  exportPhotos: function () {
+    var items = [];
+    Object.keys(STORE.d.log).forEach(function (k) {
+      (STORE.d.log[k].photos || []).forEach(function (p) { items.push({ week: parseInt(k, 10), k: p.k, cap: p.cap || '' }); });
+    });
+    if (!items.length) { alert('目前沒有任何照片可以匯出。'); return; }
+    U.toast('打包中…共 ' + items.length + ' 張');
+    PHOTO.getMany(items.map(function (x) { return x.k; })).then(function (arr) {
+      var map = {};
+      arr.forEach(function (o) { map[o.k] = o.v; });
+      var out = {
+        _type: 'ecm_photos', schemaVersion: CONFIG.SCHEMA_VERSION, exportedAt: U.nowStamp(),
+        term: STORE.d.course.term,
+        items: items.map(function (x) { return { week: x.week, k: x.k, cap: x.cap, data: map[x.k] || '' }; })
+      };
+      U.download('ecm_photos_' + STORE.d.course.term + '_' + U.today().replace(/\//g, '') + '.json',
+        JSON.stringify(out), 'application/json');
+      U.toast('已匯出 ' + items.length + ' 張照片備份');
+    });
+  },
+  importPhotoFile: function (el) {
+    var f = el.files && el.files[0];
+    if (!f) return;
+    var r = new FileReader();
+    r.onload = function () {
+      el.value = '';
+      var obj;
+      try { obj = JSON.parse(r.result); } catch (e) { alert('JSON 解析失敗：' + e.message); return; }
+      if (!obj || obj._type !== 'ecm_photos' || !Array.isArray(obj.items)) { alert('這不是照片備份檔（_type 應為 ecm_photos）。'); return; }
+      if (!confirm('將匯入 ' + obj.items.length + ' 張照片，同 key 的既有照片會被覆蓋。要繼續嗎？')) return;
+      var chain = Promise.resolve(), ok = 0, skip = 0;
+      obj.items.forEach(function (it) {
+        chain = chain.then(function () {
+          if (!it.data) { skip++; return; }
+          var L = STORE.logOf(it.week);
+          if (L.photos.length >= CONFIG.PHOTO.MAX_PER_WEEK &&
+              !L.photos.some(function (p) { return p.k === it.k; })) { skip++; return; }
+          return PHOTO.put(it.k, it.data).then(function () {
+            var ex = L.photos.filter(function (p) { return p.k === it.k; })[0];
+            if (ex) { ex.cap = it.cap || ex.cap; }
+            else { L.photos.push({ k: it.k, cap: it.cap || '', kb: Math.round(PHOTO.bytesOf(it.data) / 1024) }); }
+            ok++;
+          });
+        });
+      });
+      chain.then(function () {
+        STORE.save(true); ROUTER.render();
+        alert('照片匯入完成：成功 ' + ok + ' 張' + (skip ? '、略過 ' + skip + ' 張（無影像或該週已達上限）' : '') + '。');
+      });
+    };
+    r.readAsText(f, 'utf-8');
+  },
+  clearPhotos: function () {
+    if (!confirm('第 1 次確認：要清除「全部週次」的照片嗎？建議先按「匯出照片備份」。')) return;
+    if (!confirm('第 2 次確認：此操作無法復原，確定清除全部照片？')) return;
+    var keys = [];
+    Object.keys(STORE.d.log).forEach(function (k) {
+      (STORE.d.log[k].photos || []).forEach(function (p) { keys.push(p.k); });
+    });
+    var chain = Promise.resolve();
+    keys.forEach(function (k) { chain = chain.then(function () { return PHOTO.del(k).catch(function () {}); }); });
+    chain.then(function () {
+      Object.keys(STORE.d.log).forEach(function (k) { STORE.d.log[k].photos = []; });
+      STORE.save(true); ROUTER.render();
+      U.toast('已清除 ' + keys.length + ' 張照片');
+    });
+  },
+  // 備份頁的 IndexedDB 用量（非同步填入）
+  showPhotoUsage: function () {
+    var el = document.getElementById('photoUsage');
+    if (!el) return;
+    var keys = [];
+    Object.keys(STORE.d.log).forEach(function (k) {
+      (STORE.d.log[k].photos || []).forEach(function (p) { keys.push(p.k); });
+    });
+    if (!keys.length) { el.textContent = '0 KB'; return; }
+    PHOTO.getMany(keys).then(function (arr) {
+      var b = arr.reduce(function (a, o) { return a + PHOTO.bytesOf(o.v); }, 0);
+      el.innerHTML = (b / 1048576).toFixed(2) + '<span class="u"> MB</span>';
+    }, function () { el.textContent = '無法讀取'; });
+  },
+
+  /* ---------- 成績結算 ---------- */
+  setGrade: function (sid, key, val) {
+    var g = STORE.gradeOf(sid);
+    if (key === 'sop') {
+      g.sop = Math.max(0, parseInt(val, 10) || 0);
+    } else {
+      var s = String(val == null ? '' : val).trim();
+      if (s === '') { g[key] = null; }
+      else {
+        var v = parseFloat(s);
+        if (isNaN(v)) { g[key] = null; }
+        else { g[key] = Math.max(0, Math.min(100, U.round1(v))); }
+      }
+    }
+    STORE.save(true);
+    ROUTER.render();
+  },
+  clearOverrides: function () {
+    if (!confirm('清除全部「自動欄」（出席、AI 翻轉與模組）的手動覆寫，回到自動計算值？手動欄不受影響。')) return;
+    var n = 0;
+    STORE.d.students.forEach(function (s) {
+      var g = STORE.gradeOf(s.id);
+      CONFIG.GRADE_COLS.forEach(function (c) {
+        if (c.auto && g[c.k] !== null && typeof g[c.k] !== 'undefined') { g[c.k] = null; n++; }
+      });
+    });
+    STORE.save(); ROUTER.render();
+    U.toast('已清除 ' + n + ' 個覆寫值');
+  },
+  gradeRows: function () {
+    var W = GRADE.W();
+    var head = ['座號', '班級', '姓名']
+      .concat(CONFIG.GRADE_COLS.map(function (c) { return c.name + '(' + W[c.w] + '%)'; }))
+      .concat(['撲滿點數', '撲滿加分', '未依SOP請假次數', 'SOP扣分', '加權小計', '學期總成績(一位小數)', '學期總成績(四捨五入)']);
+    var rows = [head];
+    STORE.d.students.forEach(function (s) {
+      var R = GRADE.row(s), g = STORE.gradeOf(s.id);
+      rows.push([s.seat, s.cls, s.name]
+        .concat(CONFIG.GRADE_COLS.map(function (c) {
+          var v = R.parts[c.k];
+          return (v === null || typeof v === 'undefined') ? '' : v;
+        }))
+        .concat([R.bankPts, R.bonus, R.sop, -R.penalty, R.weighted, R.total1.toFixed(1), R.totalInt]));
+    });
+    return rows;
+  },
+  exportGradeCSV: function () {
+    if (!STORE.d.students.length) { alert('尚未匯入學生名單。'); return; }
+    var rows = ACT.gradeRows();
+    // 全班平均列
+    var ss = STORE.d.students;
+    var avg = ['', '', '全班平均'];
+    CONFIG.GRADE_COLS.forEach(function (c) {
+      var v = [], i;
+      ss.forEach(function (s) { var x = GRADE.row(s).parts[c.k]; if (x !== null && typeof x !== 'undefined') v.push(x); });
+      avg.push(v.length ? U.round1(v.reduce(function (a, b) { return a + b; }, 0) / v.length) : '');
+    });
+    var tot = ss.reduce(function (a, s) { return a + GRADE.row(s).total1; }, 0);
+    avg = avg.concat(['', '', '', '', '', U.round1(tot / ss.length).toFixed(1), '']);
+    rows.push(avg);
+    U.downloadCSV('學期成績總表_' + STORE.d.course.term + '.csv', rows);
+  },
+  printGrades: function () {
+    if (!STORE.d.students.length) { alert('尚未匯入學生名單。'); return; }
+    var c = STORE.d.course, W = GRADE.W(), ss = STORE.d.students;
+    var body = '<style>@page{size:A4 landscape;margin:12mm 10mm;}table{font-size:8.5pt;}th,td{padding:1mm 1.2mm;}</style>' +
+      '<h1>' + U.esc(c.courseName) + '　學期成績總表</h1><div class="meta">' +
+      U.esc(c.school + '　' + c.dept) + '　｜　' + U.esc(c.courseCode + '　' + c.term) +
+      '　｜　任課教師：' + U.esc(c.teacher) + '　｜　助教：' + U.esc(c.ta) + '（' + U.esc(c.taEmail || '') + '）<br>' +
+      '平時 ' + (W.att + W.disc + W.ai) + '%（出席 ' + W.att + '、討論及 Zuvio ' + W.disc + '、AI ' + W.ai + '）' +
+      '＋期中 ' + W.mid + '%＋期末 ' + W.fin + '%＋參訪 ' + (W.v1 + W.v2 + W.v3) + '%＋行動 ' + (W.a1 + W.a2 + W.a3) + '%' +
+      '　｜　撲滿加分至多 +' + W.bonusMax + '　｜　未依 SOP 請假每次 −' + W.sopPenalty + '</div>' +
+      '<table><thead><tr><th>座號</th><th>姓名</th>' +
+      CONFIG.GRADE_COLS.map(function (x) { return '<th>' + U.esc(x.name) + '<br>' + W[x.w] + '%</th>'; }).join('') +
+      '<th>撲滿<br>加分</th><th>SOP<br>扣分</th><th>總成績</th><th>四捨<br>五入</th></tr></thead><tbody>';
+    var sums = {}, cnts = {}, tot = 0;
+    body += ss.map(function (s) {
+      var R = GRADE.row(s);
+      tot += R.total1;
+      return '<tr><td class="c">' + U.esc(s.seat) + '</td><td>' + U.esc(s.name) + '</td>' +
+        CONFIG.GRADE_COLS.map(function (x) {
+          var v = R.parts[x.k];
+          if (v !== null && typeof v !== 'undefined') { sums[x.k] = (sums[x.k] || 0) + v; cnts[x.k] = (cnts[x.k] || 0) + 1; }
+          return '<td class="num">' + ((v === null || typeof v === 'undefined') ? '—' : v) + '</td>';
+        }).join('') +
+        '<td class="num">+' + R.bonus + '</td><td class="num">' + (R.penalty ? '−' + R.penalty : '0') + '</td>' +
+        '<td class="num"><b>' + R.total1.toFixed(1) + '</b></td><td class="num"><b>' + R.totalInt + '</b></td></tr>';
+    }).join('');
+    body += '</tbody><tfoot><tr><td colspan="2">全班平均（' + ss.length + ' 人）</td>' +
+      CONFIG.GRADE_COLS.map(function (x) {
+        return '<td class="num">' + (cnts[x.k] ? U.round1(sums[x.k] / cnts[x.k]) : '—') + '</td>';
+      }).join('') +
+      '<td class="num">—</td><td class="num">—</td><td class="num"><b>' + U.round1(tot / ss.length).toFixed(1) + '</b></td>' +
+      '<td class="num">—</td></tr></tfoot></table>' +
+      '<div class="sign"><div>任課教師簽章</div><div>助教簽章</div><div>系主任簽章</div></div>';
+    U.print('學期成績總表', body);
+  },
+
+  /* ---------- 分數撲滿帳本 ---------- */
+  addBank: function () {
+    var d = (document.getElementById('bkDate') || {}).value || U.today();
+    var sid = (document.getElementById('bkStu') || {}).value || '';
+    var why = ((document.getElementById('bkWhy') || {}).value || '').trim();
+    var pt = parseFloat((document.getElementById('bkPt') || {}).value);
+    if (!sid) { alert('請先選擇學生。'); return; }
+    if (isNaN(pt) || pt === 0) { alert('點數必須是不為 0 的數字（扣點可填負數）。'); return; }
+    STORE.d.bank.push({ id: U.uid(), date: d, sid: sid, why: why, pt: pt });
+    STORE.save(); ROUTER.render();
+    U.toast('已登記 ' + pt + ' 點');
+  },
+  delBank: function (i) {
+    var r = STORE.d.bank[i];
+    if (!r) return;
+    if (!confirm('刪除這一筆撲滿紀錄（' + r.date + '　' + r.pt + ' 點）？')) return;
+    STORE.d.bank.splice(i, 1);
+    STORE.save(); ROUTER.render();
+  },
+  exportBankCSV: function () {
+    var rows = [['日期', '座號', '姓名', '事由', '點數']];
+    STORE.d.bank.forEach(function (r) {
+      var s = STORE.d.students.filter(function (x) { return x.id === r.sid; })[0];
+      rows.push([r.date, s ? s.seat : '', s ? s.name : '（已刪除）', r.why, r.pt]);
+    });
+    rows.push(['', '', '', '合計', STORE.d.bank.reduce(function (a, r) { return a + (parseFloat(r.pt) || 0); }, 0)]);
+    U.downloadCSV('分數撲滿帳本_' + STORE.d.course.term + '.csv', rows);
+  },
+
+  /* ---------- 成績權重 ---------- */
+  setWeight: function (k, v) {
+    var n = parseFloat(v);
+    if (isNaN(n) || n < 0) { alert('權重必須是 0 以上的數字。'); ROUTER.render(); return; }
+    if (k === 'bankDiv' && n <= 0) { alert('點數換算除數必須大於 0。'); ROUTER.render(); return; }
+    if (!STORE.d.gradeW) STORE.d.gradeW = JSON.parse(JSON.stringify(CONFIG.GRADE));
+    STORE.d.gradeW[k] = n;
+    STORE.save(true); ROUTER.render();
+  },
+  resetWeights: function () {
+    if (!confirm('把成績權重全部回復為預設值（9/6/11/25/25/3-4-5/3-4-5，撲滿 200÷20 上限 +10，SOP −2）？')) return;
+    STORE.d.gradeW = JSON.parse(JSON.stringify(CONFIG.GRADE));
+    STORE.save(); ROUTER.render();
+    U.toast('已回復預設權重');
   },
 
   /* ---------- 總覽：匯出與成績匯入 ---------- */
@@ -2699,7 +4402,8 @@ var ACT = {
       _type: 'ecm_template',
       schemaVersion: CONFIG.SCHEMA_VERSION,
       course: JSON.parse(JSON.stringify(STORE.d.course)),
-      plan: JSON.parse(JSON.stringify(STORE.d.plan))
+      plan: JSON.parse(JSON.stringify(STORE.d.plan)),
+      gradeW: JSON.parse(JSON.stringify(GRADE.W()))        // v2：範本含成績權重
     };
     tpl.course.advisor1 = ''; tpl.course.advisor2 = '';    // 範本不帶人名
     U.download('ecm_template_' + U.today().replace(/\//g, '') + '.json', JSON.stringify(tpl, null, 2), 'application/json');
@@ -2721,9 +4425,10 @@ var ACT = {
     var obj;
     try { obj = JSON.parse(text); } catch (e) { alert('JSON 解析失敗：' + e.message); return; }
     if (obj && obj._type === 'ecm_template') {
-      if (!confirm('這是「課程設定範本」，將覆蓋目前的課程基本資料與課程規劃表，但保留學生名單、點名與成績。要繼續嗎？')) return;
+      if (!confirm('這是「課程設定範本」，將覆蓋目前的課程基本資料、課程規劃表與成績權重，但保留學生名單、點名與成績。要繼續嗎？')) return;
       STORE.d.course = Object.assign({}, STORE.d.course, obj.course || {});
       if (Array.isArray(obj.plan)) STORE.d.plan = obj.plan;
+      if (obj.gradeW && typeof obj.gradeW === 'object') STORE.d.gradeW = Object.assign({}, CONFIG.GRADE, obj.gradeW);
       STORE.syncPlanLength();
       STORE.save(); ROUTER.render();
       U.toast('課程範本已套用'); return;
@@ -2847,11 +4552,15 @@ var ROUTER = {
         case 'plan': h += VIEWS.plan(); break;
         case 'content': h += VIEWS.contentTab(); break;
         case 'log': h += VIEWS.log(); break;
+        case 'grades': h += VIEWS.grades(); break;
         case 'backup': h += VIEWS.backup(); break;
         default: h += VIEWS.overview();
       }
       h += VIEWS.footer() + '</div>';
       app.innerHTML = h;
+      // 需要非同步從 IndexedDB 取資料的區塊，畫面掛上去之後再補
+      if (r.tab === 'log') VIEWS.renderPhotos();
+      if (r.tab === 'backup') ACT.showPhotoUsage();
       return;
     }
 
