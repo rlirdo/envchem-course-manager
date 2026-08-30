@@ -264,6 +264,60 @@ table.g tfoot td{background:#EDF4F1;font-weight:800;}
 .banner{background:var(--navy);color:#fff;border-radius:12px;padding:12px 18px;font-weight:700;font-size:15px;}
 .tag{display:inline-block;background:#EDF4F1;color:var(--green);border-radius:6px;padding:1px 8px;font-size:12px;font-weight:700;margin-right:5px;}
 
+/* ---------- v3：教室日誌可摺疊區塊 ---------- */
+details.blk{border:1px solid var(--line);border-radius:12px;background:#fff;margin:12px 0;box-shadow:var(--shadow);}
+details.blk>summary{cursor:pointer;list-style:none;padding:11px 16px;font-weight:800;color:var(--navy);font-size:16px;
+      display:flex;align-items:center;gap:9px;flex-wrap:wrap;border-radius:12px;background:#EDF4F1;}
+details.blk>summary::-webkit-details-marker{display:none;}
+details.blk>summary::before{content:"▸";color:var(--teal);font-size:14px;transition:.15s;}
+details.blk[open]>summary::before{content:"▾";}
+details.blk>summary .no{font-size:11.5px;letter-spacing:2px;color:var(--teal);font-weight:800;}
+details.blk>summary .sm2{font-weight:400;font-size:12.5px;color:var(--muted);margin-left:auto;}
+details.blk .bd{padding:14px 16px 16px;}
+
+/* ---------- v3：逐週項目評分表 ---------- */
+.itemcard{border:1px solid var(--line);border-radius:11px;margin:10px 0;background:#FCFEFE;}
+.itemcard .ih{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;background:#F2F8F5;
+      border-bottom:1px solid var(--line);border-radius:11px 11px 0 0;}
+.itemcard .ih b{color:var(--navy);font-size:14.5px;}
+.itemcard .ih .kind{font-size:11.5px;font-weight:800;border-radius:6px;padding:1px 8px;background:#E2EFF4;color:var(--teal);}
+.itemcard .ih .rt{margin-left:auto;display:flex;gap:6px;align-items:center;}
+.itemcard .ib{padding:10px 12px;}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(154px,1fr));gap:7px;}
+.scell{display:flex;align-items:center;gap:6px;border:1.4px solid var(--line);border-radius:9px;background:#fff;
+      padding:5px 9px;font-size:13.5px;}
+.scell .snm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700;}
+.scell .sst{font-size:11px;color:var(--muted);flex:0 0 auto;}
+.scell input{width:58px;padding:3px 6px;font-size:13px;text-align:right;}
+.ckbtn{border:0;border-radius:8px;width:34px;height:28px;font-size:15px;font-weight:800;cursor:pointer;flex:0 0 auto;
+      background:#EEF2F4;color:var(--muted);}
+.ckbtn[data-v="1"]{background:var(--green);color:#fff;}
+.ckbtn[data-v="0"]{background:var(--danger);color:#fff;}
+.roitem{background:#F1F5F7;border:1px dashed #C3D3DB;}
+.gtbl th,.gtbl td{text-align:center;}
+.nogrp{color:var(--danger);font-weight:700;font-size:13px;}
+
+/* ---------- v3：成績結算總表 ---------- */
+table.g3t{width:100%;border-collapse:collapse;font-size:12.5px;min-width:1660px;}
+table.g3t th,table.g3t td{border:1px solid var(--line);padding:3px 5px;text-align:center;white-space:nowrap;}
+table.g3t thead th{background:#EDF4F1;color:var(--navy);font-weight:800;font-size:11.5px;position:sticky;top:0;z-index:3;}
+table.g3t thead th.wgt{font-size:10.5px;font-weight:700;color:var(--teal);background:#E4EFF4;}
+table.g3t thead th.gv{background:#E8F1EC;} table.g3t thead th.ga{background:#FBF2E2;}
+table.g3t td.nm{text-align:left;font-weight:700;position:sticky;left:0;background:#fff;z-index:2;min-width:150px;}
+table.g3t thead th.nm{left:0;z-index:4;}
+table.g3t tbody tr:nth-child(4n+1) td,table.g3t tbody tr:nth-child(4n+1) td.nm{background:#FAFCFC;}
+table.g3t td.sub{color:var(--muted);}
+table.g3t td.tot{background:#EAF5EF;font-weight:800;color:var(--navy);}
+table.g3t td.avg{background:#FFF7E3;font-weight:800;color:#7A5200;}
+table.g3t tfoot td{background:#EDF4F1;font-weight:800;}
+table.g3t input{width:58px;padding:2px 4px;font-size:12px;text-align:right;border-radius:6px;}
+.wsub{font-size:10.5px;color:var(--teal);font-weight:700;}
+.dtl{background:#F7FAFB;border:1px solid var(--line);border-radius:11px;padding:12px 14px;margin:10px 0;}
+.dtl h4{font-size:14px;color:var(--teal);margin:12px 0 5px;letter-spacing:.5px;}
+.dtl h4:first-child{margin-top:0;}
+.dtl table.t{min-width:0;font-size:13px;}
+.legacy{background:#FFF3D6;color:#8A5A00;border-radius:5px;padding:0 6px;font-size:11px;font-weight:800;}
+
 @media (max-width:860px){
   .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr));}
   .brandmeta{margin-left:0;text-align:left;width:100%;}
@@ -297,7 +351,7 @@ table.g tfoot td{background:#EDF4F1;font-weight:800;}
 var CONFIG = {
   APP_NAME: '環境化學課程管理系統',
   STORAGE_KEY: 'ecm_data',        // localStorage 單一物件的 key（前綴 ecm_）
-  SCHEMA_VERSION: 2,              // v2：五態出席、教室日誌照片、成績結算、動手做活動
+  SCHEMA_VERSION: 3,              // v3：成績逐週化（日誌為唯一維護入口、累計至第 N 週雙指標）
   WEEK_MIN: 1, WEEK_MAX: 60,      // 總週數允許範圍
   HOURS_STEP: 0.5,                // 時數輸入的最小級距
   DEFAULT_HOURS: 2,               // 新增週次的預設時數
@@ -327,39 +381,87 @@ var CONFIG = {
     QUALITY: 0.8            // JPEG 品質
   },
 
-  /* ---------- 學期成績權重（v2，規格 §3；可於備份與設定調整） ---------- */
+  /* ---------- 學期成績權重（v3，依 03wtc 成績規定；可於備份與設定調整） ----------
+   * 出席 9＋討論 Zuvio 6＋AI 翻轉模組 11＋期中 25＋期末 25
+   * ＋參訪報告 12（書面 3／組間互評 2／師評 2／組內互評 5）
+   * ＋行動報告 12（書面 3／組間互評 2／師評 2／組內互評 5）＝ 100
+   * 另：撲滿加分 ≤10（200 點 ÷ 20）、組長/副組長加分 0–3、未依 SOP 請假每次 −2。 */
   GRADE: {
     att: 9,          // 出席
     disc: 6,         // 課堂討論及 Zuvio 雲端回饋
     ai: 11,          // AI 翻轉及 AI 模組
     mid: 25,         // 期中考
     fin: 25,         // 期末考
-    v1: 3, v2: 4, v3: 5,     // 參訪報告：書面 3＋組間互評 4＋組內互評 5 ＝ 12
-    a1: 3, a2: 4, a3: 5,     // 行動報告：書面 3＋組間互評 4＋組內互評 5 ＝ 12
+    v_w: 3, v_i: 2, v_t: 2, v_n: 5,   // 參訪報告：書面／組間互評／師評／組內互評
+    a_w: 3, a_i: 2, a_t: 2, a_n: 5,   // 行動報告：書面／組間互評／師評／組內互評
     bankCap: 200,    // 分數撲滿點數上限
     bankDiv: 20,     // 點數 ÷ 20 ＝ 加分
     bonusMax: 10,    // 撲滿加分上限
-    sopPenalty: 2    // 未依 SOP 請假每次總成績 −2
+    sopPenalty: 2,   // 未依 SOP 請假每次總成績 −2
+    leaderMax: 3     // 組長／副組長額外加分上限
   },
   // 撲滿點數規則提示（畫面顯示用）
   BANK_RULES: [
     '口述簡答：1 點', '口述詳答：2 點', '上台報告：5 點（另附補充資料再 +2 點）',
     '小組報告提問：2 點', '小組全部出席：5 點'
   ],
-  // 成績結算欄位定義（自動欄 auto:true）
-  GRADE_COLS: [
-    { k: 'att',  name: '出席',        w: 'att',  auto: true },
-    { k: 'disc', name: '討論與 Zuvio', w: 'disc' },
-    { k: 'ai',   name: 'AI 翻轉與模組', w: 'ai',  auto: true },
-    { k: 'mid',  name: '期中考',      w: 'mid'  },
-    { k: 'fin',  name: '期末考',      w: 'fin'  },
-    { k: 'v1',   name: '參訪·書面',   w: 'v1'   },
-    { k: 'v2',   name: '參訪·組間',   w: 'v2'   },
-    { k: 'v3',   name: '參訪·組內',   w: 'v3'   },
-    { k: 'a1',   name: '行動·書面',   w: 'a1'   },
-    { k: 'a2',   name: '行動·組間',   w: 'a2'   },
-    { k: 'a3',   name: '行動·組內',   w: 'a3'   }
+  // 撲滿事由下拉（選了自動帶點數；「其他」自填）
+  BANK_REASONS: [
+    { why: '口述簡答', pt: 1 },
+    { why: '口述詳答', pt: 2 },
+    { why: '上台報告', pt: 5 },
+    { why: '上台報告補充資料', pt: 2 },
+    { why: '小組報告提問', pt: 2 },
+    { why: '小組全部出席', pt: 5 },
+    { why: '其他（自填）', pt: 1 }
   ],
+
+  /* ---------- v3：成績構面（總表欄位＝這一份的順序） ----------
+   * src：att／disc／ai／exam／report
+   * kind/f：報告類（visit|action × w1|inter|ta|intra） */
+  GRADE_COMPS: [
+    { k: 'att',  name: '出席',        short: '出席',   w: 'att',  src: 'att' },
+    { k: 'disc', name: '討論與 Zuvio', short: '討論',   w: 'disc', src: 'disc' },
+    { k: 'ai',   name: 'AI 翻轉與模組', short: 'AI',    w: 'ai',   src: 'ai' },
+    { k: 'mid',  name: '期中考',      short: '期中',   w: 'mid',  src: 'exam', ex: 'mid' },
+    { k: 'fin',  name: '期末考',      short: '期末',   w: 'fin',  src: 'exam', ex: 'fin' },
+    { k: 'v_w',  name: '參訪·書面',   short: '參書',   w: 'v_w',  src: 'report', kind: 'visit',  f: 'w1' },
+    { k: 'v_i',  name: '參訪·組間互評', short: '參組間', w: 'v_i', src: 'report', kind: 'visit',  f: 'inter' },
+    { k: 'v_t',  name: '參訪·師評',   short: '參師',   w: 'v_t',  src: 'report', kind: 'visit',  f: 'ta' },
+    { k: 'v_n',  name: '參訪·組內互評', short: '參內',  w: 'v_n',  src: 'report', kind: 'visit',  f: 'intra' },
+    { k: 'a_w',  name: '行動·書面',   short: '行書',   w: 'a_w',  src: 'report', kind: 'action', f: 'w1' },
+    { k: 'a_i',  name: '行動·組間互評', short: '行組間', w: 'a_i', src: 'report', kind: 'action', f: 'inter' },
+    { k: 'a_t',  name: '行動·師評',   short: '行師',   w: 'a_t',  src: 'report', kind: 'action', f: 'ta' },
+    { k: 'a_n',  name: '行動·組內互評', short: '行內',  w: 'a_n',  src: 'report', kind: 'action', f: 'intra' }
+  ],
+  // v2 → v3 欄位對照（舊值轉為學期級覆寫欄，畫面標「舊版匯入」）
+  V2_MAP: { disc: 'disc', ai: 'ai', v1: 'v_w', v2: 'v_i', v3: 'v_n', a1: 'a_w', a2: 'a_i', a3: 'a_n' },
+
+  /* ---------- v3：教室日誌逐週項目 ---------- */
+  // 雲端／討論（6%）的快速預設按鈕
+  DISC_PRESETS: [
+    { name: '課堂活動', type: 'check', memo: '' },
+    { name: '參訪回饋', type: 'check', memo: '' },
+    { name: '教學回饋', type: 'check', memo: '' },
+    { name: '小組省思', type: 'check', memo: '' },
+    { name: '前測',     type: 'check', memo: '完整填答即滿分' },
+    { name: '後測',     type: 'score', memo: '填 0–100 分' }
+  ],
+  // AI 翻轉與模組（11%）每教學週自動預建的兩個項目
+  AI_PRESETS: [
+    { name: '課前學習單', type: 'check' },
+    { name: '課後學習單', type: 'check' }
+  ],
+  REPORT_LABEL: { visit: '參訪報告', action: '行動報告' },
+  REPORT_FIELDS: [
+    { f: 'w1',    name: '書面',     wv: 'v_w', wa: 'a_w' },
+    { f: 'inter', name: '組間互評', wv: 'v_i', wa: 'a_i' },
+    { f: 'ta',    name: '師評',     wv: 'v_t', wa: 'a_t' }
+  ],
+  // 報告評分預設出現的週次（任何週都可手動新增）
+  REPORT_DEFAULT_WEEK: { 12: 'visit', 18: 'action' },
+  // 考試成績輸入週（找不到 CONTENT 的 exam 週時的後備值）
+  EXAM_WEEK_FALLBACK: { mid: 11, fin: 17 },
   TABS: [
     { id: 'overview',  name: '總覽',        icon: '🏠' },
     { id: 'students',  name: '學生名單',    icon: '👥' },
@@ -547,14 +649,23 @@ var U = {
  *   course: {...},                                  // 基本資料
  *   students: [{id, seat, cls, name, note}],
  *   plan:     [{week, date, topic, hours, teacher, note}],
+ *   students: [{id, seat, cls, name, note, group}],  // v3：group＝組別
  *   log:      { "1": { att:{studentId:'present'|'late1'|'late2'|'absent'|'leave'},
  *                      leaveKind:{studentId:'事假'},          // v2：請假假別註記
+ *                      sop:{studentId:true},                  // v3：該週未依 SOP 請假
+ *                      items:[{id,cat:'disc'|'ai',name,type:'check'|'score',memo,
+ *                              scores:{sid:true|false|0-100}}],   // v3：逐週項目
+ *                      reports:[{id,kind:'visit'|'action',
+ *                                group:{gid:{w1,inter,ta}}, intra:{sid:0-100}}],  // v3
+ *                      bank:[{id,date,sid,gid,why,pt,note}],  // v3：撲滿改掛週下
  *                      record:{ text, photo, caption },
  *                      photos:[{k:'w1_1', cap:'圖說'}] } },     // v2：影像存 IndexedDB
  *   scores:   [ {week, seat, name, score, ts, detail, src} ],
  *   pending:  [ {week, seat, name, score, ts} ],     // 匯入但對不到名單的成績
- *   grades:   { studentId: {att,disc,ai,mid,fin,v1,v2,v3,a1,a2,a3,sop} },  // v2：手動欄／覆寫
- *   bank:     [ {id, date, sid, why, pt} ],          // v2：分數撲滿帳本
+ *   grades:   { studentId: { attOv, leaderBonus, examMid, examFin,
+ *                            ov:{compKey:0-100}, ovLegacy:{compKey:true},
+ *                            sopLegacy } },          // v3：僅存少數學期級覆寫／輸入
+ *   bank:     [ ]                                    // v3：已歸週，僅保留給舊備份遷移用
  *   gradeW:   {…CONFIG.GRADE 的可調權重副本},        // v2
  *   lastSaved: '2026/08/22 10:00:00'
  * }
@@ -607,6 +718,9 @@ var STORE = {
   // 版本遷移 + 欄位補齊
   //   v1 → v2：出席三態代碼原樣沿用（present/absent/leave 皆為五態的合法子集，統計不變）；
   //            補上 leaveKind / photos / grades / bank / gradeW / course.taEmail。
+  //   v2 → v3：students 補 group；log 補 sop/items/reports/bank；
+  //            舊 grades 的 att→attOv、mid/fin→examMid/examFin、其餘→ov（標「舊版匯入」）、sop→sopLegacy；
+  //            全域 bank 依日期歸週（對不到的掛 W1 並註記）。
   migrate: function (o) {
     var b = STORE.blank();
     if (!o || typeof o !== 'object') return b;
@@ -619,49 +733,160 @@ var STORE = {
       s.cls = s.cls == null ? '' : String(s.cls);
       s.name = s.name == null ? '' : String(s.name);
       s.note = s.note == null ? '' : String(s.note);
+      s.group = s.group == null ? '' : String(s.group).trim();     // v3
     });
     o.plan = Array.isArray(o.plan) ? o.plan : b.plan;
     o.log = (o.log && typeof o.log === 'object') ? o.log : {};
     o.scores = Array.isArray(o.scores) ? o.scores : [];
     o.pending = Array.isArray(o.pending) ? o.pending : [];
 
-    /* --- v2 新增結構（缺什麼補什麼，既有值一律不動） --- */
+    /* --- v2 / v3 結構補齊（缺什麼補什麼，既有值一律不動） --- */
     Object.keys(o.log).forEach(function (k) {
       var L = o.log[k];
       if (!L || typeof L !== 'object') { delete o.log[k]; return; }
-      if (!L.att || typeof L.att !== 'object') L.att = {};
-      if (!L.leaveKind || typeof L.leaveKind !== 'object') L.leaveKind = {};
-      if (!L.record || typeof L.record !== 'object') L.record = { text: '', photo: '', caption: '' };
-      if (!Array.isArray(L.photos)) L.photos = [];
+      STORE.normLog(L);
       // 未知的出席代碼（理論上不會有）保留原值，不丟資料，只在統計時以 0 計
     });
     o.grades = (o.grades && typeof o.grades === 'object') ? o.grades : {};
     Object.keys(o.grades).forEach(function (sid) { o.grades[sid] = STORE.normGrade(o.grades[sid]); });
-    o.bank = Array.isArray(o.bank) ? o.bank : [];
-    o.bank.forEach(function (r) {
-      if (!r.id) r.id = U.uid();
-      r.pt = parseFloat(r.pt) || 0;
-      r.date = r.date || ''; r.sid = r.sid || ''; r.why = r.why || '';
-    });
-    o.gradeW = Object.assign({}, CONFIG.GRADE, o.gradeW || {});
+
+    /* --- v3：全域 bank 依日期歸週 --- */
+    var legacyBank = Array.isArray(o.bank) ? o.bank : [];
+    o.bank = [];
+    if (legacyBank.length) {
+      legacyBank.forEach(function (r) {
+        var rec = {
+          id: r.id || U.uid(), date: r.date || '', sid: r.sid || '', gid: r.gid || '',
+          why: r.why || r.reason || '', pt: parseFloat(r.pt) || 0, note: r.note || ''
+        };
+        var w = STORE.weekOfDate(rec.date, o);
+        if (!w) { w = 1; rec.note = (rec.note ? rec.note + '；' : '') + '舊版帳本無法對應週次，暫掛 W1'; }
+        if (!o.log[String(w)]) o.log[String(w)] = STORE.normLog(null);
+        var LW = o.log[String(w)];
+        STORE.normLog(LW);
+        if (!LW.bank.some(function (x) { return x.id === rec.id; })) LW.bank.push(rec);
+      });
+    }
+
+    o.gradeW = STORE.normWeights(o.gradeW);
 
     o.lastSaved = o.lastSaved || '';
     o.schemaVersion = CONFIG.SCHEMA_VERSION;
-    if (from < 2) { try { console.info('ecm_data 已由 schemaVersion ' + from + ' 遷移至 2（資料無損）'); } catch (e) {} }
+    if (from < CONFIG.SCHEMA_VERSION) {
+      try {
+        console.info('ecm_data 已由 schemaVersion ' + from + ' 遷移至 ' + CONFIG.SCHEMA_VERSION +
+          '（舊成績值轉為學期級覆寫欄並標示「舊版匯入」；撲滿帳本已依日期歸週）');
+      } catch (e) {}
+    }
     STORE.syncPlanLength(o);
     return o;
   },
 
-  // 成績列的欄位正規化：手動欄可為 null（未填）；sop 為非負整數
-  normGrade: function (g) {
-    var out = { sop: 0 };
-    if (!g || typeof g !== 'object') g = {};
-    CONFIG.GRADE_COLS.forEach(function (c) {
-      var v = g[c.k];
-      out[c.k] = (v === '' || v === null || typeof v === 'undefined' || isNaN(parseFloat(v))) ? null : parseFloat(v);
-    });
-    out.sop = Math.max(0, parseInt(g.sop, 10) || 0);
+  // 權重：只沿用 v3 仍存在的鍵，舊的 v1/v2/v3/a1/a2/a3 一律改採 03wtc 的 3/2/2/5
+  normWeights: function (gw) {
+    var out = JSON.parse(JSON.stringify(CONFIG.GRADE));
+    if (gw && typeof gw === 'object') {
+      Object.keys(CONFIG.GRADE).forEach(function (k) {
+        var v = parseFloat(gw[k]);
+        if (!isNaN(v) && v >= 0) out[k] = v;
+      });
+    }
     return out;
+  },
+
+  // 單一週日誌的欄位正規化（v3）
+  normLog: function (L) {
+    if (!L || typeof L !== 'object') L = {};
+    if (!L.att || typeof L.att !== 'object') L.att = {};
+    if (!L.leaveKind || typeof L.leaveKind !== 'object') L.leaveKind = {};
+    if (!L.sop || typeof L.sop !== 'object') L.sop = {};
+    if (!L.record || typeof L.record !== 'object') L.record = { text: '', photo: '', caption: '' };
+    if (!Array.isArray(L.photos)) L.photos = [];
+    if (!Array.isArray(L.items)) L.items = [];
+    if (!Array.isArray(L.reports)) L.reports = [];
+    if (!Array.isArray(L.bank)) L.bank = [];
+    L.items.forEach(function (it) {
+      if (!it.id) it.id = U.uid();
+      it.cat = (it.cat === 'ai') ? 'ai' : 'disc';
+      it.type = (it.type === 'score') ? 'score' : 'check';
+      it.name = String(it.name == null ? '' : it.name);
+      it.memo = String(it.memo == null ? '' : it.memo);
+      if (!it.scores || typeof it.scores !== 'object') it.scores = {};
+    });
+    L.reports.forEach(function (rp) {
+      if (!rp.id) rp.id = U.uid();
+      rp.kind = (rp.kind === 'action') ? 'action' : 'visit';
+      if (!rp.group || typeof rp.group !== 'object') rp.group = {};
+      if (!rp.intra || typeof rp.intra !== 'object') rp.intra = {};
+      Object.keys(rp.group).forEach(function (gid) {
+        var g = rp.group[gid];
+        if (!g || typeof g !== 'object') { rp.group[gid] = { w1: null, inter: null, ta: null }; return; }
+        ['w1', 'inter', 'ta'].forEach(function (f) {
+          var v = parseFloat(g[f]);
+          g[f] = isNaN(v) ? null : v;
+        });
+      });
+    });
+    L.bank.forEach(function (r) {
+      if (!r.id) r.id = U.uid();
+      r.pt = parseFloat(r.pt) || 0;
+      r.date = r.date || ''; r.sid = r.sid || ''; r.gid = r.gid || '';
+      r.why = r.why || r.reason || ''; r.note = r.note || '';
+    });
+    return L;
+  },
+
+  // 成績列的欄位正規化（v3：僅少數學期級覆寫／輸入）
+  //   舊 v2 欄位（att/disc/ai/mid/fin/v1-3/a1-3/sop）會就地轉換並標「舊版匯入」。
+  normGrade: function (g) {
+    var out = { attOv: null, leaderBonus: 0, examMid: null, examFin: null, ov: {}, ovLegacy: {}, sopLegacy: 0 };
+    if (!g || typeof g !== 'object') g = {};
+    var num = function (v) {
+      if (v === '' || v === null || typeof v === 'undefined') return null;
+      var n = parseFloat(v);
+      return isNaN(n) ? null : Math.max(0, Math.min(100, U.round1(n)));
+    };
+
+    // v3 既有欄位
+    out.attOv = num(g.attOv);
+    out.examMid = num(g.examMid);
+    out.examFin = num(g.examFin);
+    out.leaderBonus = Math.max(0, Math.min(CONFIG.GRADE.leaderMax, parseFloat(g.leaderBonus) || 0));
+    out.sopLegacy = Math.max(0, parseInt(g.sopLegacy, 10) || 0);
+    if (g.ov && typeof g.ov === 'object') {
+      CONFIG.GRADE_COMPS.forEach(function (c) {
+        var v = num(g.ov[c.k]);
+        if (v !== null) out.ov[c.k] = v;
+      });
+    }
+    if (g.ovLegacy && typeof g.ovLegacy === 'object') {
+      Object.keys(g.ovLegacy).forEach(function (k) { if (g.ovLegacy[k]) out.ovLegacy[k] = true; });
+    }
+
+    // v2 舊欄位 → 學期級覆寫（僅在 v3 欄位還沒有值時才寫入，避免覆蓋新資料）
+    if (out.attOv === null && num(g.att) !== null) { out.attOv = num(g.att); out.ovLegacy.att = true; }
+    if (out.examMid === null && num(g.mid) !== null) { out.examMid = num(g.mid); out.ovLegacy.mid = true; }
+    if (out.examFin === null && num(g.fin) !== null) { out.examFin = num(g.fin); out.ovLegacy.fin = true; }
+    Object.keys(CONFIG.V2_MAP).forEach(function (oldK) {
+      var newK = CONFIG.V2_MAP[oldK], v = num(g[oldK]);
+      if (v !== null && typeof out.ov[newK] === 'undefined') { out.ov[newK] = v; out.ovLegacy[newK] = true; }
+    });
+    if (!out.sopLegacy && parseInt(g.sop, 10) > 0) out.sopLegacy = parseInt(g.sop, 10);
+    return out;
+  },
+
+  // 依日期找出所屬週次（規劃表日期 <= 該日的最大週；找不到回傳 0）
+  weekOfDate: function (dateStr, o) {
+    o = o || STORE.d;
+    var d = U.parseDate(dateStr);
+    if (!d || !o || !Array.isArray(o.plan)) return 0;
+    var best = 0, bestT = -Infinity;
+    o.plan.forEach(function (r) {
+      var pd = U.parseDate(r.date);
+      if (!pd) return;
+      if (pd.getTime() <= d.getTime() && pd.getTime() > bestT) { bestT = pd.getTime(); best = r.week; }
+    });
+    return best;
   },
 
   // 讓 plan 列數 == totalWeeks（增列補預填、減列直接截斷）
@@ -706,13 +931,8 @@ var STORE = {
   planRow: function (w) { return STORE.d.plan[w - 1] || { week: w, date: '', topic: '', hours: 0, teacher: '', note: '' }; },
   logOf: function (w) {
     var k = String(w);
-    if (!STORE.d.log[k]) STORE.d.log[k] = { att: {}, init: false, record: { text: '', photo: '', caption: '' } };
-    var L = STORE.d.log[k];
-    if (!L.att) L.att = {};
-    if (!L.leaveKind) L.leaveKind = {};
-    if (!L.record) L.record = { text: '', photo: '', caption: '' };
-    if (!Array.isArray(L.photos)) L.photos = [];
-    return L;
+    if (!STORE.d.log[k]) STORE.d.log[k] = { init: false };
+    return STORE.normLog(STORE.d.log[k]);
   },
   // 該週是否「有點名過」＝ 至少一位學生有狀態
   weekHasLog: function (w) {
@@ -767,12 +987,14 @@ var STORE = {
   },
   /* ----- 出席統計 ----- */
   // 個人出席率＝該生出席次數 ÷ 該生有狀態的週數
-  studentAtt: function (sid) {
-    var p = 0, tot = 0, wsum = 0, leaves = 0, lates = 0, abs = 0;
+  //   upTo 給定時只累計 w<=upTo（v3「累計至第 N 週」）
+  studentAtt: function (sid, upTo) {
+    var p = 0, tot = 0, wsum = 0, leaves = 0, lates = 0, abs = 0, ws = [];
     STORE.loggedWeeks().forEach(function (w) {
+      if (upTo && w > upTo) return;
       var st = STORE.logOf(w).att[sid];
       if (!st) return;
-      tot++;
+      tot++; ws.push(w);
       wsum += STORE.attW(st);
       if (st === 'present') p++;
       if (st === 'late1' || st === 'late2') lates++;
@@ -780,7 +1002,7 @@ var STORE = {
       if (st === 'absent') abs++;
     });
     return {
-      present: p, counted: tot, rate: tot ? p / tot : 0,
+      present: p, counted: tot, rate: tot ? p / tot : 0, weeks: ws,
       wsum: wsum, leaves: leaves, lates: lates, absents: abs,
       // 出席原始分＝Σ狀態係數 ÷ 已點名週數 × 100（規格 §3）
       raw: tot ? U.round1(wsum / tot * 100) : null
@@ -839,12 +1061,12 @@ var STORE = {
     return null;
   },
 
-  /* ----- v2：成績結算 ----- */
+  /* ----- v3：逐週成績結算 ----- */
   gradeOf: function (sid) {
     if (!STORE.d.grades[sid]) STORE.d.grades[sid] = STORE.normGrade(null);
     return STORE.d.grades[sid];
   },
-  // 該生練習得分平均（AI 翻轉與模組的自動值來源）
+  // 該生練習得分平均（保留給總覽練習得分表）
   practiceAvg: function (stu) {
     var ws = [], vals = [];
     STORE.d.scores.forEach(function (r) { if (ws.indexOf(r.week) < 0) ws.push(r.week); });
@@ -855,86 +1077,385 @@ var STORE = {
     if (!vals.length) return null;
     return U.round1(vals.reduce(function (a, b) { return a + b; }, 0) / vals.length);
   },
-  // 撲滿：該生累計點數（未封頂）
-  bankPoints: function (sid) {
-    var t = 0;
-    STORE.d.bank.forEach(function (r) { if (r.sid === sid) t += (parseFloat(r.pt) || 0); });
+  // 撲滿：該生累計點數（未封頂）；upTo 給定時只算 w<=upTo
+  bankPoints: function (sid, upTo) {
+    var t = 0, top = upTo || STORE.d.course.totalWeeks;
+    for (var w = 1; w <= top; w++) {
+      var L = STORE.d.log[String(w)];
+      if (!L || !Array.isArray(L.bank)) continue;
+      L.bank.forEach(function (r) { if (r.sid === sid) t += (parseFloat(r.pt) || 0); });
+    }
     return t;
+  },
+  // 該生逐筆撲滿紀錄（含週次），供明細抽屜與帳本檢視使用
+  bankRows: function (sid, upTo) {
+    var out = [], top = upTo || STORE.d.course.totalWeeks;
+    for (var w = 1; w <= top; w++) {
+      var L = STORE.d.log[String(w)];
+      if (!L || !Array.isArray(L.bank)) continue;
+      L.bank.forEach(function (r) { if (!sid || r.sid === sid) out.push({ week: w, r: r }); });
+    }
+    return out;
+  },
+  // 該週未依 SOP 請假的人數／某生是否被勾
+  sopOf: function (sid, upTo) {
+    var n = 0, top = upTo || STORE.d.course.totalWeeks;
+    for (var w = 1; w <= top; w++) {
+      var L = STORE.d.log[String(w)];
+      if (L && L.sop && L.sop[sid]) n++;
+    }
+    return n;
+  },
+  sopWeeks: function (sid, upTo) {
+    var out = [], top = upTo || STORE.d.course.totalWeeks;
+    for (var w = 1; w <= top; w++) {
+      var L = STORE.d.log[String(w)];
+      if (L && L.sop && L.sop[sid]) out.push(w);
+    }
+    return out;
+  },
+
+  /* ----- v3：週次分類 ----- */
+  // 教學週＝CONTENT 標為 teach；沒有 CONTENT 時以「時數 > 0」判定
+  isTeachWeek: function (w) {
+    var C = (typeof CONTENT !== 'undefined') ? CONTENT[w] : null;
+    if (C && C.type) return C.type === 'teach';
+    return (parseFloat(STORE.planRow(w).hours) || 0) > 0;
+  },
+  // 考試週：CONTENT 標為 exam 的週依序對應期中／期末；沒有就用後備值
+  examWeeks: function () {
+    var ws = [], i, n = STORE.d.course.totalWeeks;
+    for (i = 1; i <= n; i++) {
+      var C = (typeof CONTENT !== 'undefined') ? CONTENT[i] : null;
+      if (C && C.type === 'exam') ws.push(i);
+    }
+    if (ws.length >= 2) return { mid: ws[0], fin: ws[1] };
+    if (ws.length === 1) return { mid: ws[0], fin: CONFIG.EXAM_WEEK_FALLBACK.fin };
+    return { mid: CONFIG.EXAM_WEEK_FALLBACK.mid, fin: CONFIG.EXAM_WEEK_FALLBACK.fin };
+  },
+  examKindOf: function (w) {
+    var e = STORE.examWeeks();
+    if (w === e.mid) return 'mid';
+    if (w === e.fin) return 'fin';
+    return null;
+  },
+
+  /* ----- v3：組別 ----- */
+  groupsOf: function () {
+    var out = [];
+    STORE.d.students.forEach(function (s) {
+      var g = (s.group || '').trim();
+      if (g && out.indexOf(g) < 0) out.push(g);
+    });
+    out.sort(function (a, b) {
+      var na = parseFloat(a), nb = parseFloat(b);
+      if (!isNaN(na) && !isNaN(nb)) return na - nb;
+      return a < b ? -1 : (a > b ? 1 : 0);
+    });
+    return out;
+  },
+  membersOf: function (gid) {
+    return STORE.d.students.filter(function (s) { return (s.group || '').trim() === String(gid); });
+  },
+  ungrouped: function () {
+    return STORE.d.students.filter(function (s) { return !(s.group || '').trim(); });
+  },
+
+  /* ----- v3：日誌項目查詢 ----- */
+  itemOf: function (w, id) {
+    var L = STORE.logOf(w), i;
+    for (i = 0; i < L.items.length; i++) { if (L.items[i].id === id) return L.items[i]; }
+    return null;
+  },
+  reportOf: function (w, id) {
+    var L = STORE.logOf(w), i;
+    for (i = 0; i < L.reports.length; i++) { if (L.reports[i].id === id) return L.reports[i]; }
+    return null;
+  },
+  // 進入某週時自動預建：教學週的兩個 AI 學習單項目、預設週的報告評分區
+  ensureWeekBlocks: function (w) {
+    var L = STORE.logOf(w), changed = false;
+    if (STORE.isTeachWeek(w) && !L.aiInit) {
+      CONFIG.AI_PRESETS.forEach(function (p) {
+        L.items.push({ id: U.uid(), cat: 'ai', name: p.name, type: p.type, memo: '', scores: {} });
+      });
+      L.aiInit = true; changed = true;
+    }
+    var kind = CONFIG.REPORT_DEFAULT_WEEK[w];
+    if (kind && !L.repInit) {
+      L.reports.push({ id: U.uid(), kind: kind, group: {}, intra: {} });
+      L.repInit = true; changed = true;
+    }
+    if (changed) STORE.save(true);
+    return changed;
   }
 };
 
 /* =========================================================================
- * GRADE — 學期成績結算（規格 §3）
+ * GRADE — 逐週累計成績引擎（v3，規格 §3）
  * -------------------------------------------------------------------------
- * 總成績 ＝ Σ(各項 0–100 分 × 權重%/100) ＋ 撲滿加分 − SOP 扣分，下限 0。
- * 權重預設：出席 9、討論與 Zuvio 6、AI 11、期中 25、期末 25、
- *           參訪 3+4+5 ＝ 12、行動 3+4+5 ＝ 12　→ 合計 100。
- * 撲滿：個人累計點數（封頂 200）÷ 20 ＝ 加分（至多 +10）。
- * SOP：未依 SOP 請假每次總成績 −2。
+ * 唯一的資料維護入口是「教室日誌」；本模組只負責把逐週資料累計成兩個指標：
+ *   累計得分 ＝ Σ已發生構面的加權分 ＋ 撲滿加分 ＋ 組長加分 − SOP 扣分（下限 0）
+ *   目前平均 ＝ 同一分子 ÷ Σ已發生構面的配分 × 100（下限 0；沒有任何已發生構面時為 —）
+ * 「已發生」＝ 該構面在第 1..N 週之間至少有一筆登記（或有學期級覆寫值）。
+ * 構面原始分：
+ *   出席   ＝ Σ狀態係數 ÷ 已點名週數 × 100（w≤N）
+ *   討論   ＝ 所有 cat='disc' 已登記項目分的平均（check：✓=100 ✗=0 —不計）
+ *   AI     ＝ 各週 AI 子分的平均；週 AI 子分＝該週 cat='ai' 項目分與線上練習最高分中「有登記者」的平均
+ *   期中/末 ＝ 考試週日誌輸入的 0–100
+ *   報告   ＝ 書面／組間互評／師評取該生所屬組的組分；組內互評取逐生分
  * ========================================================================= */
 var GRADE = {
-  W: function () { return Object.assign({}, CONFIG.GRADE, STORE.d.gradeW || {}); },
+  W: function () { return STORE.normWeights(STORE.d.gradeW); },
 
-  // 自動值（未覆寫時採用）
-  autoVal: function (stu, key) {
-    if (key === 'att') return STORE.studentAtt(stu.id).raw;      // 可能為 null（尚無點名）
-    if (key === 'ai') return STORE.practiceAvg(stu);              // 可能為 null（尚無練習）
+  /* ----- 「累計至第 N 週」 ----- */
+  _upTo: 0,
+  defaultUpTo: function () {
+    var cur = VIEWS.currentWeek();
+    if (cur) return cur;
+    var lw = STORE.loggedWeeks();
+    if (lw.length) return lw[lw.length - 1];
+    return 1;                         // 學期尚未開始且無任何點名 → 累計至第 1 週
+  },
+  upTo: function () {
+    var n = parseInt(GRADE._upTo, 10);
+    if (!n || n < 1) n = GRADE.defaultUpTo();
+    return Math.max(1, Math.min(STORE.d.course.totalWeeks, n || 1));
+  },
+  setUpTo: function (n) { GRADE._upTo = parseInt(n, 10) || 0; },
+
+  /* ----- 單一項目取值 ----- */
+  // check 三態：true→100、false→0、undefined→null（未登記，不計入）
+  ckVal: function (v) {
+    if (v === true || v === 1 || v === '1' || v === 100) return 100;
+    if (v === false || v === 0 || v === '0') return 0;
     return null;
   },
-  // 實際採用值：有手動值（含覆寫）用手動，否則用自動
-  valOf: function (stu, key) {
-    var g = STORE.gradeOf(stu.id);
-    var m = g[key];
-    if (m !== null && typeof m !== 'undefined') return m;
-    return GRADE.autoVal(stu, key);
-  },
-  bonusOf: function (sid) {
-    var W = GRADE.W();
-    var pts = Math.min(STORE.bankPoints(sid), W.bankCap);
-    return Math.min(W.bonusMax, U.round1(pts / W.bankDiv));
+  itemVal: function (it, sid) {
+    var v = it.scores ? it.scores[sid] : undefined;
+    if (it.type === 'check') return GRADE.ckVal(v);
+    if (v === '' || v === null || typeof v === 'undefined') return null;
+    var n = parseFloat(v);
+    return isNaN(n) ? null : Math.max(0, Math.min(100, n));
   },
 
-  // 回傳整列計算結果
-  row: function (stu) {
-    var W = GRADE.W(), g = STORE.gradeOf(stu.id), sum = 0, parts = {}, missing = [];
-    CONFIG.GRADE_COLS.forEach(function (c) {
-      var v = GRADE.valOf(stu, c.k);
-      parts[c.k] = v;
-      if (v === null || typeof v === 'undefined') { missing.push(c.k); v = 0; }
-      sum += (parseFloat(v) || 0) * (parseFloat(W[c.w]) || 0) / 100;
+  // 該生該週的 AI 子分：cat='ai' 各項目 ＋ 線上練習（自動）取有登記者平均
+  aiWeek: function (stu, w) {
+    var L = STORE.d.log[String(w)], vals = [], src = [];
+    if (L && Array.isArray(L.items)) {
+      L.items.forEach(function (it) {
+        if (it.cat !== 'ai') return;
+        var v = GRADE.itemVal(it, stu.id);
+        if (v !== null) { vals.push(v); src.push({ name: it.name || '（未命名項目）', v: v }); }
+      });
+    }
+    var q = STORE.scoreOfStudent(stu, w);
+    if (q !== null) { vals.push(q); src.push({ name: '線上練習（自動）', v: q }); }
+    if (!vals.length) return null;
+    return { v: U.round1(vals.reduce(function (a, b) { return a + b; }, 0) / vals.length), src: src, week: w };
+  },
+
+  // 討論（cat='disc'）逐筆
+  discRows: function (stu, upTo) {
+    var out = [], w;
+    for (w = 1; w <= upTo; w++) {
+      var L = STORE.d.log[String(w)];
+      if (!L || !Array.isArray(L.items)) continue;
+      L.items.forEach(function (it) {
+        if (it.cat !== 'disc') return;
+        var v = GRADE.itemVal(it, stu.id);
+        if (v !== null) out.push({ week: w, name: it.name || '（未命名項目）', type: it.type, v: v });
+      });
+    }
+    return out;
+  },
+
+  // 報告構面逐筆（f＝w1/inter/ta 取組分；f＝intra 取逐生分）
+  reportRows: function (stu, kind, f, upTo) {
+    var out = [], gid = (stu.group || '').trim(), w;
+    for (w = 1; w <= upTo; w++) {
+      var L = STORE.d.log[String(w)];
+      if (!L || !Array.isArray(L.reports)) continue;
+      L.reports.forEach(function (rp) {
+        if (rp.kind !== kind) return;
+        var v = null;
+        if (f === 'intra') {
+          var iv = rp.intra ? rp.intra[stu.id] : undefined;
+          if (iv !== '' && iv !== null && typeof iv !== 'undefined' && !isNaN(parseFloat(iv))) v = parseFloat(iv);
+        } else {
+          if (!gid) return;                          // 未設組別 → 組分該項空
+          var g = rp.group ? rp.group[gid] : null;
+          if (g && g[f] !== null && typeof g[f] !== 'undefined' && !isNaN(parseFloat(g[f]))) v = parseFloat(g[f]);
+        }
+        if (v !== null) out.push({ week: w, v: Math.max(0, Math.min(100, v)), gid: gid });
+      });
+    }
+    return out;
+  },
+
+  mean: function (arr) {
+    if (!arr.length) return null;
+    return U.round1(arr.reduce(function (a, b) { return a + b; }, 0) / arr.length);
+  },
+
+  /* ----- 主計算：回傳一位學生截至第 N 週的完整結果 ----- */
+  calc: function (stu, upTo) {
+    upTo = upTo || GRADE.upTo();
+    var W = GRADE.W(), g = STORE.gradeOf(stu.id);
+    var att = STORE.studentAtt(stu.id, upTo);
+    var comps = {}, sumW = 0, possible = 0;
+
+    CONFIG.GRADE_COMPS.forEach(function (c) {
+      var raw = null, detail = [], legacy = false, note = '';
+      var ov = (typeof g.ov[c.k] !== 'undefined') ? g.ov[c.k] : null;
+
+      if (c.src === 'att') {
+        if (g.attOv !== null) { raw = g.attOv; note = '學期覆寫'; legacy = !!g.ovLegacy.att; }
+        else { raw = att.raw; }
+        detail = att.weeks.map(function (w) {
+          var st = STORE.logOf(w).att[stu.id];
+          return { week: w, name: CONFIG.ATT_LABEL[st] || st, v: U.round1(STORE.attW(st) * 100) };
+        });
+      } else if (c.src === 'disc') {
+        detail = GRADE.discRows(stu, upTo);
+        raw = GRADE.mean(detail.map(function (x) { return x.v; }));
+      } else if (c.src === 'ai') {
+        var wk;
+        for (wk = 1; wk <= upTo; wk++) {
+          var a = GRADE.aiWeek(stu, wk);
+          if (a) detail.push({ week: wk, name: 'AI 週子分', v: a.v, src: a.src });
+        }
+        raw = GRADE.mean(detail.map(function (x) { return x.v; }));
+      } else if (c.src === 'exam') {
+        // 考試分存在學期級欄位，但入口在考試週日誌 → 只有 N 已經到達該考試週才算「已發生」
+        var ew = STORE.examWeeks();
+        var exw = (c.ex === 'mid') ? ew.mid : ew.fin;
+        var val = (c.ex === 'mid') ? g.examMid : g.examFin;
+        raw = (exw <= upTo) ? val : null;
+        legacy = !!g.ovLegacy[c.ex];
+        if (raw !== null) detail.push({ week: exw, name: c.name, v: raw });
+      } else if (c.src === 'report') {
+        detail = GRADE.reportRows(stu, c.kind, c.f, upTo);
+        raw = GRADE.mean(detail.map(function (x) { return x.v; }));
+      }
+
+      // 學期級覆寫（v2 舊值匯入或期末人工調整）優先
+      if (c.src !== 'att' && c.src !== 'exam' && ov !== null) {
+        raw = ov; legacy = !!g.ovLegacy[c.k];
+        note = legacy ? '舊版匯入' : '學期覆寫';
+      } else if (c.src === 'att' && legacy) { note = '舊版匯入'; }
+      else if (c.src === 'exam' && legacy) { note = '舊版匯入'; }
+
+      var wt = parseFloat(W[c.w]) || 0;
+      var occurred = (raw !== null && typeof raw !== 'undefined');
+      var weighted = occurred ? U.round1(raw * wt / 100) : 0;
+      if (occurred) { sumW += raw * wt / 100; possible += wt; }
+      comps[c.k] = { raw: occurred ? U.round1(raw) : null, w: wt, weighted: weighted,
+                     occurred: occurred, legacy: legacy, note: note, detail: detail };
     });
-    var pts = STORE.bankPoints(stu.id);
-    var bonus = GRADE.bonusOf(stu.id);
-    var sop = Math.max(0, parseInt(g.sop, 10) || 0);
-    var penalty = sop * (parseFloat(W.sopPenalty) || 0);
-    var total = sum + bonus - penalty;
-    if (total < 0) total = 0;
+
+    var pts = STORE.bankPoints(stu.id, upTo);
+    var capped = Math.min(pts, W.bankCap);
+    var bonus = Math.min(W.bonusMax, U.round1(capped / (W.bankDiv || 20)));
+    var sopN = STORE.sopOf(stu.id, upTo) + (g.sopLegacy || 0);
+    var penalty = U.round1(sopN * (parseFloat(W.sopPenalty) || 0));
+    var leader = Math.max(0, Math.min(W.leaderMax, parseFloat(g.leaderBonus) || 0));
+
+    var numer = sumW + bonus + leader - penalty;
+    var earned = Math.max(0, numer);
+    var avg = possible > 0 ? Math.max(0, numer / possible * 100) : null;
+
     return {
-      parts: parts, missing: missing, weighted: U.round1(sum),
-      bankPts: pts, bankCapped: Math.min(pts, W.bankCap), bonus: bonus,
-      sop: sop, penalty: penalty,
-      total1: U.round1(total), totalInt: Math.round(total)
+      upTo: upTo, comps: comps, att: att,
+      sumW: U.round1(sumW), possible: U.round1(possible),
+      bankPts: pts, bankCapped: capped, bonus: bonus,
+      sopCount: sopN, sopLegacy: g.sopLegacy || 0, penalty: penalty, leader: leader,
+      earned: U.round1(earned), earnedInt: Math.round(earned),
+      avg: avg === null ? null : U.round1(avg)
     };
   },
 
   // 權重合計（應為 100；不是 100 時畫面提示）
   weightSum: function () {
     var W = GRADE.W(), t = 0;
-    CONFIG.GRADE_COLS.forEach(function (c) { t += parseFloat(W[c.w]) || 0; });
+    CONFIG.GRADE_COMPS.forEach(function (c) { t += parseFloat(W[c.w]) || 0; });
     return U.round1(t);
   },
 
-  // 完成度：各手動欄已填人數 / 總人數
-  completeness: function () {
-    var ss = STORE.d.students, out = [];
-    CONFIG.GRADE_COLS.forEach(function (c) {
-      var n = 0;
-      ss.forEach(function (s) {
-        var v = GRADE.valOf(s, c.k);
-        if (v !== null && typeof v !== 'undefined') n++;
+  // 全班統計（累計至第 N 週）
+  classStat: function (upTo) {
+    upTo = upTo || GRADE.upTo();
+    var ss = STORE.d.students, e = [], a = [], byComp = {};
+    ss.forEach(function (s) {
+      var R = GRADE.calc(s, upTo);
+      e.push(R.earned);
+      if (R.avg !== null) a.push(R.avg);
+      CONFIG.GRADE_COMPS.forEach(function (c) {
+        if (!byComp[c.k]) byComp[c.k] = { vals: [], filled: 0 };
+        if (R.comps[c.k].occurred) { byComp[c.k].vals.push(R.comps[c.k].raw); byComp[c.k].filled++; }
       });
-      out.push({ k: c.k, name: c.name, filled: n, total: ss.length, auto: !!c.auto });
     });
+    return {
+      upTo: upTo, n: ss.length,
+      earnedAvg: e.length ? U.round1(e.reduce(function (x, y) { return x + y; }, 0) / e.length) : null,
+      avgAvg: a.length ? U.round1(a.reduce(function (x, y) { return x + y; }, 0) / a.length) : null,
+      byComp: byComp
+    };
+  },
+
+  // 完成度：各構面已有資料的人數 / 總人數
+  completeness: function (upTo) {
+    var st = GRADE.classStat(upTo), out = [];
+    CONFIG.GRADE_COMPS.forEach(function (c) {
+      var b = st.byComp[c.k] || { vals: [], filled: 0 };
+      out.push({
+        k: c.k, name: c.name, w: GRADE.W()[c.w], filled: b.filled, total: st.n,
+        avg: b.vals.length ? U.round1(b.vals.reduce(function (x, y) { return x + y; }, 0) / b.vals.length) : null
+      });
+    });
+    return out;
+  },
+
+  // 未登記提醒：掃描 1..N 週的點名與項目，找出還沒登記完的地方
+  todos: function (upTo) {
+    upTo = upTo || GRADE.upTo();
+    var ss = STORE.d.students, out = [], w;
+    if (!ss.length) return out;
+    for (w = 1; w <= upTo; w++) {
+      var L = STORE.d.log[String(w)];
+      if (!STORE.isTeachWeek(w) && !(L && (L.items || []).length)) continue;
+      if (!L) { out.push({ week: w, text: '第 ' + w + ' 週尚未點名' }); continue; }
+      var noAtt = ss.filter(function (s) { return !L.att[s.id]; }).length;
+      if (noAtt) out.push({ week: w, text: '第 ' + w + ' 週還有 ' + noAtt + ' 位未點名' });
+      (L.items || []).forEach(function (it) {
+        var miss = ss.filter(function (s) { return GRADE.itemVal(it, s.id) === null; }).length;
+        if (miss === ss.length) out.push({ week: w, text: '第 ' + w + ' 週「' + (it.name || '未命名項目') + '」尚未登記' });
+        else if (miss) out.push({ week: w, text: '第 ' + w + ' 週「' + (it.name || '未命名項目') + '」還有 ' + miss + ' 位未登記' });
+      });
+      (L.reports || []).forEach(function (rp) {
+        var lab = CONFIG.REPORT_LABEL[rp.kind];
+        var gs = STORE.groupsOf();
+        var missG = gs.filter(function (gid) {
+          var g = rp.group[gid];
+          return !g || (g.w1 === null && g.inter === null && g.ta === null);
+        }).length;
+        if (!gs.length) out.push({ week: w, text: '第 ' + w + ' 週' + lab + '：學生名單尚未設定組別' });
+        else if (missG) out.push({ week: w, text: '第 ' + w + ' 週' + lab + '有 ' + missG + ' 組尚未評分' });
+        var missI = ss.filter(function (s) {
+          var v = rp.intra[s.id];
+          return v === '' || v === null || typeof v === 'undefined';
+        }).length;
+        if (missI) out.push({ week: w, text: '第 ' + w + ' 週' + lab + '組內互評還有 ' + missI + ' 位未登記' });
+      });
+      var ek = STORE.examKindOf(w);
+      if (ek) {
+        var miss2 = ss.filter(function (s) {
+          var g = STORE.gradeOf(s.id);
+          return (ek === 'mid' ? g.examMid : g.examFin) === null;
+        }).length;
+        if (miss2) out.push({ week: w, text: '第 ' + w + ' 週' + (ek === 'mid' ? '期中考' : '期末考') + '成績還有 ' + miss2 + ' 位未輸入' });
+      }
+    }
     return out;
   }
 };
@@ -2915,6 +3436,15 @@ VIEWS.footer = function () {
     '最後儲存：' + U.esc(STORE.d.lastSaved || '（尚未儲存）') + '　·　產出日期：' + U.today() + '</div>';
 };
 
+/* v3：教室日誌可摺疊區塊的開闔狀態（重繪後不會被重設） */
+VIEWS.logOpen = {};
+VIEWS.blk = function (key, defOpen) {
+  var st = VIEWS.logOpen[key];
+  var open = (typeof st === 'boolean') ? st : !!defOpen;
+  return '<details class="blk" data-blk="' + key + '"' + (open ? ' open' : '') +
+    ' ontoggle="VIEWS.logOpen[\'' + key + '\']=this.open">';
+};
+
 /* 目前是第幾週（依規劃表日期推算） */
 VIEWS.currentWeek = function () {
   var today = new Date(); today.setHours(0, 0, 0, 0);
@@ -3032,31 +3562,54 @@ VIEWS.overview = function () {
     '<button class="btn ghost" onclick="document.getElementById(\'scoreBox\').value=\'\'">清空</button></div>' +
     '<div id="scoreMsg"></div></div>';
 
-  /* 5. 成績完成度 */
-  h += '<div class="card"><h2><span class="eyebrow">05 / GRADING</span>成績完成度' +
-    '<a class="pill teal" href="#/admin/grades" style="text-decoration:none">前往成績結算 →</a></h2>';
+  /* 5. 累計成績摘要（v3） */
+  var N = GRADE.upTo();
+  h += '<div class="card"><h2><span class="eyebrow">05 / GRADING</span>累計成績摘要' +
+    '<span class="pill teal">累計至第 ' + N + ' 週</span>' +
+    '<a class="pill gray" href="#/admin/grades" style="text-decoration:none">前往成績結算 →</a></h2>';
   if (!ss.length) {
     h += '<div class="alert info">尚未匯入學生名單，成績結算尚無法開始。</div>';
   } else {
-    var comp = GRADE.completeness();
-    var done = comp.filter(function (c) { return c.filled >= c.total; }).length;
+    var cst = GRADE.classStat(N);
+    var comp = GRADE.completeness(N);
+    var occurredW = comp.reduce(function (a, c) { return a + (c.filled ? c.w : 0); }, 0);
+    var bankAll = STORE.bankRows(null, N).length;
     h += '<div class="stats" style="margin-bottom:10px">' +
-      '<div class="stat"><div class="k">已完成的評分項目</div><div class="v">' + done + ' / ' + comp.length + '</div><div class="u">全班都有分數的欄位數</div></div>' +
-      '<div class="stat t2"><div class="k">撲滿帳本筆數</div><div class="v">' + STORE.d.bank.length + '<span class="u"> 筆</span></div></div>' +
-      '<div class="stat t3"><div class="k">權重合計</div><div class="v">' + GRADE.weightSum() + '<span class="u"> %</span></div></div>' +
-      '<div class="stat t4"><div class="k">學期總成績平均</div><div class="v">' +
-      U.round1(ss.reduce(function (a, s) { return a + GRADE.row(s).total1; }, 0) / ss.length) + '</div></div>' +
+      '<div class="stat"><div class="k">全班累計得分（平均）</div><div class="v">' +
+      (cst.earnedAvg === null ? '—' : cst.earnedAvg.toFixed(1)) + '</div><div class="u">已拿到手的分數／滿分 100</div></div>' +
+      '<div class="stat t2"><div class="k">全班目前平均</div><div class="v">' +
+      (cst.avgAvg === null ? '—' : cst.avgAvg.toFixed(1)) + '</div><div class="u">課程到此為止的百分制換算</div></div>' +
+      '<div class="stat t3"><div class="k">已發生配分</div><div class="v">' + U.round1(occurredW) +
+      '<span class="u"> / ' + GRADE.weightSum() + '</span></div><div class="u">目前平均的分母</div></div>' +
+      '<div class="stat t4"><div class="k">撲滿登記筆數</div><div class="v">' + bankAll +
+      '<span class="u"> 筆</span></div><div class="u">第 1–' + N + ' 週</div></div>' +
       '</div>' +
-      '<div class="tblwrap"><table class="t"><thead><tr><th>評分項目</th><th style="width:110px">型式</th>' +
-      '<th style="width:120px">已填人數</th><th style="width:90px">完成率</th></tr></thead><tbody>' +
+      '<div class="tblwrap"><table class="t"><thead><tr><th>構面</th><th style="width:80px">配分</th>' +
+      '<th style="width:120px">已有資料</th><th style="width:110px">全班平均分</th>' +
+      '<th style="width:110px">加權貢獻</th></tr></thead><tbody>' +
       comp.map(function (c) {
-        var full = c.filled >= c.total;
-        return '<tr><td>' + U.esc(c.name) + '</td>' +
-          '<td>' + (c.auto ? '<span class="pill gray">自動</span>' : '<span class="pill teal">手動</span>') + '</td>' +
-          '<td class="num">' + c.filled + ' / ' + c.total + '</td>' +
-          '<td class="num">' + (full ? '<span class="pill green">100%</span>' : U.pct(c.filled, c.total)) + '</td></tr>';
+        var full = c.filled >= c.total && c.total > 0;
+        return '<tr><td>' + U.esc(c.name) + '</td><td class="num">' + c.w + '%</td>' +
+          '<td class="num">' + (c.filled ? (full ? '<span class="pill green">' + c.filled + ' / ' + c.total + '</span>'
+                                                 : c.filled + ' / ' + c.total)
+                                         : '<span class="pill gray">尚未發生</span>') + '</td>' +
+          '<td class="num">' + (c.avg === null ? '—' : c.avg) + '</td>' +
+          '<td class="num">' + (c.avg === null ? '—' : U.round1(c.avg * c.w / 100)) + '</td></tr>';
       }).join('') + '</tbody></table></div>' +
-      '<p class="hint">自動欄若顯示未滿，代表該生還沒有點名紀錄或練習成績；手動欄未滿代表還沒登記分數。</p>';
+      '<p class="hint">「尚未發生」的構面不列入目前平均的分母，所以學期初的目前平均只反映已經上過的部分。</p>';
+
+    /* 未登記提醒 */
+    var todos = GRADE.todos(N);
+    if (!todos.length) {
+      h += '<div class="alert ok">✔ 第 1–' + N + ' 週的點名與各項目都已登記完成。</div>';
+    } else {
+      h += '<div class="alert warn"><b>未登記提醒（' + todos.length + ' 項）</b><br>' +
+        todos.slice(0, 20).map(function (t) {
+          return '· ' + U.esc(t.text) +
+            ' <a href="#/admin/log" onclick="ACT.jumpLog(' + t.week + ')">去第 ' + t.week + ' 週日誌 →</a>';
+        }).join('<br>') +
+        (todos.length > 20 ? '<br>…另有 ' + (todos.length - 20) + ' 項' : '') + '</div>';
+    }
   }
   h += '</div>';
 
@@ -3101,22 +3654,43 @@ VIEWS.students = function () {
   if (!ss.length) {
     h += '<div class="alert info">目前名單為空（系統預設不含任何個資）。請用上方貼上匯入，或按「＋手動加一位」。</div>';
   } else {
-    h += '<div class="tblwrap"><table class="t"><thead><tr><th style="width:80px">座號</th><th style="width:140px">班級</th>' +
-      '<th style="width:160px">姓名</th><th>備註</th><th style="width:60px">刪除</th></tr></thead><tbody>' +
+    var groups = STORE.groupsOf(), un = STORE.ungrouped();
+    h += '<div class="alert ' + (un.length ? 'warn' : 'ok') + '"><b>組別</b>用於參訪／行動報告的組別分數（書面、組間互評、師評填一次自動套用全組）。' +
+      '目前共 ' + groups.length + ' 組' + (groups.length ? '（' + groups.map(function (g) {
+        return '第 ' + U.esc(g) + ' 組 ' + STORE.membersOf(g).length + ' 人';
+      }).join('、') + '）' : '') +
+      (un.length ? '；<b class="red">尚有 ' + un.length + ' 位未分組</b>，這些學生的報告組分會是空的。' : '；全員已分組。') +
+      '</div>';
+    h += '<div class="tblwrap"><table class="t"><thead><tr><th style="width:42px">選</th>' +
+      '<th style="width:80px">座號</th><th style="width:140px">班級</th>' +
+      '<th style="width:160px">姓名</th><th style="width:90px">組別</th><th>備註</th><th style="width:60px">刪除</th></tr></thead><tbody>' +
       ss.map(function (s, i) {
         return '<tr>' +
+          '<td style="text-align:center"><input type="checkbox" class="stuck" data-i="' + i + '" style="width:auto"></td>' +
           '<td><input type="text" value="' + U.attr(s.seat) + '" oninput="ACT.setStu(' + i + ',\'seat\',this.value)"></td>' +
           '<td><input type="text" value="' + U.attr(s.cls) + '" oninput="ACT.setStu(' + i + ',\'cls\',this.value)"></td>' +
           '<td><input type="text" value="' + U.attr(s.name) + '" oninput="ACT.setStu(' + i + ',\'name\',this.value)"></td>' +
+          '<td><input type="text" value="' + U.attr(s.group || '') + '" placeholder="如 1" ' +
+          'oninput="ACT.setStu(' + i + ',\'group\',this.value)"></td>' +
           '<td><input type="text" value="' + U.attr(s.note) + '" oninput="ACT.setStu(' + i + ',\'note\',this.value)"></td>' +
           '<td style="text-align:center"><button class="btn sm danger" onclick="ACT.delStu(' + i + ')">✕</button></td></tr>';
       }).join('') + '</tbody></table></div>';
+
+    /* 批次分組小工具 */
+    h += '<hr class="divider"><label class="f">批次分組（勾選左側「選」欄的學生 → 填組別 → 按套用）</label>' +
+      '<div class="btnrow" style="margin-top:6px;align-items:center">' +
+      '<input type="text" id="bulkGrp" placeholder="組別（如 1）" style="width:130px">' +
+      '<button class="btn" onclick="ACT.bulkGroup()">👥 套用到勾選的學生</button>' +
+      '<button class="btn ghost" onclick="ACT.bulkGroup(true)">🧹 清除勾選學生的組別</button>' +
+      '<button class="btn ghost sm" onclick="ACT.checkAllStu(true)">全選</button>' +
+      '<button class="btn ghost sm" onclick="ACT.checkAllStu(false)">全不選</button>' +
+      '</div>';
   }
   h += '<div class="btnrow">' +
     '<button class="btn" onclick="ACT.addStu()">＋ 手動加一位</button>' +
     '<button class="btn ghost" onclick="ACT.popStu()">− 手動減一位</button>' +
     '<button class="btn teal" onclick="ACT.printRoster()">🖨 列印學生名單（附件一）</button>' +
-    '<button class="btn navy" onclick="ACT.exportRosterCSV()">⬇ 匯出名單 CSV</button>' +
+    '<button class="btn navy" onclick="ACT.exportRosterCSV()">⬇ 匯出名單 CSV（含組別）</button>' +
     '</div></div>';
   return h;
 };
@@ -3267,66 +3841,101 @@ VIEWS.log = function () {
   if (w > STORE.d.course.totalWeeks) w = STORE.d.course.totalWeeks;
   VIEWS.logWeek = w;
   STORE.ensureWeekDefault(w);           // 進入某週：尚未建立者一律預設出席
+  STORE.ensureWeekBlocks(w);            // v3：教學週預建 AI 兩項目、預設週預建報告評分
   var row = STORE.planRow(w), L = STORE.logOf(w), ss = STORE.d.students;
-  var cnt = STORE.weekCount(w), tc = STORE.teacherCount(), T = tc.T;
-  var M = ss.length, N = cnt.present, IN = cnt.inClass;
-  var cls = STORE.classAtt();
 
-  var h = '<div class="card"><h2><span class="eyebrow">01 / CLASS LOG</span>教室日誌</h2>' +
+  var h = '<div class="card"><h2><span class="eyebrow">01 / CLASS LOG</span>教室日誌' +
+    '<span class="pill teal">第 ' + w + ' 週</span>' +
+    (STORE.isTeachWeek(w) ? '<span class="pill green">教學週</span>' : '<span class="pill gray">非教學週</span>') +
+    (STORE.examKindOf(w) ? '<span class="pill red">' + (STORE.examKindOf(w) === 'mid' ? '期中考週' : '期末考週') + '</span>' : '') +
+    '</h2>' +
+    '<div class="alert info"><b>這一頁是全課程唯一的成績維護入口。</b>' +
+    '每週在這裡點一點——點名、雲端討論、AI 學習單、考試分、報告評分、撲滿登記——' +
+    '「成績結算」與「總覽」就會自動累計，不必再去別頁補登。</div>' +
     '<div class="grid g3">' +
     '<div class="field"><label class="f">週次</label><select onchange="ACT.gotoLogWeek(this.value)">' +
     STORE.d.plan.map(function (r) {
-      return '<option value="' + r.week + '"' + (r.week === w ? ' selected' : '') + '>第 ' + r.week + ' 週</option>';
+      return '<option value="' + r.week + '"' + (r.week === w ? ' selected' : '') + '>第 ' + r.week + ' 週' +
+        (r.date ? '（' + U.esc(r.date) + '）' : '') + '</option>';
     }).join('') + '</select></div>' +
     VIEWS.ro('日期（自課程規劃表）', row.date || '未填') +
     VIEWS.ro('時數', (parseFloat(row.hours) || 0) + ' 小時') +
     '</div>' +
     VIEWS.ro('主題（自課程規劃表）', row.topic || '未填') +
-    '<div class="btnrow"><button class="btn" onclick="ACT.allPresent()">✅ 全到</button>' +
-    '<button class="btn danger" onclick="ACT.clearWeek()">🧹 清除本週</button></div>';
+    '<div class="btnrow"><a class="btn ghost sm" href="#/admin/grades" style="text-decoration:none">🧮 看累計成績（結算）</a></div>' +
+    '</div>';
 
   if (!ss.length) {
-    h += '<div class="alert info">尚未匯入學生名單，請先到「學生名單」分頁匯入。</div>';
-  } else {
-    h += '<div class="attgrid">' + ss.map(function (s) {
-      var st = L.att[s.id] || 'none';
-      return '<button class="attbtn" data-s="' + st + '" onclick="ACT.cycle(\'' + s.id + '\')" ' +
-        'title="' + U.attr(CONFIG.ATT_LABEL[st] || st) + '（點一下換下一個狀態）">' +
-        '<span class="sq">' + (CONFIG.ATT_SYMBOL[st] || '?') + '</span>' +
-        '<span class="nm">' + U.esc(s.name || '（未命名）') + '</span>' +
-        '<span class="st">' + U.esc(CONFIG.ATT_SHORT[st] || st) + '</span>' +
-        '<span class="seat">' + U.esc(s.seat) + '</span></button>';
-    }).join('') + '</div>' +
-      '<div class="attlegend">' +
-      ['present', 'late1', 'late2', 'absent', 'leave', 'none'].map(function (k) {
-        var col = { present: 'var(--green)', late1: '#E8B004', late2: '#D97706', absent: 'var(--danger)', leave: '#5B7C95', none: '#B9C4CC' }[k];
-        return '<span><i style="background:' + col + '"></i>' + CONFIG.ATT_SYMBOL[k] + '　' + U.esc(CONFIG.ATT_LABEL[k]) +
-          (typeof CONFIG.ATT_WEIGHT[k] === 'number' && k !== 'none' ? '（係數 ' + CONFIG.ATT_WEIGHT[k] + '）' : '') + '</span>';
-      }).join('') + '</div>' +
-      '<p class="hint">點一下依序循環：出席 → 遲到/早退≤20分 → 遲到/早退>20分（或早退未告知） → 缺席 → 請假 → 出席。' +
-      '進入某週時系統預設全員出席（＝視為已點名）；按「清除本週」後全部回到未點名。' +
-      '括號內的係數用於「成績結算」分頁的出席原始分計算。</p>';
-
-    /* 請假者的假別註記 */
-    var lv = ss.filter(function (s) { return L.att[s.id] === 'leave'; });
-    if (lv.length) {
-      h += '<hr class="divider"><label class="f">請假假別註記（' + lv.length + ' 位）</label><div class="leavesel">' +
-        lv.map(function (s) {
-          return '<div class="lv"><b>' + U.esc(s.name || '（未命名）') + '</b>' +
-            '<select onchange="ACT.setLeaveKind(\'' + s.id + '\',this.value)">' +
-            ['<option value="">（未註記）</option>'].concat(CONFIG.LEAVE_KINDS.map(function (k) {
-              return '<option value="' + U.attr(k) + '"' + (L.leaveKind[s.id] === k ? ' selected' : '') + '>' + U.esc(k) + '</option>';
-            })).join('') + '</select></div>';
-        }).join('') + '</div>' +
-        '<p class="hint">未依 SOP 請假的次數，請到「成績結算」分頁的「未依 SOP 請假」欄登記（每次總成績 −' +
-        (GRADE.W().sopPenalty) + ' 分）。</p>';
-    }
+    h += '<div class="alert info">尚未匯入學生名單，請先到「學生名單」分頁匯入，本頁的各區塊才會出現學生格。</div>';
+    return h;
   }
-  h += '</div>';
 
-  /* 摘要列 */
-  h += '<div class="card"><h2><span class="eyebrow">02 / SUMMARY</span>本週摘要與材料費</h2>' +
-    '<div class="banner">本週上課人數 <b>' + IN + '</b> 人／共 ' + M + ' 人' +
+  h += VIEWS.logRoll(w, L, ss);
+  h += VIEWS.logItems(w, L, ss, 'disc');
+  h += VIEWS.logItems(w, L, ss, 'ai');
+  h += VIEWS.logExam(w, ss);
+  h += VIEWS.logReports(w, L, ss);
+  h += VIEWS.logBank(w, L, ss);
+  h += VIEWS.logRecord(w, L);
+  return h;
+};
+
+/* ---- 日誌 1：點名（含摘要與材料費） ---- */
+VIEWS.logRoll = function (w, L, ss) {
+  var cnt = STORE.weekCount(w), tc = STORE.teacherCount(), T = tc.T;
+  var M = ss.length, N = cnt.present, IN = cnt.inClass;
+  var cls = STORE.classAtt();
+  var sopN = ss.filter(function (s) { return L.sop[s.id]; }).length;
+
+  var h = VIEWS.blk('roll', true) + '<summary><span class="no">01 / ROLL CALL</span>點名（出席 ' +
+    GRADE.W().att + '%）<span class="sm2">出席 ' + cnt.present + '　小遲 ' + cnt.late1 + '　大遲 ' + cnt.late2 +
+    '　缺席 ' + cnt.absent + '　請假 ' + cnt.leave + '　未點名 ' + cnt.none +
+    (sopN ? '　·　未依 SOP ' + sopN + ' 位' : '') + '</span></summary><div class="bd">';
+
+  h += '<div class="btnrow" style="margin-top:0"><button class="btn" onclick="ACT.allPresent()">✅ 全到</button>' +
+    '<button class="btn danger" onclick="ACT.clearWeek()">🧹 清除本週</button></div>';
+
+  h += '<div class="attgrid">' + ss.map(function (s) {
+    var st = L.att[s.id] || 'none';
+    return '<button class="attbtn" data-s="' + st + '" onclick="ACT.cycle(\'' + s.id + '\')" ' +
+      'title="' + U.attr(CONFIG.ATT_LABEL[st] || st) + '（點一下換下一個狀態）">' +
+      '<span class="sq">' + (CONFIG.ATT_SYMBOL[st] || '?') + '</span>' +
+      '<span class="nm">' + U.esc(s.name || '（未命名）') + '</span>' +
+      '<span class="st">' + U.esc(CONFIG.ATT_SHORT[st] || st) + '</span>' +
+      '<span class="seat">' + U.esc(s.seat) + '</span></button>';
+  }).join('') + '</div>' +
+    '<div class="attlegend">' +
+    ['present', 'late1', 'late2', 'absent', 'leave', 'none'].map(function (k) {
+      var col = { present: 'var(--green)', late1: '#E8B004', late2: '#D97706', absent: 'var(--danger)', leave: '#5B7C95', none: '#B9C4CC' }[k];
+      return '<span><i style="background:' + col + '"></i>' + CONFIG.ATT_SYMBOL[k] + '　' + U.esc(CONFIG.ATT_LABEL[k]) +
+        (typeof CONFIG.ATT_WEIGHT[k] === 'number' && k !== 'none' ? '（係數 ' + CONFIG.ATT_WEIGHT[k] + '）' : '') + '</span>';
+    }).join('') + '</div>' +
+    '<p class="hint">點一下依序循環：出席 → 遲到/早退≤20分 → 遲到/早退>20分（或早退未告知） → 缺席 → 請假 → 出席。' +
+    '進入某週時系統預設全員出席（＝視為已點名）；按「清除本週」後全部回到未點名。</p>';
+
+  /* 請假者的假別註記 ＋ 未依 SOP 小勾 */
+  var lv = ss.filter(function (s) { return L.att[s.id] === 'leave'; });
+  if (lv.length) {
+    h += '<hr class="divider"><label class="f">請假假別註記與 SOP 檢核（' + lv.length + ' 位）</label><div class="leavesel">' +
+      lv.map(function (s) {
+        return '<div class="lv" style="flex-wrap:wrap"><b>' + U.esc(s.name || '（未命名）') + '</b>' +
+          '<select onchange="ACT.setLeaveKind(\'' + s.id + '\',this.value)">' +
+          ['<option value="">（未註記）</option>'].concat(CONFIG.LEAVE_KINDS.map(function (k) {
+            return '<option value="' + U.attr(k) + '"' + (L.leaveKind[s.id] === k ? ' selected' : '') + '>' + U.esc(k) + '</option>';
+          })).join('') + '</select>' +
+          '<label style="display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:700;color:' +
+          (L.sop[s.id] ? 'var(--danger)' : 'var(--muted)') + ';cursor:pointer" ' +
+          'title="勾選＝本週未依請假 SOP（未於系統請假／未事先告知），學期總成績每勾一次 −' + GRADE.W().sopPenalty + ' 分">' +
+          '<input type="checkbox"' + (L.sop[s.id] ? ' checked' : '') +
+          ' style="width:auto;margin:0" onchange="ACT.setSop(\'' + s.id + '\',this.checked)">未依 SOP</label>' +
+          '</div>';
+      }).join('') + '</div>' +
+      '<p class="hint">「未依 SOP」每勾一次，該生學期總成績扣 ' + GRADE.W().sopPenalty +
+      ' 分（在成績結算的「SOP 扣」欄可看到累計）。</p>';
+  }
+
+  /* 摘要列與材料費 */
+  h += '<hr class="divider"><div class="banner">本週上課人數 <b>' + IN + '</b> 人／共 ' + M + ' 人' +
     '（出席 ' + cnt.present + '、遲到/早退≤20分 ' + cnt.late1 + '、遲到/早退>20分 ' + cnt.late2 +
     '、缺席 ' + cnt.absent + '、請假 ' + cnt.leave + '）' +
     '　→　加上授課教師 ' + T + ' 位＝材料費 <b>' + (IN + T) + '</b> 份</div>';
@@ -3340,12 +3949,274 @@ VIEWS.log = function () {
     '</div>' +
     '<p class="hint">上課人數＝出席＋兩級遲到/早退（人有到就有領材料）；出席率的定義維持不變（分母含請假與缺席）。</p>' +
     '<div class="alert warn" style="margin-top:12px"><b>' + U.esc(CONFIG.MATERIAL_FORMULA) + '</b>' +
-    '　（本課程單價：' + (STORE.d.course.materialUnitPrice || 250) + ' 元，可於「備份與設定」調整）</div>' +
-    '</div>';
+    '　（本課程單價：' + (STORE.d.course.materialUnitPrice || 250) + ' 元，可於「備份與設定」調整）</div>';
 
-  /* 課程紀錄 */
-  h += '<div class="card"><h2><span class="eyebrow">03 / RECORD</span>本週課程紀錄（成果報告書・參 的素材）</h2>' +
-    '<div class="field"><label class="f">課程紀錄文字（逐週各自儲存）</label>' +
+  return h + '</div></details>';
+};
+
+/* ---- 日誌 2／3：雲端討論（disc）與 AI 翻轉模組（ai）項目 ---- */
+VIEWS.logItems = function (w, L, ss, cat) {
+  var W = GRADE.W();
+  var isAI = cat === 'ai';
+  var items = L.items.filter(function (it) { return it.cat === cat; });
+  var head = isAI
+    ? { no: '03 / AI MODULE', name: 'AI 翻轉與模組（' + W.ai + '%）' }
+    : { no: '02 / CLOUD & DISCUSSION', name: '雲端／討論（' + W.disc + '%）' };
+
+  // 摘要：已登記人次
+  var reg = 0;
+  items.forEach(function (it) { ss.forEach(function (s) { if (GRADE.itemVal(it, s.id) !== null) reg++; }); });
+
+  var h = VIEWS.blk(cat, items.length > 0) + '<summary><span class="no">' + head.no + '</span>' +
+    head.name + '<span class="sm2">' + items.length + ' 個項目　·　已登記 ' + reg + ' 人次</span></summary><div class="bd">';
+
+  if (isAI) {
+    h += '<p class="hint">每個教學週自動預建「課前學習單」「課後學習單」兩個項目（可刪）。' +
+      '下方「線上練習（自動）」是該生本週練習的最高分，唯讀。' +
+      '<b>本週 AI 子分＝三者之中「有登記者」的平均</b>；學期 AI 分＝各週子分的平均。</p>';
+  } else {
+    h += '<p class="hint">✓＝100 分、✗＝0 分、—＝未登記（不計入平均）。點格子可循環切換。' +
+      '「後測」這類 score 型項目直接填 0–100。學期討論分＝所有已登記項目分的平均。</p>';
+  }
+
+  /* 新增按鈕列 */
+  h += '<div class="btnrow" style="margin-top:0">';
+  if (!isAI) {
+    CONFIG.DISC_PRESETS.forEach(function (p) {
+      h += '<button class="btn ghost sm" title="' + U.attr(p.memo || (p.type === 'check' ? '勾選型' : '0–100 分')) + '" ' +
+        'onclick="ACT.addItemPreset(\'disc\',' + JSON.stringify(p.name).replace(/"/g, '&quot;') + ')">＋ ' + U.esc(p.name) + '</button>';
+    });
+  } else {
+    CONFIG.AI_PRESETS.forEach(function (p) {
+      h += '<button class="btn ghost sm" onclick="ACT.addItemPreset(\'ai\',' +
+        JSON.stringify(p.name).replace(/"/g, '&quot;') + ')">＋ ' + U.esc(p.name) + '</button>';
+    });
+  }
+  h += '<button class="btn sm" onclick="ACT.addItem(\'' + cat + '\')">＋ 新增項目（自訂）</button></div>';
+
+  if (!items.length) {
+    h += '<div class="alert info">本週尚無' + (isAI ? ' AI ' : '討論') + '項目。用上面的快速預設按鈕一鍵建立。</div>';
+  }
+
+  items.forEach(function (it) {
+    var idx = L.items.indexOf(it);
+    var regN = ss.filter(function (s) { return GRADE.itemVal(it, s.id) !== null; }).length;
+    var vals = ss.map(function (s) { return GRADE.itemVal(it, s.id); }).filter(function (v) { return v !== null; });
+    var mean = vals.length ? U.round1(vals.reduce(function (a, b) { return a + b; }, 0) / vals.length) : null;
+    h += '<div class="itemcard"><div class="ih">' +
+      '<span class="kind">' + (it.type === 'check' ? '勾選 ✓/✗/—' : '分數 0–100') + '</span>' +
+      '<input type="text" value="' + U.attr(it.name) + '" style="width:190px;font-weight:700" ' +
+      'oninput="ACT.setItemName(' + idx + ',this.value)" placeholder="項目名稱">' +
+      (it.memo ? '<span class="hint">（' + U.esc(it.memo) + '）</span>' : '') +
+      '<span class="rt"><span class="hint">已登記 ' + regN + '/' + ss.length +
+      (mean === null ? '' : '　平均 ' + mean) + '</span>' +
+      '<button class="btn sm ghost" onclick="ACT.itemAll(' + idx + ',1)">全 ✓</button>' +
+      '<button class="btn sm ghost" onclick="ACT.itemAll(' + idx + ',-1)">全清 —</button>' +
+      '<button class="btn sm danger" onclick="ACT.delItem(' + idx + ')">✕</button></span>' +
+      '</div><div class="ib"><div class="sgrid">' +
+      ss.map(function (s) {
+        var v = it.scores[s.id];
+        if (it.type === 'check') {
+          var cv = GRADE.ckVal(v);
+          var lab = cv === 100 ? '✓' : (cv === 0 ? '✗' : '—');
+          var dv = cv === 100 ? '1' : (cv === 0 ? '0' : '');
+          return '<div class="scell"><span class="snm" title="' + U.attr(s.name) + '">' + U.esc(s.name || '（未命名）') + '</span>' +
+            '<button class="ckbtn" data-v="' + dv + '" title="點一下循環：— → ✓ → ✗" ' +
+            'onclick="ACT.cycleItem(' + idx + ',\'' + s.id + '\')">' + lab + '</button></div>';
+        }
+        var sv = (v === null || typeof v === 'undefined' || v === '') ? '' : v;
+        return '<div class="scell"><span class="snm" title="' + U.attr(s.name) + '">' + U.esc(s.name || '（未命名）') + '</span>' +
+          '<input type="number" min="0" max="100" step="0.1" value="' + U.attr(sv) + '" placeholder="—" ' +
+          'onchange="ACT.setItemScore(' + idx + ',\'' + s.id + '\',this.value)"></div>';
+      }).join('') + '</div></div></div>';
+  });
+
+  /* AI：線上練習（自動，唯讀）＋ 本週 AI 子分預覽 */
+  if (isAI) {
+    h += '<div class="itemcard roitem"><div class="ih" style="background:#E9EFF2">' +
+      '<span class="kind">唯讀</span><b>線上練習（自動）</b>' +
+      '<span class="hint">＝該生第 ' + w + ' 週練習的最高分，來自「練習得分表」</span></div>' +
+      '<div class="ib"><div class="sgrid">' +
+      ss.map(function (s) {
+        var q = STORE.scoreOfStudent(s, w);
+        return '<div class="scell" style="background:#F1F5F7"><span class="snm">' + U.esc(s.name || '（未命名）') + '</span>' +
+          '<span class="sst" style="font-size:13px;font-weight:800;color:' + (q === null ? 'var(--muted)' : 'var(--navy)') + '">' +
+          (q === null ? '—' : q) + '</span></div>';
+      }).join('') + '</div></div></div>';
+
+    h += '<hr class="divider"><label class="f">本週 AI 子分預覽（三者中有登記者的平均）</label><div class="sgrid">' +
+      ss.map(function (s) {
+        var a = GRADE.aiWeek(s, w);
+        return '<div class="scell"><span class="snm">' + U.esc(s.name || '（未命名）') + '</span>' +
+          '<span style="font-weight:800;color:' + (a ? 'var(--green)' : 'var(--muted)') + '">' +
+          (a ? a.v : '—') + '</span></div>';
+      }).join('') + '</div>';
+  }
+
+  return h + '</div></details>';
+};
+
+/* ---- 日誌 4：考試成績（僅考試週出現） ---- */
+VIEWS.logExam = function (w, ss) {
+  var kind = STORE.examKindOf(w);
+  if (!kind) return '';
+  var W = GRADE.W();
+  var label = kind === 'mid' ? '期中考' : '期末考';
+  var wt = kind === 'mid' ? W.mid : W.fin;
+  var field = kind === 'mid' ? 'examMid' : 'examFin';
+  var filled = ss.filter(function (s) { return STORE.gradeOf(s.id)[field] !== null; }).length;
+
+  var h = VIEWS.blk('exam', true) + '<summary><span class="no">04 / EXAM</span>' +
+    label + '成績（' + wt + '%）<span class="sm2">已輸入 ' + filled + ' / ' + ss.length + ' 位</span></summary><div class="bd">' +
+    '<p class="hint">' + label + '分數的唯一輸入位置就在這一頁（第 ' + w + ' 週日誌）。逐生輸入 0–100，' +
+    '成績結算會自動以 ' + wt + '% 加權。清空＝視為尚未考（不計入分母）。</p><div class="sgrid">' +
+    ss.map(function (s) {
+      var g = STORE.gradeOf(s.id), v = g[field];
+      var lg = g.ovLegacy[kind];
+      return '<div class="scell"><span class="snm" title="' + U.attr(s.name) + '">' + U.esc(s.name || '（未命名）') + '</span>' +
+        (lg ? '<span class="legacy" title="由 v2 備份匯入的舊值">舊</span>' : '') +
+        '<input type="number" min="0" max="100" step="0.1" value="' + U.attr(v === null ? '' : v) + '" placeholder="—" ' +
+        'onchange="ACT.setExam(\'' + s.id + '\',\'' + kind + '\',this.value)"></div>';
+    }).join('') + '</div>';
+  return h + '</div></details>';
+};
+
+/* ---- 日誌 5：報告評分 ---- */
+VIEWS.logReports = function (w, L, ss) {
+  var W = GRADE.W(), groups = STORE.groupsOf(), un = STORE.ungrouped();
+  var h = VIEWS.blk('rep', L.reports.length > 0) + '<summary><span class="no">05 / REPORTS</span>' +
+    '報告評分（參訪 ' + (W.v_w + W.v_i + W.v_t + W.v_n) + '%／行動 ' + (W.a_w + W.a_i + W.a_t + W.a_n) + '%）' +
+    '<span class="sm2">本週 ' + L.reports.length + ' 份</span></summary><div class="bd">' +
+    '<div class="btnrow" style="margin-top:0">' +
+    '<button class="btn ghost sm" onclick="ACT.addReport(\'visit\')">＋ 新增參訪報告評分</button>' +
+    '<button class="btn ghost sm" onclick="ACT.addReport(\'action\')">＋ 新增行動報告評分</button></div>' +
+    '<p class="hint">預設在第 12 週出現參訪報告、第 18 週出現行動報告；任何一週都可以手動加。' +
+    '組別分數填一次就自動套用到該組每位組員；組內互評逐生填。</p>';
+
+  if (!L.reports.length) {
+    h += '<div class="alert info">本週沒有報告評分區。要評分請按上面的按鈕新增。</div></div></details>';
+    return h;
+  }
+  if (un.length) {
+    h += '<div class="alert red">有 ' + un.length + ' 位學生尚未設定組別（' +
+      un.map(function (s) { return U.esc(s.name || '（未命名）'); }).join('、') +
+      '），組別分數無法套用到他們。請到 <a href="#/admin/students">學生名單</a> 設定「組別」欄。</div>';
+  }
+
+  L.reports.forEach(function (rp) {
+    var idx = L.reports.indexOf(rp);
+    var isV = rp.kind === 'visit';
+    var lab = CONFIG.REPORT_LABEL[rp.kind];
+    h += '<div class="itemcard"><div class="ih">' +
+      '<span class="kind">' + (isV ? '參訪' : '行動') + '</span><b>' + U.esc(lab) + '</b>' +
+      '<span class="hint">書面 ' + (isV ? W.v_w : W.a_w) + '%　組間互評 ' + (isV ? W.v_i : W.a_i) +
+      '%　師評 ' + (isV ? W.v_t : W.a_t) + '%　組內互評 ' + (isV ? W.v_n : W.a_n) + '%</span>' +
+      '<span class="rt"><button class="btn sm danger" onclick="ACT.delReport(' + idx + ')">✕ 刪除此評分區</button></span>' +
+      '</div><div class="ib">';
+
+    /* 組別分數表 */
+    h += '<label class="f">組別分數（列＝組；填一次自動套用到該組每位組員）</label>';
+    if (!groups.length) {
+      h += '<div class="alert red">學生名單裡還沒有任何組別，無法產生組別分數表。</div>';
+    } else {
+      h += '<div class="tblwrap"><table class="t gtbl"><thead><tr><th style="width:90px">組別</th><th style="width:190px">組員</th>' +
+        CONFIG.REPORT_FIELDS.map(function (f) {
+          return '<th style="width:130px">' + U.esc(f.name) + '<br><span class="wsub">' + (isV ? W[f.wv] : W[f.wa]) + '%</span></th>';
+        }).join('') + '</tr></thead><tbody>' +
+        groups.map(function (gid) {
+          var mem = STORE.membersOf(gid);
+          var g = rp.group[gid] || {};
+          return '<tr><td><b>第 ' + U.esc(gid) + ' 組</b></td>' +
+            '<td style="font-size:12.5px;color:var(--muted)">' +
+            mem.map(function (s) { return U.esc(s.name || '（未命名）'); }).join('、') + '（' + mem.length + ' 人）</td>' +
+            CONFIG.REPORT_FIELDS.map(function (f) {
+              var v = g[f.f];
+              return '<td><input type="number" min="0" max="100" step="0.1" placeholder="—" value="' +
+                U.attr(v === null || typeof v === 'undefined' ? '' : v) + '" ' +
+                'onchange="ACT.setReportGroup(' + idx + ',' + JSON.stringify(gid).replace(/"/g, '&quot;') +
+                ',\'' + f.f + '\',this.value)"></td>';
+            }).join('') + '</tr>';
+        }).join('') + '</tbody></table></div>';
+    }
+
+    /* 組內互評 */
+    h += '<hr class="divider"><label class="f">組內互評（' + (isV ? W.v_n : W.a_n) + '%，逐生 0–100）</label><div class="sgrid">' +
+      ss.map(function (s) {
+        var v = rp.intra[s.id];
+        var gid = (s.group || '').trim();
+        return '<div class="scell"><span class="snm" title="' + U.attr(s.name) + '">' + U.esc(s.name || '（未命名）') +
+          (gid ? '' : ' <span class="nogrp">未分組</span>') + '</span>' +
+          '<span class="sst">' + (gid ? '第 ' + U.esc(gid) + ' 組' : '') + '</span>' +
+          '<input type="number" min="0" max="100" step="0.1" placeholder="—" value="' +
+          U.attr(v === null || typeof v === 'undefined' ? '' : v) + '" ' +
+          'onchange="ACT.setReportIntra(' + idx + ',\'' + s.id + '\',this.value)"></div>';
+      }).join('') + '</div>';
+
+    h += '</div></div>';
+  });
+
+  return h + '</div></details>';
+};
+
+/* ---- 日誌 6：分數撲滿登記 ---- */
+VIEWS.logBank = function (w, L, ss) {
+  var W = GRADE.W(), groups = STORE.groupsOf();
+  var date = STORE.planRow(w).date || U.today();
+  var sum = L.bank.reduce(function (a, r) { return a + (parseFloat(r.pt) || 0); }, 0);
+
+  var h = VIEWS.blk('bank', L.bank.length > 0) + '<summary><span class="no">06 / POINT BANK</span>' +
+    '分數撲滿登記<span class="sm2">本週 ' + L.bank.length + ' 筆　·　共 ' + U.round1(sum) + ' 點</span></summary><div class="bd">' +
+    '<div class="alert warn"><b>點數規則</b>：' + CONFIG.BANK_RULES.map(function (r) { return U.esc(r); }).join('　·　') +
+    '。全學期累計封頂 ' + W.bankCap + ' 點，÷ ' + W.bankDiv + ' 換算為加分，至多 +' + W.bonusMax + ' 分。' +
+    '登記的日期自動帶第 ' + w + ' 週的上課日（' + U.esc(date) + '）。</div>' +
+    '<div class="grid g4">' +
+    '<div class="field"><label class="f">學生</label><select id="bkStu">' +
+    ss.map(function (s) {
+      return '<option value="' + U.attr(s.id) + '">' + U.esc((s.seat ? s.seat + ' ' : '') + (s.name || '（未命名）')) + '</option>';
+    }).join('') + '</select></div>' +
+    '<div class="field"><label class="f">事由（選了自動帶點數）</label><select id="bkWhySel" onchange="ACT.bankReasonPick(this.value)">' +
+    CONFIG.BANK_REASONS.map(function (r, i) {
+      return '<option value="' + i + '">' + U.esc(r.why) + '（' + r.pt + ' 點）</option>';
+    }).join('') + '</select></div>' +
+    '<div class="field"><label class="f">事由文字（可改）</label><input type="text" id="bkWhy" value="' +
+    U.attr(CONFIG.BANK_REASONS[0].why) + '" placeholder="例：口述詳答（碳酸系統）"></div>' +
+    '<div class="field"><label class="f">點數（可改）</label><input type="number" id="bkPt" step="1" value="' +
+    CONFIG.BANK_REASONS[0].pt + '"></div>' +
+    '</div><div class="btnrow"><button class="btn" onclick="ACT.addBank()">＋ 新增一筆</button>' +
+    '<span style="display:inline-flex;gap:6px;align-items:center;margin-left:8px">' +
+    '<select id="bkGrp" style="width:auto">' +
+    (groups.length ? groups.map(function (g) { return '<option value="' + U.attr(g) + '">第 ' + U.esc(g) + ' 組</option>'; }).join('')
+                   : '<option value="">（尚未分組）</option>') +
+    '</select>' +
+    '<button class="btn gold"' + (groups.length ? '' : ' disabled style="opacity:.5;cursor:not-allowed"') +
+    ' onclick="ACT.bankGroupAll()">👥 小組全到 +5</button></span></div>';
+
+  if (!L.bank.length) {
+    h += '<div class="alert info">本週撲滿帳本是空的。上課當場登記，成績結算的撲滿加分就會自動更新。</div>';
+  } else {
+    h += '<div class="banklist"><table class="t"><thead><tr><th style="width:110px">日期</th><th style="width:170px">學生</th>' +
+      '<th>事由</th><th style="width:70px">點數</th><th style="width:60px">刪除</th></tr></thead><tbody>' +
+      L.bank.slice().reverse().map(function (r) {
+        var idx = L.bank.indexOf(r);
+        var s = ss.filter(function (x) { return x.id === r.sid; })[0];
+        return '<tr><td>' + U.esc(r.date) + '</td>' +
+          '<td>' + U.esc(s ? ((s.seat ? s.seat + ' ' : '') + s.name) : '（已刪除的學生）') + '</td>' +
+          '<td>' + U.esc(r.why) + (r.gid ? '　<span class="pill gray">第 ' + U.esc(r.gid) + ' 組</span>' : '') +
+          (r.note ? '<br><span class="gnote">' + U.esc(r.note) + '</span>' : '') + '</td>' +
+          '<td class="num">' + r.pt + '</td>' +
+          '<td style="text-align:center"><button class="btn sm danger" onclick="ACT.delBank(' + idx + ')">✕</button></td></tr>';
+      }).join('') + '</tbody></table></div>' +
+      '<p class="hint" style="margin-top:10px">全學期累計與換算加分請看「成績結算」分頁的撲滿欄與帳本檢視。</p>';
+  }
+  return h + '</div></details>';
+};
+
+/* ---- 日誌 7：課程紀錄與照片 ---- */
+VIEWS.logRecord = function (w, L) {
+  var h = VIEWS.blk('rec', false) + '<summary><span class="no">07 / RECORD</span>課程紀錄與照片' +
+    '<span class="sm2">' + (L.record.text ? '已填紀錄' : '尚未填紀錄') + '　·　照片 ' + L.photos.length +
+    ' / ' + CONFIG.PHOTO.MAX_PER_WEEK + ' 張</span></summary><div class="bd">' +
+    '<div class="field"><label class="f">課程紀錄文字（逐週各自儲存；成果報告書「參」的素材）</label>' +
     '<textarea style="min-height:130px" oninput="ACT.setRecord(\'text\',this.value)" placeholder="本週上課實況、學生反應、特殊事件、與綠色化學／花蓮在地的連結…">' +
     U.esc(L.record.text) + '</textarea></div>' +
     '<div class="grid g2">' +
@@ -3354,12 +4225,10 @@ VIEWS.log = function () {
     '<div class="field"><label class="f">圖說（含日期與地點）</label><input type="text" value="' + U.attr(L.record.caption) + '" ' +
     'oninput="ACT.setRecord(\'caption\',this.value)" placeholder="例：圖 1　水質檢測實作（2026/10/05，環境學院 A124）"></div>' +
     '</div>' +
-    '<div class="btnrow"><button class="btn teal" onclick="ACT.printRecords()">🖨 列印課程紀錄（參）</button></div></div>';
+    '<div class="btnrow"><button class="btn teal" onclick="ACT.printRecords()">🖨 列印課程紀錄（參）</button></div>';
 
-  /* 照片牆（影像存 IndexedDB，每週最多 5 張） */
   var pn = L.photos.length, PM = CONFIG.PHOTO.MAX_PER_WEEK;
-  h += '<div class="card"><h2><span class="eyebrow">04 / PHOTOS</span>本週照片牆' +
-    '<span class="pill ' + (pn >= PM ? 'red' : 'teal') + '">' + pn + ' / ' + PM + ' 張</span></h2>' +
+  h += '<hr class="divider"><label class="f">本週照片牆（' + pn + ' / ' + PM + ' 張）</label>' +
     '<p class="hint">選檔後自動壓縮（最長邊 ' + CONFIG.PHOTO.MAX_EDGE + 'px、JPEG 品質 ' + CONFIG.PHOTO.QUALITY +
     '）並存入瀏覽器的 IndexedDB（<code>' + CONFIG.PHOTO.DB + '</code>）；' +
     '每週上限 ' + PM + ' 張，超出會被擋下。圖說請依 APA 原則寫「說明（日期，地點）」。</p>' +
@@ -3372,8 +4241,8 @@ VIEWS.log = function () {
     '</div>' +
     '<div class="photowall" id="photowall">' +
     (pn ? '<div class="hint">載入中…</div>' : '<div class="hint">本週尚未上傳照片。</div>') +
-    '</div></div>';
-  return h;
+    '</div>';
+  return h + '</div></details>';
 };
 
 /* 照片牆縮圖：非同步從 IndexedDB 取回後填入 #photowall */
@@ -3408,121 +4277,248 @@ VIEWS.renderPhotos = function () {
  * 分頁六：成績結算（僅教授版）
  * ========================================================================= */
 VIEWS.grades = function () {
-  var ss = STORE.d.students, W = GRADE.W();
-  var h = '<div class="card"><h2><span class="eyebrow">01 / GRADES</span>學期成績結算' +
+  var ss = STORE.d.students, W = GRADE.W(), N = GRADE.upTo(), total = STORE.d.course.totalWeeks;
+  var h = '<div class="card"><h2><span class="eyebrow">01 / GRADES</span>成績結算（累計檢視）' +
     '<span class="pill teal">' + ss.length + ' 位</span>' +
-    (GRADE.weightSum() === 100 ? '<span class="pill green">權重合計 100%</span>'
-                               : '<span class="pill red">權重合計 ' + GRADE.weightSum() + '%（不是 100，請到備份與設定調整）</span>') +
+    (GRADE.weightSum() === 100 ? '<span class="pill green">配分合計 100%</span>'
+                               : '<span class="pill red">配分合計 ' + GRADE.weightSum() + '%（不是 100，請到備份與設定調整）</span>') +
     '</h2>' +
-    '<div class="alert info"><b>計算式</b>：學期總成績 ＝ Σ（各項 0–100 分 × 權重） ＋ 分數撲滿加分 − 未依 SOP 請假扣分，下限 0。<br>' +
-    '平時 ' + (W.att + W.disc + W.ai) + '%（出席 ' + W.att + '、討論及 Zuvio 雲端回饋 ' + W.disc + '、AI 翻轉及 AI 模組 ' + W.ai + '）' +
-    '＋期中考 ' + W.mid + '%＋期末考 ' + W.fin + '%' +
-    '＋參訪報告 ' + (W.v1 + W.v2 + W.v3) + '%（書面 ' + W.v1 + '＋組間互評 ' + W.v2 + '＋組內互評 ' + W.v3 + '）' +
-    '＋行動報告 ' + (W.a1 + W.a2 + W.a3) + '%（' + W.a1 + '＋' + W.a2 + '＋' + W.a3 + '）。<br>' +
-    '<b>分數撲滿</b>為額外加分：累計點數封頂 ' + W.bankCap + ' 點，÷ ' + W.bankDiv + ' ＝ 加分，至多 +' + W.bonusMax + ' 分。' +
-    '<b>未依 SOP 請假</b>每次總成績 −' + W.sopPenalty + ' 分。</div>' +
-    '<p class="hint">灰底欄位為<b>自動計算</b>（出席由教室日誌、AI 由練習得分表），可直接輸入數字<b>覆寫</b>（覆寫後底色轉金黃）；' +
-    '清空該欄即回到自動值。所有輸入即時存檔。</p>';
+    '<div class="alert info"><b>這一頁只看不填。</b>所有分數都在「教室日誌」逐週維護，本頁自動累計。' +
+    '唯一可以在這裡輸入的是<b>出席覆寫</b>（期末調整用）與<b>組長／副組長加分</b>；' +
+    '其餘每一欄都是唯讀的——<b>要改分數請至教室日誌維護</b>，點該生姓名或任一分數格即可展開明細，' +
+    '裡面每一筆都附有「去第 N 週日誌」的快速連結。</div>' +
+    '<div class="grid g3" style="align-items:end">' +
+    '<div class="field"><label class="f">累計至第幾週</label><select onchange="ACT.setUpTo(this.value)">' +
+    (function () {
+      var o = '', i;
+      for (i = 1; i <= total; i++) {
+        o += '<option value="' + i + '"' + (i === N ? ' selected' : '') + '>第 ' + i + ' 週' +
+          (STORE.d.plan[i - 1] && STORE.d.plan[i - 1].date ? '（' + U.esc(STORE.d.plan[i - 1].date) + '）' : '') + '</option>';
+      }
+      return o;
+    })() + '</select></div>' +
+    VIEWS.ro('目前顯示', '第 1 – ' + N + ' 週的所有登記資料') +
+    VIEWS.ro('第 ' + N + ' 週主題', (STORE.planRow(N).topic || '（未填）').slice(0, 30)) +
+    '</div>' +
+    '<div class="alert warn"><b>雙指標怎麼讀</b><br>' +
+    '<b>累計得分</b>＝Σ（已發生構面的原始分 × 配分 ÷ 100）＋ 撲滿加分 ＋ 組長加分 − SOP 扣分（下限 0）。' +
+    '這是「到現在為止已經拿到手的分數」，滿分仍以 100 為基準，所以學期中途一定偏低。<br>' +
+    '<b>目前平均</b>＝同一個分子 ÷ <u>已發生構面的配分合計</u> × 100。' +
+    '這是「如果課程到這裡就結束，換算成百分制大概是幾分」。<br>' +
+    '<b>已發生</b>＝該構面在第 1–' + N + ' 週之間至少有一筆登記；沒發生的構面不進分子也不進分母。' +
+    '期中／期末要等到第 ' + STORE.examWeeks().mid + '／' + STORE.examWeeks().fin + ' 週才算發生。<br>' +
+    '撲滿加分與組長加分都算在分子裡，SOP 扣分也是；因此學期初若已有撲滿點數，' +
+    '<u>目前平均可能略高於 100</u>（那是加分的效果，不是算錯）。</div>' +
+    '<p class="hint">配分：出席 ' + W.att + '＋討論 Zuvio ' + W.disc + '＋AI 翻轉模組 ' + W.ai +
+    '＋期中 ' + W.mid + '＋期末 ' + W.fin +
+    '＋參訪 ' + (W.v_w + W.v_i + W.v_t + W.v_n) + '（書面 ' + W.v_w + '／組間 ' + W.v_i + '／師評 ' + W.v_t + '／組內 ' + W.v_n + '）' +
+    '＋行動 ' + (W.a_w + W.a_i + W.a_t + W.a_n) + '（書面 ' + W.a_w + '／組間 ' + W.a_i + '／師評 ' + W.a_t + '／組內 ' + W.a_n + '）' +
+    '＝ ' + GRADE.weightSum() + '。撲滿封頂 ' + W.bankCap + ' 點 ÷ ' + W.bankDiv + ' ＝ 至多 +' + W.bonusMax +
+    '；組長／副組長加分 0–' + W.leaderMax + '；未依 SOP 請假每次 −' + W.sopPenalty + '。</p>';
 
   if (!ss.length) {
     h += '<div class="alert info">尚未匯入學生名單。請先到「學生名單」分頁貼上匯入。</div></div>';
     return h;
   }
+  h += '<p class="hint">📱 手機螢幕欄位太多，建議改用電腦看這張總表（表格可左右捲動，姓名欄會固定在左側）。' +
+    '每格上方是<b>原始分</b>、下方小字是<b>加權分</b>（例：82 → 4.9）。</p>';
 
-  /* --- 主表 --- */
-  h += '<div class="tblwrap"><table class="g"><thead>' +
-    '<tr><th rowspan="2" style="min-width:150px">學生</th>' +
-    CONFIG.GRADE_COLS.map(function (c) { return '<th>' + U.esc(c.name) + '</th>'; }).join('') +
-    '<th>撲滿<br>點數</th><th>撲滿<br>加分</th><th>SOP<br>違規</th>' +
-    '<th rowspan="2">總成績<br>(一位小數)</th><th rowspan="2">總成績<br>(四捨五入)</th></tr>' +
-    '<tr>' + CONFIG.GRADE_COLS.map(function (c) {
-      return '<th class="wgt">' + W[c.w] + '%' + (c.auto ? ' 自動' : '') + '</th>';
+  /* --- 總表 --- */
+  var rows = ss.map(function (s) { return { s: s, R: GRADE.calc(s, N) }; });
+
+  h += '<div class="tblwrap"><table class="g3t"><thead>' +
+    '<tr><th class="nm" rowspan="2">座號　姓名</th><th rowspan="2">組別</th>' +
+    '<th rowspan="2">出席<br>覆寫</th><th rowspan="2">請假<br>次數</th><th rowspan="2">SOP<br>扣分</th>' +
+    CONFIG.GRADE_COMPS.map(function (c) {
+      var cl = c.kind === 'visit' ? ' class="gv"' : (c.kind === 'action' ? ' class="ga"' : '');
+      return '<th' + cl + '>' + U.esc(c.short) + '</th>';
     }).join('') +
-    '<th class="wgt">上限 ' + W.bankCap + '</th><th class="wgt">最多 +' + W.bonusMax + '</th><th class="wgt">每次 −' + W.sopPenalty + '</th></tr>' +
-    '</thead><tbody>';
+    '<th rowspan="2">撲滿<br>點／加分</th><th rowspan="2">組長<br>加分</th>' +
+    '<th rowspan="2">累計<br>得分</th><th rowspan="2">目前<br>平均</th></tr>' +
+    '<tr>' + CONFIG.GRADE_COMPS.map(function (c) { return '<th class="wgt">' + W[c.w] + '%</th>'; }).join('') +
+    '</tr></thead><tbody>';
 
-  var totals = {}, tcount = {}, sumTot = 0;
-  h += ss.map(function (s, i) {
-    var g = STORE.gradeOf(s.id), R = GRADE.row(s), att = STORE.studentAtt(s.id);
-    sumTot += R.total1;
-    var tds = CONFIG.GRADE_COLS.map(function (c) {
-      var manual = g[c.k], auto = c.auto ? GRADE.autoVal(s, c.k) : null;
-      var shown = (manual === null || typeof manual === 'undefined') ? '' : manual;
-      var v = R.parts[c.k];
-      if (v !== null && typeof v !== 'undefined') { totals[c.k] = (totals[c.k] || 0) + v; tcount[c.k] = (tcount[c.k] || 0) + 1; }
-      var ph = c.auto ? (auto === null ? '無資料 0' : String(auto)) : '—';
-      var tip = c.auto
-        ? (c.k === 'att'
-            ? '自動值＝Σ狀態係數 ÷ 已點名 ' + att.counted + ' 週 × 100；請假 ' + att.leaves + ' 次、遲到 ' + att.lates + ' 次、缺席 ' + att.absents + ' 次'
-            : '自動值＝練習得分表個人平均')
-        : '手動輸入 0–100';
-      return '<td' + (c.auto ? ' class="auto"' : '') + ' title="' + U.attr(tip) + '">' +
-        '<input type="number" min="0" max="100" step="0.1" value="' + U.attr(shown) + '" placeholder="' + U.attr(ph) + '"' +
-        (shown !== '' && c.auto ? ' class="ov"' : '') +
-        ' onchange="ACT.setGrade(\'' + s.id + '\',\'' + c.k + '\',this.value)"></td>';
+  var sums = {}, cnts = {}, sumEarn = 0, avgArr = [];
+  h += rows.map(function (x) {
+    var s = x.s, R = x.R, g = STORE.gradeOf(s.id);
+    sumEarn += R.earned;
+    if (R.avg !== null) avgArr.push(R.avg);
+    var tds = CONFIG.GRADE_COMPS.map(function (c) {
+      var C = R.comps[c.k];
+      if (C.occurred) { sums[c.k] = (sums[c.k] || 0) + C.raw; cnts[c.k] = (cnts[c.k] || 0) + 1; }
+      var wks = C.detail.map(function (d) { return 'W' + d.week; }).join('、');
+      var tip = c.name + '（配分 ' + C.w + '%）：' +
+        (C.occurred ? C.raw + ' 分 → 加權 ' + C.weighted + (C.note ? '　※' + C.note : '') +
+                      '　｜　登記 ' + C.detail.length + ' 筆' + (wks ? '（' + wks + '）' : '')
+                    : '尚未發生（不計入分子與分母）') +
+        '　｜　本欄唯讀，請至教室日誌維護（點一下展開明細看逐週連結）';
+      return '<td title="' + U.attr(tip) + '" style="cursor:pointer" ' +
+        'onclick="ACT.toggleDetail(\'' + s.id + '\')">' +
+        (C.occurred ? '<b>' + C.raw + '</b>' + (C.legacy ? ' <span class="legacy">舊</span>' : '') +
+                      '<br><span class="sub" style="font-size:11px">' + C.weighted + '</span>'
+                    : '<span class="sub">—</span>') + '</td>';
     }).join('');
-    return '<tr><td class="name">' + U.esc(s.seat ? s.seat + '　' : '') + U.esc(s.name || '（未命名）') +
-      (att.leaves ? '<br><span class="gnote">請假 ' + att.leaves + ' 次</span>' : '') + '</td>' +
+    return '<tr><td class="nm"><a href="javascript:void(0)" onclick="ACT.toggleDetail(\'' + s.id + '\')" ' +
+      'style="text-decoration:none;color:var(--navy)" title="點開／收合明細抽屜">▸ ' +
+      U.esc((s.seat ? s.seat + '　' : '')) + U.esc(s.name || '（未命名）') + '</a></td>' +
+      '<td>' + (s.group ? U.esc(s.group) : '<span class="nogrp">未分</span>') + '</td>' +
+      '<td><input type="number" min="0" max="100" step="0.1" placeholder="自動" value="' +
+      U.attr(g.attOv === null ? '' : g.attOv) + '" title="留空＝用日誌自動算的出席分；填數字＝期末人工覆寫" ' +
+      'onchange="ACT.setAttOv(\'' + s.id + '\',this.value)"></td>' +
+      '<td>' + R.att.leaves + '</td>' +
+      '<td' + (R.penalty ? ' class="sub" style="color:var(--danger);font-weight:700"' : '') + '>' +
+      (R.penalty ? '−' + R.penalty + '<br><span style="font-size:11px">' + R.sopCount + ' 次</span>' : '0') + '</td>' +
       tds +
-      '<td class="auto" title="撲滿帳本累計，封頂 ' + W.bankCap + ' 點">' + R.bankPts +
-      (R.bankPts > W.bankCap ? '<br><span class="gnote">計 ' + R.bankCapped + '</span>' : '') + '</td>' +
-      '<td class="auto"><b>+' + R.bonus + '</b></td>' +
-      '<td><input type="number" min="0" step="1" value="' + (g.sop || 0) + '" style="width:52px"' +
-      ' onchange="ACT.setGrade(\'' + s.id + '\',\'sop\',this.value)"></td>' +
-      '<td class="tot">' + R.total1.toFixed(1) + '</td>' +
-      '<td class="tot">' + R.totalInt + '</td></tr>';
+      '<td title="累計 ' + R.bankPts + ' 點（計 ' + R.bankCapped + '）">' + R.bankPts +
+      '<br><span class="sub" style="font-size:11px">+' + R.bonus + '</span></td>' +
+      '<td><input type="number" min="0" max="' + W.leaderMax + '" step="0.5" value="' + g.leaderBonus +
+      '" title="組長／副組長額外加分 0–' + W.leaderMax + '" onchange="ACT.setLeader(\'' + s.id + '\',this.value)"></td>' +
+      '<td class="tot" title="Σ已發生加權 ' + R.sumW + ' ＋撲滿 ' + R.bonus + ' ＋組長 ' + R.leader +
+      ' −SOP ' + R.penalty + '">' + R.earned.toFixed(1) + '</td>' +
+      '<td class="avg" title="分母＝已發生配分 ' + R.possible + '%">' +
+      (R.avg === null ? '—' : R.avg.toFixed(1)) + '</td></tr>' +
+      '<tr id="dtl_' + s.id + '" style="display:none"><td class="nm" colspan="1"></td>' +
+      '<td colspan="' + (4 + CONFIG.GRADE_COMPS.length + 4) + '" style="text-align:left;white-space:normal;padding:0">' +
+      VIEWS.gradeDetail(s, R) + '</td></tr>';
   }).join('');
 
-  h += '</tbody><tfoot><tr><td class="name">全班平均</td>' +
-    CONFIG.GRADE_COLS.map(function (c) {
-      return '<td>' + (tcount[c.k] ? U.round1(totals[c.k] / tcount[c.k]) : '—') + '</td>';
+  h += '</tbody><tfoot><tr><td class="nm">全班平均（' + ss.length + ' 人）</td><td>—</td><td>—</td>' +
+    '<td>' + U.round1(rows.reduce(function (a, x) { return a + x.R.att.leaves; }, 0) / ss.length) + '</td>' +
+    '<td>' + U.round1(rows.reduce(function (a, x) { return a + x.R.penalty; }, 0) / ss.length) + '</td>' +
+    CONFIG.GRADE_COMPS.map(function (c) {
+      return '<td>' + (cnts[c.k] ? U.round1(sums[c.k] / cnts[c.k]) : '—') + '</td>';
     }).join('') +
-    '<td>—</td><td>—</td><td>—</td>' +
-    '<td>' + (ss.length ? U.round1(sumTot / ss.length).toFixed(1) : '—') + '</td><td>—</td></tr></tfoot></table></div>' +
+    '<td>' + U.round1(rows.reduce(function (a, x) { return a + x.R.bankPts; }, 0) / ss.length) + '</td>' +
+    '<td>' + U.round1(rows.reduce(function (a, x) { return a + x.R.leader; }, 0) / ss.length) + '</td>' +
+    '<td class="tot">' + U.round1(sumEarn / ss.length).toFixed(1) + '</td>' +
+    '<td class="avg">' + (avgArr.length ? U.round1(avgArr.reduce(function (a, b) { return a + b; }, 0) / avgArr.length).toFixed(1) : '—') +
+    '</td></tr></tfoot></table></div>' +
     '<div class="btnrow">' +
-    '<button class="btn navy" onclick="ACT.exportGradeCSV()">⬇ 匯出成績總表 CSV</button>' +
+    '<button class="btn navy" onclick="ACT.exportGradeCSV()">⬇ 匯出成績總表 CSV（含全部子欄）</button>' +
     '<button class="btn teal" onclick="ACT.printGrades()">🖨 列印成績總表（A4 橫式）</button>' +
-    '<button class="btn ghost" onclick="ACT.clearOverrides()">↩ 清除全部自動欄覆寫</button>' +
+    '<button class="btn ghost" onclick="ACT.expandAllDetail()">🔍 全部展開／收合明細</button>' +
+    '<button class="btn ghost" onclick="ACT.clearOverrides()">↩ 清除全部學期級覆寫</button>' +
     '</div></div>';
 
-  /* --- 分數撲滿帳本 --- */
-  h += '<div class="card"><h2><span class="eyebrow">02 / POINT BANK</span>分數撲滿帳本' +
-    '<span class="pill gold">共 ' + STORE.d.bank.length + ' 筆</span></h2>' +
-    '<div class="alert warn"><b>點數規則</b>：' + CONFIG.BANK_RULES.map(function (r) { return U.esc(r); }).join('　·　') +
-    '。累計封頂 ' + W.bankCap + ' 點，÷ ' + W.bankDiv + ' 換算為加分，至多 +' + W.bonusMax + ' 分。</div>' +
-    '<div class="grid g4">' +
-    '<div class="field"><label class="f">日期</label><input type="text" id="bkDate" value="' + U.attr(U.today()) + '" placeholder="YYYY/MM/DD"></div>' +
-    '<div class="field"><label class="f">學生</label><select id="bkStu">' +
-    ss.map(function (s) { return '<option value="' + U.attr(s.id) + '">' + U.esc((s.seat ? s.seat + ' ' : '') + (s.name || '（未命名）')) + '</option>'; }).join('') +
-    '</select></div>' +
-    '<div class="field"><label class="f">事由</label><input type="text" id="bkWhy" placeholder="例：口述詳答（碳酸系統）"></div>' +
-    '<div class="field"><label class="f">點數</label><input type="number" id="bkPt" step="1" value="1"></div>' +
-    '</div><div class="btnrow"><button class="btn" onclick="ACT.addBank()">＋ 新增一筆</button></div>';
-
-  if (!STORE.d.bank.length) {
-    h += '<div class="alert info">帳本目前是空的。上課時當場登記，成績結算的撲滿加分就會自動更新。</div>';
-  } else {
-    var byStu = {};
-    STORE.d.bank.forEach(function (r) { byStu[r.sid] = (byStu[r.sid] || 0) + (parseFloat(r.pt) || 0); });
-    h += '<div class="banklist"><table class="t"><thead><tr><th style="width:120px">日期</th><th style="width:160px">學生</th>' +
-      '<th>事由</th><th style="width:70px">點數</th><th style="width:60px">刪除</th></tr></thead><tbody>' +
-      STORE.d.bank.slice().reverse().map(function (r) {
-        var s = ss.filter(function (x) { return x.id === r.sid; })[0];
-        var idx = STORE.d.bank.indexOf(r);
-        return '<tr><td>' + U.esc(r.date) + '</td>' +
-          '<td>' + U.esc(s ? ((s.seat ? s.seat + ' ' : '') + s.name) : '（已刪除的學生）') + '</td>' +
-          '<td>' + U.esc(r.why) + '</td><td class="num">' + r.pt + '</td>' +
-          '<td style="text-align:center"><button class="btn sm danger" onclick="ACT.delBank(' + idx + ')">✕</button></td></tr>';
-      }).join('') + '</tbody></table></div>' +
-      '<p class="hint" style="margin-top:10px">各生累計：' +
-      ss.map(function (s) {
-        var p = byStu[s.id] || 0;
-        return U.esc(s.name || '（未命名）') + ' ' + p + ' 點（+' + GRADE.bonusOf(s.id) + '）';
-      }).join('　·　') + '</p>' +
-      '<div class="btnrow"><button class="btn ghost sm" onclick="ACT.exportBankCSV()">⬇ 匯出撲滿帳本 CSV</button></div>';
-  }
-  h += '</div>';
+  /* --- 撲滿帳本檢視（唯讀，登記入口在日誌） --- */
+  h += VIEWS.bankLedger(N);
   return h;
+};
+
+/* 明細抽屜：逐週出席、各項目、報告、撲滿逐筆 */
+VIEWS.gradeDetail = function (s, R) {
+  var W = GRADE.W(), N = R.upTo;
+  var lnk = function (w) { return '<a href="#/admin/log" onclick="ACT.jumpLog(' + w + ')" title="到第 ' + w + ' 週日誌">W' + w + '</a>'; };
+  var h = '<div class="dtl">';
+
+  h += '<h4>① 逐週出席（累計至 W' + N + '）</h4>';
+  if (!R.comps.att.detail.length) h += '<p class="hint">尚無點名紀錄。</p>';
+  else {
+    h += '<div class="tblwrap"><table class="t"><thead><tr><th>週次</th><th>狀態</th><th>係數×100</th></tr></thead><tbody>' +
+      R.comps.att.detail.map(function (d) {
+        return '<tr><td>' + lnk(d.week) + '</td><td>' + U.esc(d.name) + '</td><td class="num">' + d.v + '</td></tr>';
+      }).join('') + '</tbody></table></div>' +
+      '<p class="hint">平均 ' + (R.comps.att.raw === null ? '—' : R.comps.att.raw) + ' 分 → 加權 ' +
+      R.comps.att.weighted + '／' + W.att + '　（請假 ' + R.att.leaves + ' 次、遲到 ' + R.att.lates +
+      ' 次、缺席 ' + R.att.absents + ' 次）' + (R.comps.att.note ? '　※' + U.esc(R.comps.att.note) : '') + '</p>';
+  }
+
+  h += '<h4>② 雲端／討論項目（' + W.disc + '%）</h4>';
+  var dd = R.comps.disc.detail;
+  if (!dd.length) h += '<p class="hint">尚無登記。</p>';
+  else {
+    h += '<div class="tblwrap"><table class="t"><thead><tr><th>週次</th><th>項目</th><th>型式</th><th>得分</th></tr></thead><tbody>' +
+      dd.map(function (d) {
+        return '<tr><td>' + lnk(d.week) + '</td><td>' + U.esc(d.name) + '</td><td>' +
+          (d.type === 'check' ? '勾選' : '分數') + '</td><td class="num">' + d.v + '</td></tr>';
+      }).join('') + '</tbody></table></div>' +
+      '<p class="hint">平均 ' + R.comps.disc.raw + ' → 加權 ' + R.comps.disc.weighted + '／' + W.disc + '</p>';
+  }
+
+  h += '<h4>③ AI 翻轉與模組（' + W.ai + '%）</h4>';
+  var ad = R.comps.ai.detail;
+  if (!ad.length) h += '<p class="hint">尚無登記。</p>';
+  else {
+    h += '<div class="tblwrap"><table class="t"><thead><tr><th>週次</th><th>該週登記內容</th><th>週子分</th></tr></thead><tbody>' +
+      ad.map(function (d) {
+        return '<tr><td>' + lnk(d.week) + '</td><td>' +
+          (d.src || []).map(function (x) { return U.esc(x.name) + ' ' + x.v; }).join('　·　') +
+          '</td><td class="num">' + d.v + '</td></tr>';
+      }).join('') + '</tbody></table></div>' +
+      '<p class="hint">各週子分平均 ' + R.comps.ai.raw + ' → 加權 ' + R.comps.ai.weighted + '／' + W.ai + '</p>';
+  }
+
+  h += '<h4>④ 考試與報告</h4><div class="tblwrap"><table class="t"><thead><tr>' +
+    '<th>構面</th><th>配分</th><th>原始分</th><th>加權</th><th>登記來源</th></tr></thead><tbody>' +
+    CONFIG.GRADE_COMPS.filter(function (c) { return c.src === 'exam' || c.src === 'report'; }).map(function (c) {
+      var C = R.comps[c.k];
+      return '<tr><td>' + U.esc(c.name) + '</td><td class="num">' + C.w + '</td>' +
+        '<td class="num">' + (C.occurred ? C.raw : '—') + (C.legacy ? ' <span class="legacy">舊版匯入</span>' : '') + '</td>' +
+        '<td class="num">' + (C.occurred ? C.weighted : '—') + '</td>' +
+        '<td>' + (C.detail.length
+          ? C.detail.map(function (d) { return lnk(d.week) + ' ' + d.v; }).join('　·　')
+          : '<span class="hint">' + (c.src === 'report' && !(s.group || '').trim() && c.f !== 'intra'
+              ? '未設組別，組分無法對應' : '未登記') + '</span>') + '</td></tr>';
+    }).join('') + '</tbody></table></div>';
+
+  h += '<h4>⑤ 分數撲滿逐筆（累計至 W' + N + '）</h4>';
+  var br = STORE.bankRows(s.id, N);
+  if (!br.length) h += '<p class="hint">尚無登記。</p>';
+  else {
+    h += '<div class="tblwrap"><table class="t"><thead><tr><th>週次</th><th>日期</th><th>事由</th><th>點數</th></tr></thead><tbody>' +
+      br.map(function (x) {
+        return '<tr><td>' + lnk(x.week) + '</td><td>' + U.esc(x.r.date) + '</td><td>' + U.esc(x.r.why) +
+          (x.r.note ? '<br><span class="gnote">' + U.esc(x.r.note) + '</span>' : '') +
+          '</td><td class="num">' + x.r.pt + '</td></tr>';
+      }).join('') + '</tbody><tfoot><tr><td colspan="3">合計（封頂 ' + W.bankCap + '）</td>' +
+      '<td class="num">' + R.bankPts + ' → 計 ' + R.bankCapped + ' → +' + R.bonus + ' 分</td></tr></tfoot></table></div>';
+  }
+
+  h += '<h4>⑥ 未依 SOP 請假與加分</h4><p class="hint">' +
+    'SOP 違規週次：' + (STORE.sopWeeks(s.id, N).length ? STORE.sopWeeks(s.id, N).map(lnk).join('、') : '無') +
+    (R.sopLegacy ? '（另有舊版匯入 ' + R.sopLegacy + ' 次）' : '') +
+    '　→ 扣 ' + R.penalty + ' 分。組長／副組長加分 +' + R.leader + ' 分。</p>';
+
+  h += '<h4>⑦ 本頁小結</h4><p class="hint">' +
+    'Σ已發生加權 ' + R.sumW + ' ＋撲滿 ' + R.bonus + ' ＋組長 ' + R.leader + ' −SOP ' + R.penalty +
+    ' ＝ <b>累計得分 ' + R.earned.toFixed(1) + '</b>；' +
+    '÷ 已發生配分 ' + R.possible + '% × 100 ＝ <b>目前平均 ' + (R.avg === null ? '—' : R.avg.toFixed(1)) + '</b>。</p>';
+
+  return h + '</div>';
+};
+
+/* 撲滿帳本檢視（全學期彙總，唯讀） */
+VIEWS.bankLedger = function (N) {
+  var W = GRADE.W(), ss = STORE.d.students;
+  var all = STORE.bankRows(null, STORE.d.course.totalWeeks);
+  var h = '<div class="card"><h2><span class="eyebrow">02 / POINT BANK</span>分數撲滿帳本（檢視）' +
+    '<span class="pill gold">全學期共 ' + all.length + ' 筆</span></h2>' +
+    '<div class="alert warn"><b>登記入口在「教室日誌 → 06 分數撲滿登記」</b>，這裡只做全學期彙總檢視。' +
+    '點數規則：' + CONFIG.BANK_RULES.map(function (r) { return U.esc(r); }).join('　·　') +
+    '。累計封頂 ' + W.bankCap + ' 點，÷ ' + W.bankDiv + ' ＝ 加分，至多 +' + W.bonusMax + ' 分。</div>';
+
+  if (!ss.length || !all.length) {
+    h += '<div class="alert info">帳本目前是空的。</div></div>';
+    return h;
+  }
+  h += '<div class="tblwrap"><table class="t"><thead><tr><th style="width:80px">座號</th><th style="width:150px">姓名</th>' +
+    '<th style="width:90px">組別</th><th style="width:110px">累計至 W' + N + '</th><th style="width:110px">全學期點數</th>' +
+    '<th style="width:110px">換算加分</th><th>最近事由</th></tr></thead><tbody>' +
+    ss.map(function (s) {
+      var upto = STORE.bankPoints(s.id, N), full = STORE.bankPoints(s.id);
+      var rows = STORE.bankRows(s.id);
+      var last = rows.length ? rows[rows.length - 1] : null;
+      var bonus = Math.min(W.bonusMax, U.round1(Math.min(full, W.bankCap) / (W.bankDiv || 20)));
+      return '<tr><td>' + U.esc(s.seat) + '</td><td>' + U.esc(s.name || '（未命名）') + '</td>' +
+        '<td>' + U.esc(s.group || '—') + '</td>' +
+        '<td class="num">' + upto + '</td><td class="num">' + full + '</td>' +
+        '<td class="num"><b>+' + bonus + '</b></td>' +
+        '<td class="mini">' + (last ? 'W' + last.week + '　' + U.esc(last.r.why) + '　' + last.r.pt + ' 點' : '—') + '</td></tr>';
+    }).join('') + '</tbody><tfoot><tr><td colspan="4">全班合計（全學期）</td>' +
+    '<td class="num">' + U.round1(all.reduce(function (a, x) { return a + (parseFloat(x.r.pt) || 0); }, 0)) + '</td>' +
+    '<td colspan="2"></td></tr></tfoot></table></div>' +
+    '<div class="btnrow"><button class="btn ghost sm" onclick="ACT.exportBankCSV()">⬇ 匯出撲滿帳本 CSV</button></div>';
+  return h + '</div>';
 };
 
 /* =========================================================================
@@ -3547,21 +4543,16 @@ VIEWS.backup = function () {
 
   /* 成績權重 */
   var W = GRADE.W();
-  var wlist = [
-    { k: 'att', n: '出席' }, { k: 'disc', n: '討論與 Zuvio' }, { k: 'ai', n: 'AI 翻轉與模組' },
-    { k: 'mid', n: '期中考' }, { k: 'fin', n: '期末考' },
-    { k: 'v1', n: '參訪·書面' }, { k: 'v2', n: '參訪·組間' }, { k: 'v3', n: '參訪·組內' },
-    { k: 'a1', n: '行動·書面' }, { k: 'a2', n: '行動·組間' }, { k: 'a3', n: '行動·組內' }
-  ];
-  h += '<div class="card"><h2><span class="eyebrow">02 / WEIGHTS</span>學期成績權重' +
+  h += '<div class="card"><h2><span class="eyebrow">02 / WEIGHTS</span>學期成績配分' +
     (GRADE.weightSum() === 100 ? '<span class="pill green">合計 100%</span>'
                                : '<span class="pill red">合計 ' + GRADE.weightSum() + '%</span>') + '</h2>' +
-    '<p class="hint">預設依教學計畫表：平時 26（9＋6＋11）＋期中 25＋期末 25＋參訪 12（3＋4＋5）＋行動 12（3＋4＋5）＝ 100。' +
-    '改動後「成績結算」分頁與課程範本會立即套用新權重。</p>' +
+    '<p class="hint">預設依 03wtc 成績規定：出席 9＋討論 Zuvio 6＋AI 翻轉模組 11＋期中 25＋期末 25' +
+    '＋參訪 12（書面 3／組間互評 2／師評 2／組內互評 5）＋行動 12（同）＝ 100。' +
+    '改動後「教室日誌」「成績結算」與課程範本會立即套用新配分。</p>' +
     '<div class="grid g4">' +
-    wlist.map(function (x) {
-      return '<div class="field"><label class="f">' + U.esc(x.n) + '（%）</label>' +
-        '<input type="number" min="0" step="0.5" value="' + W[x.k] + '" onchange="ACT.setWeight(\'' + x.k + '\',this.value)"></div>';
+    CONFIG.GRADE_COMPS.map(function (c) {
+      return '<div class="field"><label class="f">' + U.esc(c.name) + '（%）</label>' +
+        '<input type="number" min="0" step="0.5" value="' + W[c.w] + '" onchange="ACT.setWeight(\'' + c.w + '\',this.value)"></div>';
     }).join('') +
     '<div class="field"><label class="f">撲滿點數上限</label><input type="number" min="0" step="1" value="' + W.bankCap +
     '" onchange="ACT.setWeight(\'bankCap\',this.value)"></div>' +
@@ -3571,7 +4562,9 @@ VIEWS.backup = function () {
     '" onchange="ACT.setWeight(\'bonusMax\',this.value)"></div>' +
     '<div class="field"><label class="f">SOP 違規每次扣分</label><input type="number" min="0" step="0.5" value="' + W.sopPenalty +
     '" onchange="ACT.setWeight(\'sopPenalty\',this.value)"></div>' +
-    '</div><div class="btnrow"><button class="btn ghost" onclick="ACT.resetWeights()">↩ 回復預設權重</button></div></div>';
+    '<div class="field"><label class="f">組長／副組長加分上限</label><input type="number" min="0" step="0.5" value="' + W.leaderMax +
+    '" onchange="ACT.setWeight(\'leaderMax\',this.value)"></div>' +
+    '</div><div class="btnrow"><button class="btn ghost" onclick="ACT.resetWeights()">↩ 回復預設配分</button></div></div>';
 
   h += '<div class="card"><h2><span class="eyebrow">03 / BACKUP</span>備份與還原</h2>' +
     '<div class="btnrow">' +
@@ -3621,7 +4614,8 @@ VIEWS.backup = function () {
     '<div class="stat t2"><div class="k">最後儲存時間</div><div class="v" style="font-size:17px">' + U.esc(STORE.d.lastSaved || '—') + '</div></div>' +
     '<div class="stat t3"><div class="k">schemaVersion</div><div class="v">' + STORE.d.schemaVersion + '</div></div>' +
     '<div class="stat t4"><div class="k">資料筆數</div><div class="v" style="font-size:17px">學生 ' + STORE.d.students.length +
-    '／成績 ' + STORE.d.scores.length + '／撲滿 ' + STORE.d.bank.length + '</div></div>' +
+    '／練習成績 ' + STORE.d.scores.length + '／撲滿 ' +
+    STORE.bankRows(null, STORE.d.course.totalWeeks).length + '</div></div>' +
     '</div></div>';
   return h;
 };
@@ -3884,8 +4878,22 @@ var ACT = {
     STORE.save(); ROUTER.render();
   },
   addStu: function () {
-    STORE.d.students.push({ id: U.uid(), seat: '', cls: '', name: '', note: '' });
+    STORE.d.students.push({ id: U.uid(), seat: '', cls: '', name: '', note: '', group: '' });
     STORE.save(); ROUTER.render();
+  },
+  /* v3：批次分組小工具 */
+  checkAllStu: function (on) {
+    U.$$('.stuck').forEach(function (el) { el.checked = !!on; });
+  },
+  bulkGroup: function (clear) {
+    var picked = U.$$('.stuck').filter(function (el) { return el.checked; })
+      .map(function (el) { return parseInt(el.getAttribute('data-i'), 10); });
+    if (!picked.length) { alert('請先勾選左側「選」欄的學生。'); return; }
+    var g = clear ? '' : String((document.getElementById('bulkGrp') || {}).value || '').trim();
+    if (!clear && !g) { alert('請先填組別（例如 1）。'); return; }
+    picked.forEach(function (i) { if (STORE.d.students[i]) STORE.d.students[i].group = g; });
+    STORE.save(); ROUTER.render();
+    U.toast(clear ? ('已清除 ' + picked.length + ' 位的組別') : ('已把 ' + picked.length + ' 位設為第 ' + g + ' 組'));
   },
   popStu: function () {
     if (!STORE.d.students.length) { U.toast('名單已經是空的'); return; }
@@ -3895,8 +4903,8 @@ var ACT = {
     STORE.save(); ROUTER.render();
   },
   exportRosterCSV: function () {
-    var rows = [['座號', '班級', '姓名', '備註']];
-    STORE.d.students.forEach(function (s) { rows.push([s.seat, s.cls, s.name, s.note]); });
+    var rows = [['座號', '班級', '姓名', '組別', '備註']];
+    STORE.d.students.forEach(function (s) { rows.push([s.seat, s.cls, s.name, s.group || '', s.note]); });
     U.downloadCSV('學生名單_' + STORE.d.course.term + '.csv', rows);
   },
   printRoster: function () {
@@ -3904,11 +4912,12 @@ var ACT = {
     var body = '<h1>附件一　學生名單</h1><div class="meta">' +
       U.esc(c.school + '　' + c.dept) + '<br>' + U.esc(c.courseName + '（' + c.courseCode + '）　' + c.term) +
       '<br>任課教師：' + U.esc(c.teacher) + '　助教：' + U.esc(c.ta) + '　共 ' + STORE.d.students.length + ' 位</div>' +
-      '<table><thead><tr><th style="width:10%">序號</th><th style="width:12%">座號</th><th style="width:20%">班級</th>' +
-      '<th style="width:22%">姓名</th><th>備註</th><th style="width:18%">簽名</th></tr></thead><tbody>' +
+      '<table><thead><tr><th style="width:9%">序號</th><th style="width:11%">座號</th><th style="width:18%">班級</th>' +
+      '<th style="width:20%">姓名</th><th style="width:9%">組別</th><th>備註</th><th style="width:16%">簽名</th></tr></thead><tbody>' +
       STORE.d.students.map(function (s, i) {
         return '<tr><td class="c">' + (i + 1) + '</td><td class="c">' + U.esc(s.seat) + '</td><td>' + U.esc(s.cls) +
-          '</td><td>' + U.esc(s.name) + '</td><td>' + U.esc(s.note) + '</td><td></td></tr>';
+          '</td><td>' + U.esc(s.name) + '</td><td class="c">' + U.esc(s.group || '') +
+          '</td><td>' + U.esc(s.note) + '</td><td></td></tr>';
       }).join('') +
       '</tbody></table><div class="sign"><div>任課教師簽章</div><div>助教簽章</div><div>系主任簽章</div></div>';
     U.print('附件一　學生名單', body);
@@ -3994,6 +5003,140 @@ var ACT = {
     var L = STORE.logOf(VIEWS.logWeek);
     if (v) L.leaveKind[sid] = v; else delete L.leaveKind[sid];
     STORE.save(true);
+  },
+  // 從別頁跳到某週日誌
+  jumpLog: function (w) { VIEWS.logWeek = parseInt(w, 10) || 1; setTimeout(function () { ROUTER.render(); }, 0); },
+
+  /* ---------- v3：未依 SOP 請假 ---------- */
+  setSop: function (sid, on) {
+    var L = STORE.logOf(VIEWS.logWeek);
+    if (on) L.sop[sid] = true; else delete L.sop[sid];
+    STORE.save(true); ROUTER.render();
+  },
+
+  /* ---------- v3：逐週項目（雲端討論／AI） ---------- */
+  addItem: function (cat) {
+    var name = prompt('新項目名稱：', cat === 'ai' ? 'AI 活動' : '課堂活動');
+    if (name === null) return;
+    name = String(name).trim();
+    if (!name) { alert('項目名稱不可空白。'); return; }
+    var t = confirm('這個項目要用「勾選（✓/✗/—）」計分嗎？\n\n按「確定」＝勾選型（✓ 算 100 分）\n按「取消」＝分數型（逐生填 0–100）');
+    STORE.logOf(VIEWS.logWeek).items.push({
+      id: U.uid(), cat: (cat === 'ai' ? 'ai' : 'disc'), name: name,
+      type: t ? 'check' : 'score', memo: '', scores: {}
+    });
+    STORE.save(); ROUTER.render();
+    U.toast('已新增項目「' + name + '」');
+  },
+  addItemPreset: function (cat, name) {
+    var pool = (cat === 'ai') ? CONFIG.AI_PRESETS : CONFIG.DISC_PRESETS;
+    var p = pool.filter(function (x) { return x.name === name; })[0] || { name: name, type: 'check', memo: '' };
+    STORE.logOf(VIEWS.logWeek).items.push({
+      id: U.uid(), cat: (cat === 'ai' ? 'ai' : 'disc'), name: p.name,
+      type: p.type, memo: p.memo || '', scores: {}
+    });
+    STORE.save(); ROUTER.render();
+    U.toast('已新增「' + p.name + '」');
+  },
+  setItemName: function (i, v) {
+    var it = STORE.logOf(VIEWS.logWeek).items[i];
+    if (!it) return;
+    it.name = String(v == null ? '' : v);
+    STORE.save(true);
+  },
+  // check 三態循環：— → ✓ → ✗ → —
+  cycleItem: function (i, sid) {
+    var it = STORE.logOf(VIEWS.logWeek).items[i];
+    if (!it) return;
+    var cur = GRADE.ckVal(it.scores[sid]);
+    if (cur === null) it.scores[sid] = true;
+    else if (cur === 100) it.scores[sid] = false;
+    else delete it.scores[sid];
+    STORE.save(true); ROUTER.render();
+  },
+  setItemScore: function (i, sid, v) {
+    var it = STORE.logOf(VIEWS.logWeek).items[i];
+    if (!it) return;
+    var s = String(v == null ? '' : v).trim();
+    if (s === '') { delete it.scores[sid]; }
+    else {
+      var n = parseFloat(s);
+      if (isNaN(n)) { delete it.scores[sid]; }
+      else it.scores[sid] = Math.max(0, Math.min(100, U.round1(n)));
+    }
+    STORE.save(true); ROUTER.render();
+  },
+  // mode: 1＝全 ✓（或分數型填 100）；-1＝全部清除（回到「—」）
+  itemAll: function (i, mode) {
+    var it = STORE.logOf(VIEWS.logWeek).items[i];
+    if (!it) return;
+    if (mode < 0 && !confirm('把「' + (it.name || '此項目') + '」全班的登記清空（回到「—」未登記）？')) return;
+    STORE.d.students.forEach(function (s) {
+      if (mode > 0) it.scores[s.id] = (it.type === 'check') ? true : 100;
+      else delete it.scores[s.id];
+    });
+    STORE.save(); ROUTER.render();
+  },
+  delItem: function (i) {
+    var L = STORE.logOf(VIEWS.logWeek), it = L.items[i];
+    if (!it) return;
+    if (!confirm('刪除項目「' + (it.name || '未命名') + '」？該項目全班的登記也會一併刪除。')) return;
+    L.items.splice(i, 1);
+    STORE.save(); ROUTER.render();
+  },
+
+  /* ---------- v3：考試成績（入口在 W11／W17 日誌） ---------- */
+  setExam: function (sid, kind, v) {
+    var g = STORE.gradeOf(sid);
+    var field = (kind === 'mid') ? 'examMid' : 'examFin';
+    var s = String(v == null ? '' : v).trim();
+    if (s === '') { g[field] = null; }
+    else {
+      var n = parseFloat(s);
+      g[field] = isNaN(n) ? null : Math.max(0, Math.min(100, U.round1(n)));
+    }
+    delete g.ovLegacy[kind];      // 一經手動輸入即不再標「舊版匯入」
+    STORE.save(true); ROUTER.render();
+  },
+
+  /* ---------- v3：報告評分 ---------- */
+  addReport: function (kind) {
+    var L = STORE.logOf(VIEWS.logWeek);
+    L.reports.push({ id: U.uid(), kind: kind, group: {}, intra: {} });
+    L.repInit = true;
+    STORE.save(); ROUTER.render();
+    U.toast('已新增' + CONFIG.REPORT_LABEL[kind] + '評分區');
+  },
+  delReport: function (i) {
+    var L = STORE.logOf(VIEWS.logWeek), rp = L.reports[i];
+    if (!rp) return;
+    if (!confirm('刪除這個「' + CONFIG.REPORT_LABEL[rp.kind] + '」評分區？組別分數與組內互評都會一併刪除。')) return;
+    L.reports.splice(i, 1);
+    STORE.save(); ROUTER.render();
+  },
+  setReportGroup: function (i, gid, f, v) {
+    var rp = STORE.logOf(VIEWS.logWeek).reports[i];
+    if (!rp) return;
+    if (!rp.group[gid]) rp.group[gid] = { w1: null, inter: null, ta: null };
+    var s = String(v == null ? '' : v).trim();
+    if (s === '') rp.group[gid][f] = null;
+    else {
+      var n = parseFloat(s);
+      rp.group[gid][f] = isNaN(n) ? null : Math.max(0, Math.min(100, U.round1(n)));
+    }
+    STORE.save(true); ROUTER.render();
+  },
+  setReportIntra: function (i, sid, v) {
+    var rp = STORE.logOf(VIEWS.logWeek).reports[i];
+    if (!rp) return;
+    var s = String(v == null ? '' : v).trim();
+    if (s === '') { delete rp.intra[sid]; }
+    else {
+      var n = parseFloat(s);
+      if (isNaN(n)) delete rp.intra[sid];
+      else rp.intra[sid] = Math.max(0, Math.min(100, U.round1(n)));
+    }
+    STORE.save(true); ROUTER.render();
   },
   allPresent: function () {
     var L = STORE.logOf(VIEWS.logWeek);
@@ -4196,130 +5339,203 @@ var ACT = {
     }, function () { el.textContent = '無法讀取'; });
   },
 
-  /* ---------- 成績結算 ---------- */
-  setGrade: function (sid, key, val) {
+  /* ---------- 成績結算（v3：檢視層，僅出席覆寫與組長加分可輸入） ---------- */
+  setUpTo: function (v) { GRADE.setUpTo(v); ROUTER.render(); },
+  setAttOv: function (sid, v) {
     var g = STORE.gradeOf(sid);
-    if (key === 'sop') {
-      g.sop = Math.max(0, parseInt(val, 10) || 0);
-    } else {
-      var s = String(val == null ? '' : val).trim();
-      if (s === '') { g[key] = null; }
-      else {
-        var v = parseFloat(s);
-        if (isNaN(v)) { g[key] = null; }
-        else { g[key] = Math.max(0, Math.min(100, U.round1(v))); }
-      }
+    var s = String(v == null ? '' : v).trim();
+    if (s === '') { g.attOv = null; }
+    else {
+      var n = parseFloat(s);
+      g.attOv = isNaN(n) ? null : Math.max(0, Math.min(100, U.round1(n)));
     }
-    STORE.save(true);
-    ROUTER.render();
+    delete g.ovLegacy.att;
+    STORE.save(true); ROUTER.render();
+  },
+  setLeader: function (sid, v) {
+    var g = STORE.gradeOf(sid), W = GRADE.W();
+    var n = parseFloat(v);
+    g.leaderBonus = isNaN(n) ? 0 : Math.max(0, Math.min(W.leaderMax, U.round1(n)));
+    STORE.save(true); ROUTER.render();
+  },
+  toggleDetail: function (sid) {
+    var tr = document.getElementById('dtl_' + sid);
+    if (!tr) return;
+    tr.style.display = (tr.style.display === 'none' || !tr.style.display) ? 'table-row' : 'none';
+  },
+  expandAllDetail: function () {
+    var rows = U.$$('tr[id^="dtl_"]');
+    if (!rows.length) return;
+    var open = rows.some(function (r) { return r.style.display === 'none' || !r.style.display; });
+    rows.forEach(function (r) { r.style.display = open ? 'table-row' : 'none'; });
   },
   clearOverrides: function () {
-    if (!confirm('清除全部「自動欄」（出席、AI 翻轉與模組）的手動覆寫，回到自動計算值？手動欄不受影響。')) return;
+    if (!confirm('清除全部「學期級覆寫」（出席覆寫，以及由 v2 備份匯入的舊版分數）？\n' +
+                 '清除後這些構面一律改由教室日誌的逐週資料計算。期中／期末分數與組長加分不受影響。')) return;
     var n = 0;
     STORE.d.students.forEach(function (s) {
       var g = STORE.gradeOf(s.id);
-      CONFIG.GRADE_COLS.forEach(function (c) {
-        if (c.auto && g[c.k] !== null && typeof g[c.k] !== 'undefined') { g[c.k] = null; n++; }
-      });
+      if (g.attOv !== null) { g.attOv = null; n++; }
+      Object.keys(g.ov).forEach(function (k) { delete g.ov[k]; n++; });
+      g.ovLegacy = {};
+      if (g.sopLegacy) { g.sopLegacy = 0; n++; }
     });
     STORE.save(); ROUTER.render();
-    U.toast('已清除 ' + n + ' 個覆寫值');
+    U.toast('已清除 ' + n + ' 個學期級覆寫值');
   },
+  // CSV／列印共用：每位學生一列，含全部子欄（原始分＋加權分）
   gradeRows: function () {
-    var W = GRADE.W();
-    var head = ['座號', '班級', '姓名']
-      .concat(CONFIG.GRADE_COLS.map(function (c) { return c.name + '(' + W[c.w] + '%)'; }))
-      .concat(['撲滿點數', '撲滿加分', '未依SOP請假次數', 'SOP扣分', '加權小計', '學期總成績(一位小數)', '學期總成績(四捨五入)']);
+    var W = GRADE.W(), N = GRADE.upTo(), ss = STORE.d.students;
+    var head = ['座號', '班級', '姓名', '組別', '請假次數', 'SOP次數', 'SOP扣分'];
+    CONFIG.GRADE_COMPS.forEach(function (c) {
+      head.push(c.name + '原始分'); head.push(c.name + '加權(' + W[c.w] + '%)');
+    });
+    head = head.concat(['撲滿點數', '撲滿計入', '撲滿加分', '組長加分',
+      '已發生加權小計', '已發生配分合計', '累計得分', '累計得分(四捨五入)', '目前平均']);
     var rows = [head];
-    STORE.d.students.forEach(function (s) {
-      var R = GRADE.row(s), g = STORE.gradeOf(s.id);
-      rows.push([s.seat, s.cls, s.name]
-        .concat(CONFIG.GRADE_COLS.map(function (c) {
-          var v = R.parts[c.k];
-          return (v === null || typeof v === 'undefined') ? '' : v;
-        }))
-        .concat([R.bankPts, R.bonus, R.sop, -R.penalty, R.weighted, R.total1.toFixed(1), R.totalInt]));
+    ss.forEach(function (s) {
+      var R = GRADE.calc(s, N);
+      var line = [s.seat, s.cls, s.name, s.group || '', R.att.leaves, R.sopCount, -R.penalty];
+      CONFIG.GRADE_COMPS.forEach(function (c) {
+        var C = R.comps[c.k];
+        line.push(C.occurred ? C.raw : '');
+        line.push(C.occurred ? C.weighted : '');
+      });
+      line = line.concat([R.bankPts, R.bankCapped, R.bonus, R.leader,
+        R.sumW, R.possible, R.earned.toFixed(1), R.earnedInt, R.avg === null ? '' : R.avg.toFixed(1)]);
+      rows.push(line);
     });
     return rows;
   },
   exportGradeCSV: function () {
-    if (!STORE.d.students.length) { alert('尚未匯入學生名單。'); return; }
-    var rows = ACT.gradeRows();
-    // 全班平均列
     var ss = STORE.d.students;
-    var avg = ['', '', '全班平均'];
-    CONFIG.GRADE_COLS.forEach(function (c) {
-      var v = [], i;
-      ss.forEach(function (s) { var x = GRADE.row(s).parts[c.k]; if (x !== null && typeof x !== 'undefined') v.push(x); });
-      avg.push(v.length ? U.round1(v.reduce(function (a, b) { return a + b; }, 0) / v.length) : '');
+    if (!ss.length) { alert('尚未匯入學生名單。'); return; }
+    var N = GRADE.upTo(), rows = ACT.gradeRows();
+    var calcs = ss.map(function (s) { return GRADE.calc(s, N); });
+    var mean = function (arr) {
+      var v = arr.filter(function (x) { return x !== null && typeof x !== 'undefined'; });
+      return v.length ? U.round1(v.reduce(function (a, b) { return a + b; }, 0) / v.length) : '';
+    };
+    var avg = ['', '', '全班平均（' + ss.length + ' 人）', '',
+      mean(calcs.map(function (R) { return R.att.leaves; })),
+      mean(calcs.map(function (R) { return R.sopCount; })),
+      mean(calcs.map(function (R) { return -R.penalty; }))];
+    CONFIG.GRADE_COMPS.forEach(function (c) {
+      avg.push(mean(calcs.map(function (R) { return R.comps[c.k].occurred ? R.comps[c.k].raw : null; })));
+      avg.push(mean(calcs.map(function (R) { return R.comps[c.k].occurred ? R.comps[c.k].weighted : null; })));
     });
-    var tot = ss.reduce(function (a, s) { return a + GRADE.row(s).total1; }, 0);
-    avg = avg.concat(['', '', '', '', '', U.round1(tot / ss.length).toFixed(1), '']);
+    avg = avg.concat([
+      mean(calcs.map(function (R) { return R.bankPts; })), '',
+      mean(calcs.map(function (R) { return R.bonus; })),
+      mean(calcs.map(function (R) { return R.leader; })),
+      mean(calcs.map(function (R) { return R.sumW; })),
+      mean(calcs.map(function (R) { return R.possible; })),
+      mean(calcs.map(function (R) { return R.earned; })), '',
+      mean(calcs.map(function (R) { return R.avg; }))]);
     rows.push(avg);
-    U.downloadCSV('學期成績總表_' + STORE.d.course.term + '.csv', rows);
+    rows.push([]);
+    rows.push(['說明', '累計至第 ' + N + ' 週；累計得分＝Σ已發生加權＋撲滿＋組長−SOP（下限 0）；' +
+      '目前平均＝同一分子 ÷ 已發生配分合計 × 100']);
+    U.downloadCSV('成績總表_累計至W' + N + '_' + STORE.d.course.term + '.csv', rows);
   },
   printGrades: function () {
-    if (!STORE.d.students.length) { alert('尚未匯入學生名單。'); return; }
-    var c = STORE.d.course, W = GRADE.W(), ss = STORE.d.students;
-    var body = '<style>@page{size:A4 landscape;margin:12mm 10mm;}table{font-size:8.5pt;}th,td{padding:1mm 1.2mm;}</style>' +
-      '<h1>' + U.esc(c.courseName) + '　學期成績總表</h1><div class="meta">' +
+    var ss = STORE.d.students;
+    if (!ss.length) { alert('尚未匯入學生名單。'); return; }
+    var c = STORE.d.course, W = GRADE.W(), N = GRADE.upTo();
+    var body = '<style>@page{size:A4 landscape;margin:10mm 8mm;}table{font-size:7.6pt;}th,td{padding:.8mm 1mm;}</style>' +
+      '<h1>' + U.esc(c.courseName) + '　成績總表（累計至第 ' + N + ' 週）</h1><div class="meta">' +
       U.esc(c.school + '　' + c.dept) + '　｜　' + U.esc(c.courseCode + '　' + c.term) +
       '　｜　任課教師：' + U.esc(c.teacher) + '　｜　助教：' + U.esc(c.ta) + '（' + U.esc(c.taEmail || '') + '）<br>' +
-      '平時 ' + (W.att + W.disc + W.ai) + '%（出席 ' + W.att + '、討論及 Zuvio ' + W.disc + '、AI ' + W.ai + '）' +
-      '＋期中 ' + W.mid + '%＋期末 ' + W.fin + '%＋參訪 ' + (W.v1 + W.v2 + W.v3) + '%＋行動 ' + (W.a1 + W.a2 + W.a3) + '%' +
-      '　｜　撲滿加分至多 +' + W.bonusMax + '　｜　未依 SOP 請假每次 −' + W.sopPenalty + '</div>' +
-      '<table><thead><tr><th>座號</th><th>姓名</th>' +
-      CONFIG.GRADE_COLS.map(function (x) { return '<th>' + U.esc(x.name) + '<br>' + W[x.w] + '%</th>'; }).join('') +
-      '<th>撲滿<br>加分</th><th>SOP<br>扣分</th><th>總成績</th><th>四捨<br>五入</th></tr></thead><tbody>';
-    var sums = {}, cnts = {}, tot = 0;
+      '配分：出席 ' + W.att + '＋討論 ' + W.disc + '＋AI ' + W.ai + '＋期中 ' + W.mid + '＋期末 ' + W.fin +
+      '＋參訪 ' + (W.v_w + W.v_i + W.v_t + W.v_n) + '＋行動 ' + (W.a_w + W.a_i + W.a_t + W.a_n) + '＝ ' + GRADE.weightSum() +
+      '　｜　撲滿至多 +' + W.bonusMax + '　｜　組長加分 0–' + W.leaderMax + '　｜　未依 SOP 請假每次 −' + W.sopPenalty + '<br>' +
+      '累計得分＝Σ已發生加權＋撲滿＋組長−SOP（下限 0）；目前平均＝同一分子 ÷ 已發生配分合計 × 100</div>' +
+      '<table><thead><tr><th>座號</th><th>姓名</th><th>組</th><th>假</th><th>SOP</th>' +
+      CONFIG.GRADE_COMPS.map(function (x) { return '<th>' + U.esc(x.short) + '<br>' + W[x.w] + '%</th>'; }).join('') +
+      '<th>撲滿<br>加分</th><th>組長<br>加分</th><th>累計<br>得分</th><th>目前<br>平均</th></tr></thead><tbody>';
+    var sums = {}, cnts = {}, tot = 0, avgs = [];
     body += ss.map(function (s) {
-      var R = GRADE.row(s);
-      tot += R.total1;
+      var R = GRADE.calc(s, N);
+      tot += R.earned;
+      if (R.avg !== null) avgs.push(R.avg);
       return '<tr><td class="c">' + U.esc(s.seat) + '</td><td>' + U.esc(s.name) + '</td>' +
-        CONFIG.GRADE_COLS.map(function (x) {
-          var v = R.parts[x.k];
-          if (v !== null && typeof v !== 'undefined') { sums[x.k] = (sums[x.k] || 0) + v; cnts[x.k] = (cnts[x.k] || 0) + 1; }
-          return '<td class="num">' + ((v === null || typeof v === 'undefined') ? '—' : v) + '</td>';
+        '<td class="c">' + U.esc(s.group || '—') + '</td><td class="c">' + R.att.leaves + '</td>' +
+        '<td class="c">' + (R.penalty ? '−' + R.penalty : '0') + '</td>' +
+        CONFIG.GRADE_COMPS.map(function (x) {
+          var C = R.comps[x.k];
+          if (C.occurred) { sums[x.k] = (sums[x.k] || 0) + C.raw; cnts[x.k] = (cnts[x.k] || 0) + 1; }
+          return '<td class="num">' + (C.occurred ? C.raw + '<br>(' + C.weighted + ')' : '—') + '</td>';
         }).join('') +
-        '<td class="num">+' + R.bonus + '</td><td class="num">' + (R.penalty ? '−' + R.penalty : '0') + '</td>' +
-        '<td class="num"><b>' + R.total1.toFixed(1) + '</b></td><td class="num"><b>' + R.totalInt + '</b></td></tr>';
+        '<td class="num">+' + R.bonus + '</td><td class="num">+' + R.leader + '</td>' +
+        '<td class="num"><b>' + R.earned.toFixed(1) + '</b></td>' +
+        '<td class="num"><b>' + (R.avg === null ? '—' : R.avg.toFixed(1)) + '</b></td></tr>';
     }).join('');
-    body += '</tbody><tfoot><tr><td colspan="2">全班平均（' + ss.length + ' 人）</td>' +
-      CONFIG.GRADE_COLS.map(function (x) {
+    body += '</tbody><tfoot><tr><td colspan="5">全班平均（' + ss.length + ' 人）</td>' +
+      CONFIG.GRADE_COMPS.map(function (x) {
         return '<td class="num">' + (cnts[x.k] ? U.round1(sums[x.k] / cnts[x.k]) : '—') + '</td>';
       }).join('') +
-      '<td class="num">—</td><td class="num">—</td><td class="num"><b>' + U.round1(tot / ss.length).toFixed(1) + '</b></td>' +
-      '<td class="num">—</td></tr></tfoot></table>' +
+      '<td class="num">—</td><td class="num">—</td>' +
+      '<td class="num"><b>' + U.round1(tot / ss.length).toFixed(1) + '</b></td>' +
+      '<td class="num"><b>' + (avgs.length ? U.round1(avgs.reduce(function (a, b) { return a + b; }, 0) / avgs.length).toFixed(1) : '—') +
+      '</b></td></tr></tfoot></table>' +
+      '<p style="font-size:9pt;margin-top:3mm">每格上方為原始分、括號內為加權分。「—」＝該構面截至第 ' + N + ' 週尚未發生，不列入分子與分母。</p>' +
       '<div class="sign"><div>任課教師簽章</div><div>助教簽章</div><div>系主任簽章</div></div>';
-    U.print('學期成績總表', body);
+    U.print('成績總表（累計至第 ' + N + ' 週）', body);
   },
 
-  /* ---------- 分數撲滿帳本 ---------- */
+  /* ---------- 分數撲滿（登記入口在教室日誌，逐週） ---------- */
+  bankReasonPick: function (i) {
+    var r = CONFIG.BANK_REASONS[parseInt(i, 10)] || CONFIG.BANK_REASONS[0];
+    var why = document.getElementById('bkWhy'), pt = document.getElementById('bkPt');
+    if (why) why.value = (r.why.indexOf('其他') === 0) ? '' : r.why;
+    if (pt) pt.value = r.pt;
+    if (why && r.why.indexOf('其他') === 0) why.focus();
+  },
   addBank: function () {
-    var d = (document.getElementById('bkDate') || {}).value || U.today();
+    var w = VIEWS.logWeek || 1, L = STORE.logOf(w);
     var sid = (document.getElementById('bkStu') || {}).value || '';
     var why = ((document.getElementById('bkWhy') || {}).value || '').trim();
     var pt = parseFloat((document.getElementById('bkPt') || {}).value);
     if (!sid) { alert('請先選擇學生。'); return; }
     if (isNaN(pt) || pt === 0) { alert('點數必須是不為 0 的數字（扣點可填負數）。'); return; }
-    STORE.d.bank.push({ id: U.uid(), date: d, sid: sid, why: why, pt: pt });
+    if (!why) { alert('請填事由。'); return; }
+    L.bank.push({ id: U.uid(), date: STORE.planRow(w).date || U.today(), sid: sid, gid: '', why: why, pt: pt, note: '' });
     STORE.save(); ROUTER.render();
-    U.toast('已登記 ' + pt + ' 點');
+    U.toast('已登記 ' + pt + ' 點（第 ' + w + ' 週）');
+  },
+  // 小組全到 +5：整組每人各記一筆
+  bankGroupAll: function () {
+    var w = VIEWS.logWeek || 1, L = STORE.logOf(w);
+    var gid = (document.getElementById('bkGrp') || {}).value || '';
+    if (!gid) { alert('請先到「學生名單」設定組別。'); return; }
+    var mem = STORE.membersOf(gid);
+    if (!mem.length) { alert('第 ' + gid + ' 組目前沒有組員。'); return; }
+    var pt = 5, date = STORE.planRow(w).date || U.today();
+    if (!confirm('要幫第 ' + gid + ' 組的 ' + mem.length + ' 位組員各登記「小組全部出席」+' + pt + ' 點嗎？')) return;
+    mem.forEach(function (s) {
+      L.bank.push({ id: U.uid(), date: date, sid: s.id, gid: gid,
+        why: '小組全部出席（第 ' + gid + ' 組，第 ' + w + ' 週）', pt: pt, note: '' });
+    });
+    STORE.save(); ROUTER.render();
+    U.toast('第 ' + gid + ' 組 ' + mem.length + ' 人各 +' + pt + ' 點');
   },
   delBank: function (i) {
-    var r = STORE.d.bank[i];
+    var L = STORE.logOf(VIEWS.logWeek || 1), r = L.bank[i];
     if (!r) return;
-    if (!confirm('刪除這一筆撲滿紀錄（' + r.date + '　' + r.pt + ' 點）？')) return;
-    STORE.d.bank.splice(i, 1);
+    if (!confirm('刪除這一筆撲滿紀錄（' + r.date + '　' + r.why + '　' + r.pt + ' 點）？')) return;
+    L.bank.splice(i, 1);
     STORE.save(); ROUTER.render();
   },
   exportBankCSV: function () {
-    var rows = [['日期', '座號', '姓名', '事由', '點數']];
-    STORE.d.bank.forEach(function (r) {
-      var s = STORE.d.students.filter(function (x) { return x.id === r.sid; })[0];
-      rows.push([r.date, s ? s.seat : '', s ? s.name : '（已刪除）', r.why, r.pt]);
+    var rows = [['週次', '日期', '座號', '姓名', '組別', '事由', '點數', '備註']];
+    STORE.bankRows(null, STORE.d.course.totalWeeks).forEach(function (x) {
+      var s = STORE.d.students.filter(function (y) { return y.id === x.r.sid; })[0];
+      rows.push(['W' + x.week, x.r.date, s ? s.seat : '', s ? s.name : '（已刪除）',
+        s ? (s.group || '') : '', x.r.why, x.r.pt, x.r.note || '']);
     });
-    rows.push(['', '', '', '合計', STORE.d.bank.reduce(function (a, r) { return a + (parseFloat(r.pt) || 0); }, 0)]);
+    var tot = STORE.bankRows(null, STORE.d.course.totalWeeks)
+      .reduce(function (a, x) { return a + (parseFloat(x.r.pt) || 0); }, 0);
+    rows.push(['', '', '', '', '', '合計', U.round1(tot), '']);
     U.downloadCSV('分數撲滿帳本_' + STORE.d.course.term + '.csv', rows);
   },
 
@@ -4333,7 +5549,8 @@ var ACT = {
     STORE.save(true); ROUTER.render();
   },
   resetWeights: function () {
-    if (!confirm('把成績權重全部回復為預設值（9/6/11/25/25/3-4-5/3-4-5，撲滿 200÷20 上限 +10，SOP −2）？')) return;
+    if (!confirm('把成績配分全部回復為預設值（9／6／11／25／25／參訪 3-2-2-5／行動 3-2-2-5，' +
+                 '撲滿 200÷20 上限 +10，組長加分上限 3，SOP −2）？')) return;
     STORE.d.gradeW = JSON.parse(JSON.stringify(CONFIG.GRADE));
     STORE.save(); ROUTER.render();
     U.toast('已回復預設權重');
@@ -4428,7 +5645,7 @@ var ACT = {
       if (!confirm('這是「課程設定範本」，將覆蓋目前的課程基本資料、課程規劃表與成績權重，但保留學生名單、點名與成績。要繼續嗎？')) return;
       STORE.d.course = Object.assign({}, STORE.d.course, obj.course || {});
       if (Array.isArray(obj.plan)) STORE.d.plan = obj.plan;
-      if (obj.gradeW && typeof obj.gradeW === 'object') STORE.d.gradeW = Object.assign({}, CONFIG.GRADE, obj.gradeW);
+      if (obj.gradeW && typeof obj.gradeW === 'object') STORE.d.gradeW = STORE.normWeights(obj.gradeW);
       STORE.syncPlanLength();
       STORE.save(); ROUTER.render();
       U.toast('課程範本已套用'); return;
@@ -4543,6 +5760,11 @@ var ROUTER = {
 
   render: function () {
     var r = ROUTER.parse(), app = document.getElementById('app'), h = '';
+    // v3：逐週維護時每按一下就重繪，捲動位置若歸零會很難用 → 重繪後還原
+    var keepY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    var restore = function () {
+      if (keepY > 0) { try { window.scrollTo(0, keepY); } catch (e) {} }
+    };
 
     if (r.mode === 'admin') {
       /* --- 老師模式：頁首＋六分頁導覽 --- */
@@ -4558,6 +5780,7 @@ var ROUTER = {
       }
       h += VIEWS.footer() + '</div>';
       app.innerHTML = h;
+      restore();
       // 需要非同步從 IndexedDB 取資料的區塊，畫面掛上去之後再補
       if (r.tab === 'log') VIEWS.renderPhotos();
       if (r.tab === 'backup') ACT.showPhotoUsage();
