@@ -250,6 +250,8 @@ table.g tfoot td{background:#EDF4F1;font-weight:800;}
 .wk .n{font-size:12px;font-weight:800;color:var(--teal);letter-spacing:1.4px;}
 .wk .tt{font-size:14.5px;font-weight:700;margin:3px 0;color:var(--navy);}
 .wk .dt{font-size:12.5px;color:var(--muted);}
+.wk .bk{font-size:12px;font-weight:700;color:var(--teal);margin:2px 0 3px;line-height:1.45;overflow-wrap:anywhere;word-break:break-word;}
+.wk.exam .bk{color:var(--danger);}
 .wk.holiday{border-left-color:var(--gold);background:#FFFDF6;}
 .wk.exam{border-left-color:var(--danger);background:#FEF7F6;}
 
@@ -1683,6 +1685,8 @@ var ROSTER = {
  *     type:   'teach' | 'exam' | 'holiday',
  *     title:  '本週標題',
  *     chapters: '對應課本章節（11E＋中譯對照）',
+ *     book:   { en:'Ch19、Ch22', zh:'Ch14、Ch16' }    // v4.1：卡片顯示用；考試週加 exam:true、note；
+ *             { none:'說明', noNew:true }           //       無（新）章節的週；假日週省略
  *     reading:  '延伸閱讀字串',
  *     goals:  ['本週目標 3–5 條'],
  *     cards:  [{ h:'重點標題', b:'HTML 內文', local:'花蓮／生活連結（可省略）' }],  // 6–10 張
@@ -1708,6 +1712,7 @@ CONTENT[1] = {
   type: 'teach',
   title: '課程介紹｜eLearning、Zuvio 及 AI 課程管理平台使用｜人類圈與永續—永續化學、綠色化學 I｜AI 課程倫理規範 I｜普化基礎複習｜分組調查',
   chapters: '綠色化學補充資料（AI 翻轉練習）、普化基礎複習（AI 翻轉練習）；本週不對應課本章節（Ch16 於第 2 週、Ch1 五大圈於第 3 週）',
+  book: { none: '綠色化學補充資料、普化基礎複習' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：綠色化學補充資料（e 學苑公告）；普通化學課本中「濃度單位」與「酸鹼平衡」兩章自行複習；下週預習 Manahan《Environmental Chemistry》11E 第 16 章（原文書，無中譯本對應章）',
   goals: [
     '能說出本學期的課程常規、評量方式與期末行動時程，並能操作東華 eLearning、Zuvio 與 AI 課程管理平台完成每週任務。',
@@ -1776,6 +1781,7 @@ CONTENT[2] = {
   type: 'teach',
   title: '人類圈與永續—永續化學、綠色化學 II｜Ch16 工業生態與綠色化學（原文書）｜普化、有機基礎複習｜分組說明',
   chapters: '11E Ch16 The Anthrosphere: Industrial Ecology and Green Chemistry（原文書 only，無中譯）、綠色化學補充資料；普化與有機基礎複習',
+  book: { en: 'Ch16', zh: '無對應章節（原文書 only）' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 16 章（原文書，無中譯本對應章）；綠色化學補充資料（e 學苑公告）；下週預習第 1 章（中譯本第 1 章）',
   goals: [
     '能用「物質流分析」描述一個產業鏈，並指出可循環的節點。',
@@ -1843,6 +1849,7 @@ CONTENT[3] = {
   type: 'teach',
   title: '人類圈與永續—環境化學與五大圈（Ch1）｜AI 翻轉 Q&A｜分組確定｜期末行動討論 I',
   chapters: '11E Ch1 Environmental Chemistry and the Five Spheres of the Environment（中譯 Ch1）',
+  book: { en: 'Ch1', zh: 'Ch1' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 1 章（中譯本第 1 章）；本週起上課須帶課本',
   goals: [
     '能說明環境化學研究的四個提問，並用「五大圈層＋界面通量」描述一個真實環境問題。',
@@ -1916,6 +1923,7 @@ CONTENT[5] = {
   type: 'teach',
   title: '人類圈與永續—能源、廢棄物、毒物｜DIY 晶球（人工魚子醬）｜AI 翻轉 Q&A',
   chapters: '11E Ch19 有害廢棄物的性質、來源與環境化學（中譯 Ch14）、Ch22 毒物化學（中譯 Ch16）',
+  book: { en: 'Ch19、Ch22', zh: 'Ch14、Ch16' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 19、22 章（中譯本第 14、16 章）',
   goals: [
     '能說明有害廢棄物的來源與在環境中的移動途徑，並以人類圈的能源與物質使用解釋其成因。',
@@ -1989,6 +1997,7 @@ CONTENT[6] = {
   type: 'teach',
   title: '水圈—水化學 I（Ch2）：水的性質、水中氣體、碳酸系統與鹼度、硬度、錯合與螯合、腐植質｜AI 翻轉 Q&A',
   chapters: '11E Ch2 The Hydrosphere and Water Chemistry（中譯 Ch2）',
+  book: { en: 'Ch2', zh: 'Ch2' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 2 章（中譯本第 2 章）；酸度與礦場酸性排水、溶氧與湖泊分層等段落請自行閱讀，第 7 週氧化還原會再用到',
   goals: [
     '能由水分子的極性與氫鍵推導其異常物理性質，並以亨利定律計算溶氧與溶解 CO<sub>2</sub> 的平衡濃度。',
@@ -2071,6 +2080,7 @@ CONTENT[7] = {
   type: 'teach',
   title: '水圈—水化學 II（Ch3）：氧化還原、pE 與 pE–pH 圖、腐蝕｜AI 翻轉 Q&A｜期末行動討論 II',
   chapters: '11E Ch3 水化學中的氧化還原（中譯 Ch3）',
+  book: { en: 'Ch3', zh: 'Ch3' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 3 章（中譯本第 3 章）',
   goals: [
     '能以半反應法平衡水中的氧化還原反應。',
@@ -2151,6 +2161,7 @@ CONTENT[9] = {
   type: 'teach',
   title: '水圈—水污染及水處理 I（Ch6、Ch7）｜NDHU 污水廠參訪行前準備（任務說明、核心問題、場域資料）｜AI 翻轉 Q&A',
   chapters: '11E Ch6 水污染物與水污染（中譯 Ch6）、Ch7 世界水危機與水處理（中譯 Ch7）',
+  book: { en: 'Ch6、Ch7', zh: 'Ch6、Ch7' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 6、7 章（中譯本第 6、7 章）',
   goals: [
     '能分類水污染物並說明各類的關鍵指標與分析原理。',
@@ -2226,6 +2237,7 @@ CONTENT[10] = {
   type: 'teach',
   title: 'AI 翻轉 Q&A｜Review before Exam 1｜參訪 I：NDHU 污水廠（15:10–17:00）',
   chapters: '參訪場域：NDHU 污水廠（Ch6、Ch7 實務）；Exam 1 複習 Ch 1–3、16、18–19、22',
+  book: { none: 'NDHU 污水廠參訪、Exam 1 複習', noNew: true },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 7 章（中譯本第 7 章）；Exam 1 範圍請依教學計畫表複習 Ch 1–3、16、18–19、22、綠色化學、普化複習、有機複習與參訪',
   goals: [
     '能在現場指認污水廠各處理單元並說出其功能與關鍵反應。',
@@ -2293,6 +2305,7 @@ CONTENT[11] = {
   type: 'exam',
   title: 'Exam 1（期中考）',
   chapters: '11E Ch1–Ch3（中譯 Ch1–Ch3）、Ch16（原文書，無中譯）、Ch18–Ch19（中譯 Ch13–Ch14）、Ch22（中譯 Ch16）；綠色化學補充資料、普化與有機複習、NDHU 污水廠參訪',
+  book: { exam: true, en: 'Ch1–3、16、18–19、22', zh: 'Ch1–3、13–14、16', note: '英文書 Ch16 無中譯' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 1、2、3、16、18、19、22 章（中譯本第 1、2、3、13、14、16 章）；複習素材：PPT、課本、課本習題、HW、補充資料',
   scope: [
     '考試範圍（依教學計畫表）：Ch 1–3、16、18–19、22、綠色化學、普化複習、有機複習、參訪（PPT、課本、課本習題、HW 複習、補充資料）。',
@@ -2337,6 +2350,7 @@ CONTENT[12] = {
   type: 'teach',
   title: '大氣圈—大氣化學 I（Ch8、Ch9）：大氣結構、光化學、粒狀物｜AI 翻轉 Q&A｜參訪報告（部分組別口頭）＋同儕互評｜期末行動討論 III',
   chapters: '11E Ch8 大氣與大氣化學（中譯 Ch8）、Ch9 大氣中的粒狀物（中譯 Ch9）',
+  book: { en: 'Ch8、Ch9', zh: 'Ch8、Ch9' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 8、9 章（中譯本第 8、9 章）',
   goals: [
     '能說明大氣分層的溫度剖面成因，並解釋逆溫如何造成污染累積。',
@@ -2409,6 +2423,7 @@ CONTENT[13] = {
   type: 'teach',
   title: '大氣圈—大氣化學 II（Ch10、Ch11）：無機與有機空氣污染物｜AI 課程倫理規範 II｜AI 模組活動 I｜AI 翻轉 Q&A｜期中考 Q&A',
   chapters: '11E Ch10 氣相無機空氣污染物（中譯 Ch10）、Ch11 有機性空氣污染物（中譯 Ch11）',
+  book: { en: 'Ch10、Ch11', zh: 'Ch10、Ch11' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 10、11 章（中譯本第 10、11 章）',
   goals: [
     '能寫出 CO、SO<sub>2</sub>、NO<sub>x</sub>、NH<sub>3</sub> 的來源、大氣反應與控制對策。',
@@ -2487,7 +2502,8 @@ CONTENT[13] = {
 CONTENT[14] = {
   type: 'teach',
   title: 'AI 模組活動 II：AI 輔助 EDA 與視覺化｜參訪行前準備：中華紙漿花蓮廠（任務說明、核心問題、場域資料）｜行前演講 16:10–17:00（A124）｜AI 翻轉 Q&A',
-  chapters: '11E Ch9–Ch11 空氣品質資料應用（中譯 Ch9–Ch11）；Ch16 工業生態（無中譯）',
+  chapters: '本週無新課本章節（AI 模組活動 II 以 11E Ch9–Ch11 的空氣品質資料為素材；中華紙漿廠行前演講背景見 Ch16）',
+  book: { none: 'AI 模組活動 II、中華紙漿廠行前演講' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 9–11 章（中譯本第 9–11 章）；製漿造紙相關段落另見第 16 章工業生態',
   goals: [
     '能完成環境時序資料的探索性分析（EDA）並正確處理缺值與極端值。',
@@ -2564,7 +2580,8 @@ CONTENT[14] = {
 CONTENT[15] = {
   type: 'teach',
   title: '水圈、大氣圈參訪 II：中華紙漿股份有限公司花蓮廠（13:20–17:30）',
-  chapters: '11E Ch16 工業生態與綠色化學（無中譯）；Ch7 工業廢水（中譯 Ch7）；Ch10 還原態含硫氣體（中譯 Ch10）',
+  chapters: '本週無課本章節（中華紙漿花蓮廠參訪；相關背景：11E Ch16 工業生態、Ch7 工業廢水、Ch10 還原態含硫氣體）',
+  book: { none: '中華紙漿花蓮廠參訪' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 16 章、第 7 章 7.4 節、第 10 章 10.10 節',
   goals: [
     '能在現場指認製漿造紙的主要單元並說明其化學反應。',
@@ -2631,7 +2648,8 @@ CONTENT[15] = {
 CONTENT[16] = {
   type: 'teach',
   title: 'AI 模組活動 III：環境化學解讀與 AI 查證｜AI 翻轉 Q&A｜參訪任務報告＋同儕互評｜期末行動討論 IV｜Review before Exam 2',
-  chapters: '11E Ch6–Ch11、Ch16 綜合應用（中譯 Ch6–Ch11；Ch16 無中譯）',
+  chapters: '本週無新章節（AI 模組活動 III、參訪報告、Exam 2 複習；綜合應用 11E Ch6–Ch11、Ch16）',
+  book: { none: 'AI 模組活動 III、參訪報告、Exam 2 複習', noNew: true },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 6–11、16 章；Exam 2 範圍請一併複習中華紙漿花蓮廠參訪資料',
   goals: [
     '能設計查證流程，辨識 AI 產出中的事實錯誤、幻覺與單位陷阱。',
@@ -2707,6 +2725,7 @@ CONTENT[17] = {
   type: 'exam',
   title: 'Exam 2（期末考）',
   chapters: '11E Ch6–Ch11（中譯 Ch6–Ch11）、Ch16（原文書，無中譯）；參訪場域：中華紙漿花蓮廠',
+  book: { exam: true, en: 'Ch6–11、16', zh: 'Ch6–11', note: '英文書 Ch16 無中譯' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 6–11 章與第 16 章（中譯本第 6–11 章）；複習素材：PPT、課本、課本習題、中華紙漿花蓮廠參訪資料',
   scope: [
     '考試範圍（依教學計畫表）：Ch 6–11、16、參訪場域中華紙漿廠（PPT、課本、課本習題、參訪資料）。',
@@ -2752,7 +2771,8 @@ CONTENT[17] = {
 CONTENT[18] = {
   type: 'teach',
   title: '延伸週（線上）：期末行動成果發表、同儕互評',
-  chapters: '全學期綜合；11E Ch1、Ch16 回顧（中譯 Ch1；Ch16 無中譯）',
+  chapters: '本週無課本章節（期末行動成果發表；回顧 11E Ch1、Ch16）',
+  book: { none: '期末行動成果發表' },                 // v4.1：卡片用課本章節（英文書＝Manahan、中文書＝中譯本）
   reading: '延伸閱讀：Manahan《Environmental Chemistry》11E 第 1 章與第 16 章（回顧全書架構與綠色化學）',
   goals: [
     '能以 10 分鐘完整報告一份具化學論證的行動方案。',
@@ -3876,6 +3896,18 @@ VIEWS.contentTab = function () {
   return h;
 };
 
+/* v4.1：週次卡片上的課本章節行（資料來自 CONTENT[w].book；沒有 book 的週不顯示） */
+VIEWS.bookText = function (B) {
+  if (!B) return '';
+  if (B.none) return (B.noNew ? '本週無新章節' : '本週無課本章節') + '（' + B.none + '）';
+  var t = (B.exam ? '考試範圍：' : '') + '英文書 ' + (B.en || '—') + '｜中文書 ' + (B.zh || '—');
+  return t + (B.note ? '（' + B.note + '）' : '');
+};
+VIEWS.bookLine = function (C) {
+  var t = VIEWS.bookText(C && C.book);
+  return t ? '<div class="bk">📖 ' + U.esc(t) + '</div>' : '';
+};
+
 VIEWS.weekCard = function (r) {
   var C = CONTENT[r.week];
   var cls = C ? (C.type === 'holiday' ? ' holiday' : (C.type === 'exam' ? ' exam' : '')) : '';
@@ -3885,6 +3917,7 @@ VIEWS.weekCard = function (r) {
   return '<a class="wk' + cls + '" href="#/week/' + r.week + '">' +
     '<div class="n">WEEK ' + r.week + '　' + tag + '</div>' +
     '<div class="tt">' + U.esc((C && C.title) ? C.title.slice(0, 34) : (r.topic || '（未填主題）').slice(0, 34)) + '</div>' +
+    VIEWS.bookLine(C) +                                                 // v4.1
     '<div class="dt">' + U.esc(r.date || '未填日期') + '　·　' + (parseFloat(r.hours) || 0) + ' 小時</div>' +
     (C && C.activity ? '<div class="dt" style="margin-top:4px;color:#9A6B00">🧪 ' + U.esc(C.activity.name) + '</div>' : '') +
     '</a>';
